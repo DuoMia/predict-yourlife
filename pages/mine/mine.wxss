@@ -1,0 +1,7 @@
+/* pages/mine/mine.wxss */
+.container {
+  background-color: #faf8ee;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}

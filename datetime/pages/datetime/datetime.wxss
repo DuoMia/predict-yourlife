@@ -1,0 +1,30 @@
+.time{
+  display: flex;
+}
+.time_two{
+  border: 1px solid #dddee1;
+  box-shadow: 0 0 2px #dddee1;
+}
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  color: #333;
+  background-color: #fff;
+  border: 1rpx solid #ccc;
+  border-radius: 100rpx;
+}
+.picker-text {
+  font-size: 30rpx;
+  color: #333;
+}
+.container {
+  background-color: #faf8ee;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+.imgbutton{
+  z-index: 1;
+}

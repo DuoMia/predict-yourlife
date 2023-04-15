@@ -1,0 +1,33 @@
+<view class="container" style="display: flex; box-sizing: border-box">
+  <image bindtap="goto1" style="position: absolute; width: 142rpx; height: 80rpx; display: block; box-sizing: border-box; left: 0rpx; top: 70rpx" src="../../../pages/image/switch.png" class="imgbutton"/>
+  <image src="../../../pages/image/xzbagua.png" id="myImage" animation="{{animationData}}" style="width: 560rpx; height: 560rpx; display: block; box-sizing: border-box; position: absolute; left: 96rpx; top: 110rpx" class="img"></image>
+  <view style="position: absolute; font-weight: bold; left: 8rpx; top: 752rpx">请输入你心中所想的一个或多个数，并点击开始按钮</view>
+  <scroll-view  enable-flex="true" class="fixed-area" scroll-y="{{true}}" style="width: 560rpx; height: 406rpx; display: flex; box-sizing: border-box; position: absolute; left: 96rpx; top: 812rpx">
+  <block wx:for="{{inputlist}}" wx:key="index">
+    <view class="input-item" style="width: 326rpx; height: 70rpx; display: flex; box-sizing: border-box">
+      <input style="width: 330rpx; height: 58rpx; display: block; box-sizing: border-box" type="number" placeholder="请输入数字" bindinput="checknums" data-index="{{index}}" value="{{item}}"/>
+      <view class="btn-group" style="position: absolute;">
+      <button class="btn" bindtap="addinput" hidden="{{buttonhide}}"  style="width: 100rpx; height: 100rpx; display: block; box-sizing: border-box; left: 326rpx; top: -50rpx; position: absolute"><image src="../../image/add.png" mode="widthFix" style="height: 60rpx; width: 60rpx; display: inline-block; box-sizing: border-box; position: absolute; left: 15rpx; top: 15rpx"/></button>
+      <button class="btn" bindtap="deletedq" hidden="{{buttonhide2}}" data-index="{{index}}" value="{{item}}" style="width: 100rpx; height: 100rpx; display: block; box-sizing: border-box; left: 426rpx; top: -50rpx; position: absolute"><image src="../../image/delete.png" mode="widthFix" style="width: 60rpx; height: 60rpx; position: absolute; left: 15rpx; top: 15rpx"/></button>
+    </view>
+    </view>
+  </block>
+  </scroll-view>
+  <button disabled="{{buttonhide}}" type="primary" bindtap="chooseModal"  style="position: absolute; left: 189rpx; top: 1226rpx; width: 342rpx; height: 80rpx; display: block; box-sizing: border-box"> 开始预测 </button>
+  <modal-ran showModal="{{showModal}}" bind:closeModal="closeModal" bind:selectOption="selectOption" catchtouchmove="touchmove"></modal-ran>
+  <modal hidden="{{ishidden}}" bindconfirm="onmodal" catchtouchmove="touchmove" no-cancel="true">
+    <view style="color: black;">你的测算选择是【{{resp_type}}】</view>
+    <view style="color: black;">
+      测算结果是【{{resp}}】
+    </view>
+    <view bindtap="openinfo" style="color: blue;">
+      {{resp_title}}【{{resp}}】的通用解释
+    </view>
+    <view hidden="{{hiddeninfo}}" style="color: red;">
+      {{respinfo}}
+    </view>
+      <view style="color: black;">
+        本次测算解析：{{resp_info}}
+      </view>
+  </modal>
+</view>

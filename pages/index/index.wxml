@@ -1,0 +1,16 @@
+<view class="container" hidden="{{imgnoload}}"> 
+  <view>
+    <image class='logo' src='../image/preimg.jpg'></image>
+    <view class='load'>
+      <text class='{{current == 0 ? "sct": ""}}'></text>
+      <text class='{{current == 1 ? "sct": ""}}'></text>
+      <text class='{{current == 2 ? "sct": ""}}'></text>
+      <text class='{{current == 3 ? "sct": ""}}'></text>
+    </view>
+  </view> 
+</view>
+<view hidden="{{imgload}}">
+  <image class="img" src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/首页清晰图.png" bindload="imgload"></image>
+  <button style="position: relative; left: 0rpx; top: 980rpx; width: 284rpx; height: 239rpx; display: block; box-sizing: border-box"  class="btn" bindtap="gototool"></button>
+  <image style="position: relative; left: 291rpx; top: 768rpx; width: 168rpx; height: 239rpx; display: inline-block; box-sizing: border-box; opacity: {{imgOpacity}}" src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/指纹.png" class="inimg"/>
+</view>

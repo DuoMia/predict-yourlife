@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "calendar-week":"../../../components/calendar/calendar",
+    "modal-choose":"../../../components/modal/modal"
+  }
+}

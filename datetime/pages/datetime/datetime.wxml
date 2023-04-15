@@ -1,0 +1,35 @@
+<view class="container">
+<image style="width: 142rpx; height: 80rpx; display: block; box-sizing: border-box; position: absolute; left: 0rpx; top: 70rpx" bindtap="goto2" src="../../../pages/image/switch.png" class="imgbutton"/>
+<image src="../../../pages/image/xzbagua.png" id="myImage" animation="{{animationData}}" style="width: 560rpx; height: 560rpx; display: block; box-sizing: border-box; position: absolute; left: 96rpx; top: 110rpx"></image>
+<view class="button" bindtap="datemodal" style="position: absolute; width: 618rpx; height: 113rpx; display: flex; box-sizing: border-box; left: 66rpx; top: 773rpx">
+<text style="text-align: center;">{{info}}</text>
+</view>
+<modal hidden="{{ishidden}}" bindconfirm="onmodal" bindcancel="offmodal" title="日期选择" catchtouchmove="touchmove">
+  <calendar-week bind:solarAndLunar="solarAndLunar"></calendar-week>
+</modal>
+<view class="button" bindtap="timemodal" style="position: absolute; width: 622rpx; height: 116rpx; display: flex; box-sizing: border-box; left: 62rpx; top: 947rpx">
+<text style="text-align: center;">{{timeinfo}}</text>
+</view>
+<modal title="点击可以切换十二时辰" hidden="{{ishiddentime}}" bindconfirm="openmodal" bindcancel="cancelmodal" catchtouchmove="touchmove">
+  <picker value="{{hourIndex}}" range="{{hours}}" bindchange="onHourChange">
+    <view class="picker-text" style="font-size: 15px;">{{hours[hourIndex]}}</view>
+  </picker>
+</modal>
+<button type="primary" bindtap="chooseModal" disabled="{{buttonhide}}" style="position: absolute; width: 368rpx; height: 80rpx; display: block; box-sizing: border-box; left: 189rpx; top: 1226rpx">开始预测</button>
+<modal-choose showModal="{{showModal}}" bind:closeModal="closeModal" bind:selectOption="selectOption" catchtouchmove="touchmove"></modal-choose>
+<modal hidden="{{ishiddenres}}" bindconfirm="resonmodal" catchtouchmove="touchmove" no-cancel="true">
+    <view style="color: black;">你的测算选择是【{{resp_type}}】</view>
+    <view style="color: black;">
+      测算结果是【{{resp}}】
+    </view>
+    <view bindtap="openinfo" style="color: blue;">
+      {{resp_title}}【{{resp}}】的通用解释
+    </view>
+    <view hidden="{{hiddeninfo}}" style="color: red;">
+      {{respinfo}}
+    </view>
+      <view style="color: black;">
+        本次测算解析：{{resp_info}}
+      </view>
+  </modal>
+</view>

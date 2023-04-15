@@ -1,0 +1,69 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/info/info",
+    "pages/mine/mine"
+  ],
+  "subPackages": [
+    {
+      "root": "random",
+      "name": "random",
+      "pages": [
+        "pages/random/random"
+      ],
+      "independent": false
+    },
+    {
+      "root": "lottery",
+      "name": "lottery",
+      "pages": [
+        "pages/lottery/lottery"
+      ],
+      "independent": false
+    },
+    {
+      "root": "datetime",
+      "name": "datetime",
+      "pages": [
+        "pages/datetime/datetime"
+      ],
+      "independent": false
+    },
+    {
+      "root": "lottery_answer",
+      "name": "lottery_answer",
+      "pages": [
+        "pages/lottery_answer/lottery_answer"
+      ],
+      "independent": false
+    }
+  ],
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "backgroundColor": "#C7EDCC",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "测算"
+      },
+      {
+        "pagePath": "pages/info/info",
+        "text": "小工具"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "算你一卦",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
