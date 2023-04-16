@@ -28,8 +28,7 @@ Page({
     buttonhide:false,
     texthide:true,
     texthide2:true,
-    resopen:true,
-    height:""
+    resopen:true
   },
   /**
    * 生命周期函数--监听页面加载

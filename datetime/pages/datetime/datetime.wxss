@@ -5,7 +5,7 @@
   border: 1px solid #dddee1;
   box-shadow: 0 0 2px #dddee1;
 }
-.button {
+.button1 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,6 +14,33 @@
   background-color: #fff;
   border: 1rpx solid #ccc;
   border-radius: 100rpx;
+  width: 620rpx;
+  height: 115rpx;
+  bottom:35vh ;
+  left: 0;
+  right: 0;
+  margin: auto;
+  flex-grow: 115rpx;
+  position: absolute;
+}
+.button2 {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  color: #333;
+  background-color: #fff;
+  border: 1rpx solid #ccc;
+  border-radius: 100rpx;
+  width: 620rpx;
+  height: 115rpx;
+  bottom:20vh ;
+  left: 0;
+  right: 0;
+  margin: auto;
+  flex-grow: 115rpx;
+  position: absolute;
 }
 .picker-text {
   font-size: 30rpx;
@@ -21,10 +48,35 @@
 }
 .container {
   background-color: #faf8ee;
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
   overflow: hidden;
+  display: flex;
+  position: relative;
 }
 .imgbutton{
   z-index: 1;
+  left: 0;
+  bottom: 86vh;
+  height: 80rpx;
+  width: 140rpx;
+  margin: auto;
+  flex-grow: 80rpx;
+  position: absolute;
+}
+.image{
+  left: 0;
+  right: 0;
+  width: 560rpx;
+  height: 560rpx;
+  margin: auto;
+  flex-grow: 560rpx;
+  bottom:50vh ;
+  position: absolute;
+}
+.start{
+  margin: auto;
+  flex-grow: 80rpx;
+  position: absolute;
+  bottom:7vh ;
 }

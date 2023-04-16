@@ -1,9 +1,4 @@
 /**index.wxss**/
-Page{
-  height: 100%;
-  width: 100%;
-  position: relative;
-}
 .img{
   position:absolute;
   top: 0;
@@ -17,6 +12,8 @@ Page{
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  position: relative;
+  display: flex;
 }
 .logo {
   width: 100px;
@@ -40,8 +37,22 @@ Page{
 }
 .btn{
   background-color: transparent;
+  flex-grow: 60rpx;
+  margin: auto;
+  position: absolute;
+  bottom: 12%;
+  left: 0;
+  right: 0;
 }
 .inimg{
   transition: opacity 1s ease-in-out;
   z-index: -1;
+  flex-grow: 230rpx;
+  margin: auto;
+  position: absolute;
+  height: 230rpx;
+  width: 168rpx;
+  left: 0;
+  right: 0;
+  bottom: 5%;
 }

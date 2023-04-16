@@ -13,6 +13,6 @@
 </view>
   </view> 
 <view class="container" hidden="{{imgload}}">
-  <image style="width: 272rpx; height: 272rpx; display: block; box-sizing: border-box; position: absolute; left: 239rpx; top: 370rpx" src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/抽签图.png" bindload="imgload" bindtap="goto1"/>
-  <text style="position: absolute; left: 342rpx; top: 642rpx">抽签</text>
+  <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/抽签图.png" bindload="imgload" bindtap="goto1" class="img"/>
+  <text class="text">抽签</text>
 </view>

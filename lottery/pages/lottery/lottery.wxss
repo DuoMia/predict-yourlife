@@ -1,11 +1,19 @@
-page{
-  height: 100%;
-  width: 100%;
+.title1{
+  margin: auto;
+  position: absolute;
+  bottom: 92vh;
 }
-.title {
+.title2 {
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin: auto;
+  position: absolute;
+  bottom: 85vh;
+}
+.title3{
+  margin: auto;
+  position: absolute;
+  bottom: 75vh;
 }
 .button {
   width: 200px;
@@ -15,32 +23,40 @@ page{
   color: #fff;
   background-color: #09bb07;
   margin-bottom: 20px;
+  flex-grow: 60rpx;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18vh;
 }
 .sign {
   font-size: 19px;
   color: #f00;
   text-align: center;
-}
-.loading {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-grow: 94rpx;
+  margin: auto;
+  position: absolute;
+  bottom: 65%;
+  left: 47%;
 }
 .loading-image {
-  width: 50px;
-  height: 50px;
+  width: 372rpx;
+  height: 404rpx;
+  flex-grow: 404rpx;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 35vh;
 }
 .container {
   background-color: #faf8ee;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  position: relative;
 }
 .logo {
   width: 100px;
@@ -70,8 +86,110 @@ page{
   justify-content: center;
   margin-bottom: 20px;
 }
-.image-container image {
-  width: 100px;
-  height: 100px;
-  margin: 0 10px;
+.img1{
+  height: 328rpx;
+  width: 328rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  flex-grow: 328rpx;
+  position: absolute;
+  bottom: 35vh;
+}
+.img2{
+  height:526rpx ;
+  width: 286rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  flex-grow: 526rpx;
+  position: absolute;
+  bottom: 30vh;
+  display: flex;
+}
+.text1{
+  margin: auto;
+  position: absolute;
+  bottom: 60vh;
+  left: 35vw;
+  width: 42rpx;
+  height: 42rpx;
+  flex-grow: 42rpx;
+  font-weight: bold;
+}
+.cup1{
+  width: 230rpx;
+  height: 230rpx;
+  flex-grow: 200rpx;
+  margin: auto;
+  position: absolute;
+  left: 2.5vw;
+  bottom: 2.5vh;
+}
+.cup2{
+  width: 230rpx;
+  height: 230rpx;
+  flex-grow: 200rpx;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2.5vh;
+}
+.cup3{
+  width: 230rpx;
+  height: 230rpx;
+  flex-grow: 200rpx;
+  margin: auto;
+  position: absolute;
+  right: 2.5vw;
+  bottom: 2.5vh;
+}
+.text2{
+  height:42rpx ;
+  text-align: center;
+  flex-grow: 42rpx;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1vh;
+}
+.text3{
+  height: 60rpx;
+  text-align: center;
+  flex-grow: 60rpx;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12.5vh;
+}
+.text4{
+  height: 60rpx;
+  text-align: center;
+  flex-grow: 60rpx;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 9vh;
+}
+.restart{
+  width: 432rpx;
+  height: 94rpx;
+  flex-grow: 94rpx;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1vh;
+}
+.loading-text{
+  margin: auto;
+  position: absolute;
+  bottom: 30vh;
+  left: 0;
+  right: 0;
+  text-align: center;
 }

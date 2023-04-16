@@ -1,5 +1,5 @@
 <!--pages/mine/mine.wxml-->
 <view class="container">
-   <button type="primary" open-type="contact" style="position: absolute; left: 184rpx; top: 480rpx">在线客服</button>
-   <button type="primary" open-type="feedback" style="position: absolute; left: 184rpx; top: 702rpx">反馈建议</button>
+   <button type="primary" open-type="contact" class="btn1">在线客服</button>
+   <button type="primary" open-type="feedback" class="btn2">反馈建议</button>
 </view>

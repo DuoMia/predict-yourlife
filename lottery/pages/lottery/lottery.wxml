@@ -12,37 +12,35 @@
   <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/笑杯.png" />
 </view>
 <view class="container" hidden="{{imgload}}">
-<view style="height: auto;">
-  <view style="position: absolute; left: 32rpx; top: 6rpx; width: 686rpx; height: 84rpx; display: block; box-sizing: border-box">
+  <text class="title1">
     规则：抽取灵签后需要掷出三次圣杯方可使灵签显灵，如若掷出笑杯，请重新掷杯。
-  </view>
-  <view class="title" style="position: absolute; left: 208rpx; top: 138rpx; display: flex; justify-content: center; align-items: center">请抽取今日灵签</view>
-  <view style="position: absolute; left: 0rpx; top: 223rpx; display: flex; justify-content: center; align-items: center; width: 100%; height: 73rpx; box-sizing: border-box">
+  </text>
+  <text class="title2">请抽取今日灵签</text>
+  <text class="title3">
     一日只可取一签,多取无用
-  </view>
+  </text>
 <view>
-  <image hidden="{{imghide2}}" style="width: 328rpx; height: 328rpx; box-sizing: border-box; position: absolute; left: 212rpx; top: 398rpx;" src="../../image/chouqiantu.png" mode="widthFix"/>
-  <image bindtap="gotores" hidden="{{imghide}}" src="../../image/qianmian.png" mode="widthFix" style="position: absolute; width: 286rpx; height: 526rpx; box-sizing: border-box; left: 225rpx; top: 270rpx"/>
-  <view hidden="{{texthide2}}" style="width: 42rpx; height: 42rpx; box-sizing: border-box; position: absolute; left: 266rpx; top: 477rpx; font-weight: bold">
+  <image hidden="{{imghide2}}" src="../../image/chouqiantu.png" mode="widthFix" class="img1"/>
+  <image bindtap="gotores" hidden="{{imghide}}" src="../../image/qianmian.png" mode="widthFix" class="img2"><text class="sign" bindtap="gotores" hidden="{{imghide}}" style="width: 0; height: 0">{{sign}}</text></image>
+  <text hidden="{{texthide2}}" class="text1">
     上次结果
-  </view>
-  <view class="sign" bindtap="gotores" style="position: absolute; left: 239rpx; top: 468rpx; width: 264rpx; height: 94rpx; box-sizing: border-box" hidden="{{imghide}}">{{sign}}</view>
-  <button class="button" bindtap="onButtonClick" hidden="{{btnhide}}" style="position: absolute; left: 191rpx; top: 844rpx">请掷杯</button>
-  <button class="button" bindtap="draw" hidden="{{btnhide2}}" disabled="{{buttonhide}}" style="position: absolute; left: 191rpx; top: 844rpx">请抽签</button>
-  <button class="button" bindtap="getres" hidden="{{btnhide3}}" style="position: absolute; left: 191rpx; top: 844rpx">请取签</button>
+  </text>
+  <!-- <view class="sign" bindtap="gotores" hidden="{{imghide}}">{{sign}}</view> -->
+  <button class="button" bindtap="onButtonClick" hidden="{{btnhide}}">请掷杯</button>
+  <button class="button" bindtap="draw" hidden="{{btnhide2}}" disabled="{{buttonhide}}">请抽签</button>
+  <button class="button" bindtap="getres" hidden="{{btnhide3}}">请取签</button>
   <view class="image-container" hidden="{{imghide3}}">
-    <image src="{{image1}}" mode="aspectFit" style="position: absolute; left: 10rpx; top: 1000rpx"></image>
-    <image src="{{image2}}" mode="aspectFit" style="position: absolute; left: 256rpx; top: 1000rpx"></image>
-    <image src="{{image3}}" mode="aspectFit" style="position: absolute; left: 502rpx; top: 1000rpx"></image>
+    <image src="{{image1}}" mode="aspectFit" class="cup1"></image>
+    <image src="{{image2}}" mode="aspectFit" class="cup2"></image>
+    <image src="{{image3}}" mode="aspectFit" class="cup3"></image>
   </view>
-  <text hidden="{{imghide3}}" style="position: absolute; left: 0rpx; top: 1200rpx; text-align: center; width: 100%; height: 42rpx; box-sizing: border-box">{{title}}</text>
-  <text hidden="{{texthide}}" style="position: absolute; left: -3rpx; top: 987rpx; width: 100%; height: 60rpx; box-sizing: border-box; text-align: center">每日24点刷新抽签次数哦~</text>
-  <text hidden="{{texthide}}" style="position: absolute; left: -3rpx; top: 1046rpx; width: 100%; height: 60rpx; box-sizing: border-box;text-align: center;">（点击上方灵签也可跳转至解签页面）</text>
-  <button bindtap="restart" type="primary" hidden="{{texthide}}" style="position: absolute; left: 155rpx; top: 1104rpx; width: 432rpx; height: 94rpx; box-sizing: border-box; display: block">实在等不及就点我吧!</button>
+  <text hidden="{{imghide3}}" class="text2">{{title}}</text>
+  <text hidden="{{texthide}}" class="text3">每日24点刷新抽签次数哦~</text>
+  <text hidden="{{texthide}}" class="text4">（点击上方灵签也可跳转至解签页面）</text>
+  <button bindtap="restart" type="primary" hidden="{{texthide}}"class="restart">实在等不及就点我</button>
 </view>
-<view class="loading" hidden="{{isShow}}">
-  <image class="loading-image" src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/抽签动图.gif" style="width: 372rpx; height: 404rpx; display: block; box-sizing: border-box; left: 184rpx; top: 366rpx; position: absolute" bindload="imgload"></image>
-  <text class="loading-text" style="position: absolute; left: 327rpx; top: 770rpx">抽签中</text>
-</view>
+<view hidden="{{isShow}}">
+  <image class="loading-image" src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/抽签动图.gif" bindload="imgload"></image>
+  <text class="loading-text" >抽签中</text>
 </view>
 </view>
