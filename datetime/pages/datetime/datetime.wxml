@@ -1,6 +1,12 @@
 <view class="container">
 <image bindtap="goto2" src="../../../pages/image/switch.png" class="imgbutton"/>
 <image src="../../../pages/image/xzbagua.png" id="myImage" animation="{{animationData}}" class="image"></image>
+<image src="../../../pages/image/explain.png" class="imgexplain" bindtap="openexplain"/>
+<view class="modal-mask" hidden="{{showimg}}" bindtap="closeimg"></view>
+<view class="modal" hidden="{{showimg}}">
+  <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/首页说明.png" class="modal-img"/>
+  <button class="modal-btn" bindtap="closeimg" style="width: 284rpx;height: 90rpx;"></button>
+</view>
 <view class="button1" bindtap="datemodal">
 <text style="text-align: center;">{{info}}</text>
 </view>

@@ -97,6 +97,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 33vh;
+  bottom: 32%;
   text-align: center;
+  font-size: 40rpx;
 }

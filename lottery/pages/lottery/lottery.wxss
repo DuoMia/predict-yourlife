@@ -1,19 +1,30 @@
 .title1{
   margin: auto;
   position: absolute;
-  bottom: 92vh;
+  bottom: 93%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 35rpx;
 }
 .title2 {
-  font-size: 24px;
+  font-size: 45rpx;
   font-weight: bold;
   margin: auto;
   position: absolute;
-  bottom: 85vh;
+  bottom: 85%;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 .title3{
   margin: auto;
   position: absolute;
-  bottom: 75vh;
+  bottom: 80%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 30rpx;
 }
 .button {
   width: 200px;
@@ -28,7 +39,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 18vh;
+  bottom: 25%;
 }
 .sign {
   font-size: 19px;
@@ -48,7 +59,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 35vh;
+  bottom: 40%;
 }
 .container {
   background-color: #faf8ee;
@@ -94,7 +105,7 @@
   margin: auto;
   flex-grow: 328rpx;
   position: absolute;
-  bottom: 35vh;
+  bottom: 40%;
 }
 .img2{
   height:526rpx ;
@@ -104,18 +115,19 @@
   margin: auto;
   flex-grow: 526rpx;
   position: absolute;
-  bottom: 30vh;
+  bottom: 37%;
   display: flex;
 }
 .text1{
   margin: auto;
   position: absolute;
-  bottom: 60vh;
-  left: 35vw;
+  bottom: 63%;
+  left: 10%;
   width: 42rpx;
   height: 42rpx;
   flex-grow: 42rpx;
   font-weight: bold;
+  font-size: 30rpx;
 }
 .cup1{
   width: 230rpx;
@@ -123,8 +135,8 @@
   flex-grow: 200rpx;
   margin: auto;
   position: absolute;
-  left: 2.5vw;
-  bottom: 2.5vh;
+  left: 2.5%;
+  bottom: 9%;
 }
 .cup2{
   width: 230rpx;
@@ -134,7 +146,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 2.5vh;
+  bottom: 9%;
 }
 .cup3{
   width: 230rpx;
@@ -142,8 +154,8 @@
   flex-grow: 200rpx;
   margin: auto;
   position: absolute;
-  right: 2.5vw;
-  bottom: 2.5vh;
+  right: 2.5%;
+  bottom: 9%;
 }
 .text2{
   height:42rpx ;
@@ -153,7 +165,8 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 1vh;
+  bottom: 8%;
+  font-size: 30rpx;
 }
 .text3{
   height: 60rpx;
@@ -163,7 +176,8 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 12.5vh;
+  bottom: 21%;
+  font-size: 30rpx;
 }
 .text4{
   height: 60rpx;
@@ -173,7 +187,8 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 9vh;
+  bottom: 18%;
+  font-size: 30rpx;
 }
 .restart{
   width: 432rpx;
@@ -183,13 +198,14 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 1vh;
+  bottom: 12%;
 }
 .loading-text{
   margin: auto;
   position: absolute;
-  bottom: 30vh;
+  bottom: 38%;
   left: 0;
   right: 0;
   text-align: center;
+  font-size: 30rpx;
 }

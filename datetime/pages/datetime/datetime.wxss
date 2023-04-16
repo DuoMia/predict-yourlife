@@ -16,7 +16,7 @@
   border-radius: 100rpx;
   width: 620rpx;
   height: 115rpx;
-  bottom:35vh ;
+  bottom:35% ;
   left: 0;
   right: 0;
   margin: auto;
@@ -35,7 +35,7 @@
   border-radius: 100rpx;
   width: 620rpx;
   height: 115rpx;
-  bottom:20vh ;
+  bottom:20% ;
   left: 0;
   right: 0;
   margin: auto;
@@ -57,7 +57,7 @@
 .imgbutton{
   z-index: 1;
   left: 0;
-  bottom: 86vh;
+  bottom: 86%;
   height: 80rpx;
   width: 140rpx;
   margin: auto;
@@ -71,12 +71,50 @@
   height: 560rpx;
   margin: auto;
   flex-grow: 560rpx;
-  bottom:50vh ;
+  bottom:50% ;
   position: absolute;
 }
 .start{
   margin: auto;
   flex-grow: 80rpx;
   position: absolute;
-  bottom:7vh ;
+  bottom:7% ;
+}
+.imgexplain{
+  position: absolute;
+  margin: auto;
+  height: 70rpx;
+  width: 80rpx;
+  right: 0;
+  bottom: 86%;
+  flex-grow: 70rpx;
+}
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+.modal {
+  position: fixed;
+  z-index: 100;
+  top:8%
+}
+.modal-img{
+  position: relative;
+  height: 80vh;
+  width: 90vw;
+}
+.modal-btn{
+  flex-grow: 60rpx;
+  margin: auto;
+  position: absolute;
+  bottom: 3%;
+  left: 0;
+  right: 0;
+  z-index: 101;
+  background-color: transparent;
 }

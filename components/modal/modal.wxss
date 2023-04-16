@@ -17,9 +17,12 @@
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 100;
+  width: 350rpx;
+  height: 400rpx;
+  text-align: center;
 }
 .modal-title {
-  font-size: 18px;
+  font-size: 35rpx;
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -34,6 +37,7 @@
   text-align: center;
   border-bottom: 1px solid #eee;
   cursor: pointer;
+  font-size: 35rpx;
 }
 .option:last-child {
   border-bottom: none;

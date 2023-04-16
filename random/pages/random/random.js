@@ -18,6 +18,7 @@ Page({
     resp_title:"点击展开",
     buttonhide:false,
     buttonhide2:false,
+    showimg:true,
     showModal: false, // 控制弹窗显示隐藏
     selectedOptionIndex: -1 // 选中的选项的下标
   },
@@ -319,6 +320,16 @@ Page({
     this.setData({
       hiddeninfo:this.data.hiddeninfo == true?false:true,
       resp_title:this.data.resp_title == "点击展开"?"点击收起":"点击展开"
+    })
+  },
+  openexplain(){
+    this.setData({
+      showimg:false
+    })
+  },
+  closeimg(){
+    this.setData({
+      showimg:true
     })
   }
   }

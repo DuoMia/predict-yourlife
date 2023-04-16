@@ -21,10 +21,13 @@
   </text>
 <view>
   <image hidden="{{imghide2}}" src="../../image/chouqiantu.png" mode="widthFix" class="img1"/>
-  <image bindtap="gotores" hidden="{{imghide}}" src="../../image/qianmian.png" mode="widthFix" class="img2"><text class="sign" bindtap="gotores" hidden="{{imghide}}" style="width: 0; height: 0">{{sign}}</text></image>
+  <image bindtap="gotores" hidden="{{imghide}}" src="../../image/qianmian.png" mode="widthFix" class="img2">
+  <text class="sign" bindtap="gotores" hidden="{{imghide}}" style="width: 0; height: 0">{{sign}}
+  </text>
   <text hidden="{{texthide2}}" class="text1">
     上次结果
   </text>
+  </image>
   <!-- <view class="sign" bindtap="gotores" hidden="{{imghide}}">{{sign}}</view> -->
   <button class="button" bindtap="onButtonClick" hidden="{{btnhide}}">请掷杯</button>
   <button class="button" bindtap="draw" hidden="{{btnhide2}}" disabled="{{buttonhide}}">请抽签</button>

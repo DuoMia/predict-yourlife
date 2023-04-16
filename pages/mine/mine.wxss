@@ -12,12 +12,12 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 40vh;
+  top: 40%;
 }
 .btn2{
   margin: auto;
   position: absolute;
   left: 0;
   right: 0;
-  top: 60vh;
+  top: 60%;
 }
