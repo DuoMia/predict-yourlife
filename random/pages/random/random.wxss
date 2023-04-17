@@ -45,13 +45,14 @@
 }
 .title{
   position: absolute;
-  bottom: 44%;
+  bottom: 41%;
   margin: auto;
   font-weight: bold;
   left: 0;
   right: 0;
   text-align: center;
-  font-size: 32rpx;
+  font-size: 45rpx;
+  font-family: 'HYXingZBJJ';
 }
 .btn-group{
   display: flex;

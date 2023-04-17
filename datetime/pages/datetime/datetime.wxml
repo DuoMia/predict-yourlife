@@ -8,13 +8,13 @@
   <button class="modal-btn" bindtap="closeimg" style="width: 284rpx;height: 90rpx;"></button>
 </view>
 <view class="button1" bindtap="datemodal">
-<text style="text-align: center;">{{info}}</text>
+<text style="text-align: center;font-family: HYXingZBJJ;">{{info}}</text>
 </view>
 <modal  hidden="{{ishidden}}" bindconfirm="onmodal" bindcancel="offmodal" title="测算日期选择" catchtouchmove="touchmove">
   <calendar-week bind:solarAndLunar="solarAndLunar" style="font-weight: bold;"></calendar-week>
 </modal>
 <view class="button2" bindtap="timemodal">
-<text style="text-align: center;">{{timeinfo}}</text>
+<text style="text-align: center;font-family: HYXingZBJJ;">{{timeinfo}}</text>
 </view>
 <modal title="点击可以切换十二时辰" hidden="{{ishiddentime}}" bindconfirm="openmodal" bindcancel="cancelmodal" catchtouchmove="touchmove">
   <picker value="{{hourIndex}}" range="{{hours}}" bindchange="onHourChange">

@@ -100,4 +100,5 @@
   bottom: 32%;
   text-align: center;
   font-size: 40rpx;
+  font-family: 'HYXingZBJJ'
 }

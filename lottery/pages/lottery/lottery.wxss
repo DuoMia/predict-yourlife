@@ -6,6 +6,7 @@
   right: 0;
   text-align: center;
   font-size: 35rpx;
+  font-family: 'HYXingZBJJ'
 }
 .title2 {
   font-size: 45rpx;
@@ -16,6 +17,7 @@
   left: 0;
   right: 0;
   text-align: center;
+  font-family: 'HYXingZBJJ'
 }
 .title3{
   margin: auto;
@@ -25,6 +27,7 @@
   right: 0;
   text-align: center;
   font-size: 30rpx;
+  font-family: 'HYXingZBJJ'
 }
 .button {
   width: 200px;
@@ -50,6 +53,7 @@
   position: absolute;
   bottom: 65%;
   left: 47%;
+  font-family: 'HYXingZBJJ'
 }
 .loading-image {
   width: 372rpx;
@@ -128,6 +132,7 @@
   flex-grow: 42rpx;
   font-weight: bold;
   font-size: 30rpx;
+  font-family: 'HYXingZBJJ'
 }
 .cup1{
   width: 230rpx;
@@ -167,6 +172,7 @@
   right: 0;
   bottom: 8%;
   font-size: 30rpx;
+  font-family: 'HYXingZBJJ'
 }
 .text3{
   height: 60rpx;
@@ -178,6 +184,7 @@
   right: 0;
   bottom: 21%;
   font-size: 30rpx;
+  font-family: 'HYXingZBJJ'
 }
 .text4{
   height: 60rpx;
@@ -189,6 +196,7 @@
   right: 0;
   bottom: 18%;
   font-size: 30rpx;
+  font-family: 'HYXingZBJJ'
 }
 .restart{
   width: 432rpx;
@@ -208,4 +216,5 @@
   right: 0;
   text-align: center;
   font-size: 30rpx;
+  font-family: 'HYXingZBJJ'
 }
