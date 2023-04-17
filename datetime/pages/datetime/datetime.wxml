@@ -1,4 +1,5 @@
 <view class="container">
+<image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/背景终图.png" class="background"/>
 <image bindtap="goto2" src="../../../pages/image/switch.png" class="imgbutton"/>
 <image src="../../../pages/image/xzbagua.png" id="myImage" animation="{{animationData}}" class="image"></image>
 <image src="../../../pages/image/explain.png" class="imgexplain" bindtap="openexplain"/>
@@ -8,13 +9,13 @@
   <button class="modal-btn" bindtap="closeimg" style="width: 284rpx;height: 90rpx;"></button>
 </view>
 <view class="button1" bindtap="datemodal">
-<text style="text-align: center;font-family: HYXingZBJJ;">{{info}}</text>
+<text style="text-align: center;font-family: HYXingZBJJ;font-size: 33rpx;font-weight: bolder;">{{info}}</text>
 </view>
 <modal  hidden="{{ishidden}}" bindconfirm="onmodal" bindcancel="offmodal" title="测算日期选择" catchtouchmove="touchmove">
   <calendar-week bind:solarAndLunar="solarAndLunar" style="font-weight: bold;"></calendar-week>
 </modal>
 <view class="button2" bindtap="timemodal">
-<text style="text-align: center;font-family: HYXingZBJJ;">{{timeinfo}}</text>
+<text style="text-align: center;font-family: HYXingZBJJ;font-size: 33rpx;font-weight: bolder;">{{timeinfo}}</text>
 </view>
 <modal title="点击可以切换十二时辰" hidden="{{ishiddentime}}" bindconfirm="openmodal" bindcancel="cancelmodal" catchtouchmove="touchmove">
   <picker value="{{hourIndex}}" range="{{hours}}" bindchange="onHourChange">

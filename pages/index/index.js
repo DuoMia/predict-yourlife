@@ -9,13 +9,30 @@ Page({
     current: 0,
     imgload:true,
     imgnoload:false,
-    imgOpacity:0
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: async function () {
     this.openid = await getApp().getOpenid()
+    var openid = this.openid
+    db.collection("user_info").where({
+      _openid:openid   //进行筛选
+    }).get().then(res=>{
+      console.log(res.data.length)
+      if(res.data.length==0){
+        db.collection("user_info").add({
+          data:{
+            status:0,
+            datetime:db.serverDate(),
+            lottery:0
+          }
+        })
+      }
+      else{
+        console.log("已有该用户")
+      }
+    })
   },
   imgload:function(){
       this.setData({
@@ -94,32 +111,18 @@ Page({
 
   },
   gototool(){
-    var date = new Date()
-    var openid = this.openid
-    db.collection("user_info").where({
-      _openid:openid   //进行筛选
-    }).get().then(res=>{
-      console.log(res.data.length)
-      if(res.data.length==0){
-        db.collection("user_info").add({
-          data:{
-            status:0,
-            datetime:db.serverDate(),
-            lottery:0
-          }
-        })
-      }
-      else{
-        console.log("已有该用户")
-      }
+    wx.navigateTo({
+      url: '../../datetime/pages/datetime/datetime',
     })
-    this.setData({
-      imgOpacity:1
+  },
+  gotoinfo(){
+    wx.navigateTo({
+      url: '../info/info',
     })
-    setTimeout(()=>{
-      wx.navigateTo({
-        url: '../../datetime/pages/datetime/datetime',
-      })
-      },1500)
+  },
+  gotomine(){
+    wx.navigateTo({
+      url: '../mine/mine',
+    })
   }
 })

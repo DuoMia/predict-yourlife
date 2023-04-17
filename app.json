@@ -38,25 +38,6 @@
       "independent": false
     }
   ],
-  "tabBar": {
-    "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
-    "backgroundColor": "#C7EDCC",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "测算"
-      },
-      {
-        "pagePath": "pages/info/info",
-        "text": "小工具"
-      },
-      {
-        "pagePath": "pages/mine/mine",
-        "text": "我的"
-      }
-    ]
-  },
   "lazyCodeLoading": "requiredComponents",
   "window": {
     "backgroundTextStyle": "light",

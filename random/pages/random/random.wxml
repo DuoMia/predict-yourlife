@@ -1,4 +1,5 @@
 <view class="container">
+  <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/背景终图.png" class="background"/>
   <image bindtap="goto1" src="../../../pages/image/switch.png" class="imgbutton"/>
   <image src="../../../pages/image/xzbagua.png" id="myImage" animation="{{animationData}}" class="image"></image>
   <image src="../../../pages/image/explain.png" class="imgexplain" bindtap="openexplain"/>

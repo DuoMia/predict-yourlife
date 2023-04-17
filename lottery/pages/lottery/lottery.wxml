@@ -12,8 +12,9 @@
   <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/笑杯.png" />
 </view>
 <view class="container" hidden="{{imgload}}">
+  <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/背景终图.png" class="background"/>
   <text class="title1">
-    规则：抽取灵签后需要掷出三次圣杯方可使灵签显灵，如若掷出笑杯，请重新掷杯。
+    抽取灵签后需要掷出三次圣杯方可使灵签显灵，如若掷出笑杯，请重新掷杯。
   </text>
   <text class="title2">请抽取今日灵签</text>
   <text class="title3">
@@ -22,8 +23,8 @@
 <view>
   <image hidden="{{imghide2}}" src="../../image/chouqiantu.png" mode="widthFix" class="img1"/>
   <image bindtap="gotores" hidden="{{imghide}}" src="../../image/qianmian.png" mode="widthFix" class="img2">
-  <text class="sign" bindtap="gotores" hidden="{{imghide}}" style="width: 0; height: 0">{{sign}}
-  </text>
+  <view class="sign" bindtap="gotores" hidden="{{imghide}}">{{sign}}
+  </view>
   <text hidden="{{texthide2}}" class="text1">
     上次结果
   </text>

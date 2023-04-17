@@ -1,19 +1,19 @@
 .title1{
   margin: auto;
   position: absolute;
-  bottom: 93%;
+  bottom: 90%;
   left: 0;
   right: 0;
   text-align: center;
-  font-size: 35rpx;
+  font-size: 40rpx;
   font-family: 'HYXingZBJJ'
 }
 .title2 {
-  font-size: 45rpx;
+  font-size: 60rpx;
   font-weight: bold;
   margin: auto;
   position: absolute;
-  bottom: 85%;
+  bottom: 83%;
   left: 0;
   right: 0;
   text-align: center;
@@ -22,11 +22,11 @@
 .title3{
   margin: auto;
   position: absolute;
-  bottom: 80%;
+  bottom: 78%;
   left: 0;
   right: 0;
   text-align: center;
-  font-size: 30rpx;
+  font-size: 40rpx;
   font-family: 'HYXingZBJJ'
 }
 .button {
@@ -45,14 +45,16 @@
   bottom: 25%;
 }
 .sign {
-  font-size: 19px;
+  font-size: 20px;
   color: #f00;
   text-align: center;
   flex-grow: 94rpx;
   margin: auto;
   position: absolute;
-  bottom: 65%;
-  left: 47%;
+  bottom: 56%;
+  left: -80%;
+  font-weight: bold;
+  width: 100vw;
   font-family: 'HYXingZBJJ'
 }
 .loading-image {
@@ -119,7 +121,7 @@
   margin: auto;
   flex-grow: 526rpx;
   position: absolute;
-  bottom: 37%;
+  bottom: 35%;
   display: flex;
 }
 .text1{
@@ -131,7 +133,7 @@
   height: 42rpx;
   flex-grow: 42rpx;
   font-weight: bold;
-  font-size: 30rpx;
+  font-size: 35rpx;
   font-family: 'HYXingZBJJ'
 }
 .cup1{
@@ -171,8 +173,9 @@
   left: 0;
   right: 0;
   bottom: 8%;
-  font-size: 30rpx;
-  font-family: 'HYXingZBJJ'
+  font-size: 40rpx;
+  font-family: 'HYXingZBJJ';
+  font-weight: bold;
 }
 .text3{
   height: 60rpx;
@@ -182,8 +185,8 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 21%;
-  font-size: 30rpx;
+  bottom: 20%;
+  font-size: 40rpx;
   font-family: 'HYXingZBJJ'
 }
 .text4{
@@ -194,8 +197,8 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 18%;
-  font-size: 30rpx;
+  bottom: 15%;
+  font-size: 40rpx;
   font-family: 'HYXingZBJJ'
 }
 .restart{
@@ -206,15 +209,23 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 12%;
+  bottom: 8%;
 }
 .loading-text{
   margin: auto;
   position: absolute;
-  bottom: 38%;
-  left: 0;
-  right: 0;
+  bottom: 37%;
+  left: 45%;
   text-align: center;
-  font-size: 30rpx;
+  font-size: 35rpx;
+  font-weight: bold;
   font-family: 'HYXingZBJJ'
+}
+.background{
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
