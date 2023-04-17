@@ -75,6 +75,13 @@
   display: flex;
   position: relative;
 }
+.lottery {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+}
 .logo {
   width: 100px;
   height: 100px;

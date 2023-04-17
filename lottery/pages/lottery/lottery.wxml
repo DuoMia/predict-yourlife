@@ -11,7 +11,7 @@
   <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/圣杯.png" />
   <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/笑杯.png" />
 </view>
-<view class="container" hidden="{{imgload}}">
+<view class="lottery" hidden="{{imgload}}">
   <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/背景终图.png" class="background"/>
   <text class="title1">
     抽取灵签后需要掷出三次圣杯方可使灵签显灵，如若掷出笑杯，请重新掷杯。

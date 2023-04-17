@@ -56,7 +56,7 @@
 .imgbutton{
   z-index: 1;
   left: 0;
-  bottom: 86%;
+  bottom: 88%;
   height: 80rpx;
   width: 140rpx;
   margin: auto;
@@ -82,10 +82,10 @@
 .imgexplain{
   position: absolute;
   margin: auto;
-  height: 70rpx;
+  height: 90rpx;
   width: 80rpx;
   right: 0;
-  bottom: 86%;
+  bottom: 88%;
   flex-grow: 70rpx;
 }
 .modal-mask {
