@@ -1,8 +1,11 @@
 <view class="container">
 <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/背景终图.png" class="background"/>
 <image bindtap="goto2" src="../../../pages/image/switch.png" class="imgbutton"/>
-<image src="../../../pages/image/xzbagua.png" id="myImage" animation="{{animationData}}" class="image"></image>
-<image src="../../../pages/image/explain.png" class="imgexplain" bindtap="openexplain"/>
+<image src="../../../pages/image/xzbagua.png" id="myImage" animation="{{animationData}}" class="image">
+  <image src="../../../pages/image/left.png" class="left" hidden="{{select}}"/>
+  <image src="../../../pages/image/right.png" class="right" hidden="{{select}}"/>
+</image>
+<image src="../../../pages/image/explain.png" class="imgexplain" bindtap="openexplain" catchtouchmove="touchmove"/>
 <view class="modal-mask" hidden="{{showimg}}" bindtap="closeimg"></view>
 <view class="modal" hidden="{{showimg}}">
   <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/首页说明.png" class="modal-img"/>

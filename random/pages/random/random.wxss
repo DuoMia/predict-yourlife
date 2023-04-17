@@ -46,7 +46,6 @@
   position: absolute;
   bottom: 41%;
   margin: auto;
-  font-weight: bold;
   left: 0;
   right: 0;
   text-align: center;
@@ -76,8 +75,8 @@
 .imgexplain{
   position: absolute;
   margin: auto;
-  height: 90rpx;
-  width: 80rpx;
+  height: 75rpx;
+  width: 75rpx;
   right: 0;
   bottom: 88%;
   flex-grow: 70rpx;
@@ -118,4 +117,24 @@
   width: 100%;
   height: 100%;
   z-index: -1;
+}
+.left{
+  height: 90rpx;
+  width: 100rpx;
+  z-index: 1;
+  margin: auto;
+  flex-grow: 200rpx;
+  position: absolute;
+  top: -1%;
+  right: 18%;
+}
+.right{
+  height: 90rpx;
+  width: 100rpx;
+  z-index: 1;
+  margin: auto;
+  flex-grow: 200rpx;
+  position: absolute;
+  top: -1%;
+  left: 18%;
 }

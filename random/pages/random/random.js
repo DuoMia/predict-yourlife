@@ -19,6 +19,7 @@ Page({
     buttonhide:false,
     buttonhide2:false,
     showimg:true,
+    select:true,
     showModal: false, // 控制弹窗显示隐藏
     selectedOptionIndex: -1 // 选中的选项的下标
   },
@@ -189,7 +190,8 @@ Page({
       selectedOptionIndex: index, // 保存选中的选项的下标
       showModal: false, // 关闭弹窗
       buttonhide:true,
-      buttonhide2:true
+      buttonhide2:true,
+      select:true
     })
     var rotateDegree = 0
     // 计算旋转时间，假设旋转速度为1秒/圈
@@ -309,6 +311,11 @@ Page({
       animationData: animation.export()
     })
     var timenum = this.data.animationData.actions[0].option.transition.duration
+    setTimeout(()=>{
+      this.setData({
+        select:false
+      })
+      },timenum)
     timenum = timenum + 2000
     setTimeout(()=>{
     this.setData({

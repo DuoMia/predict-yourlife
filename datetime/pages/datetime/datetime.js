@@ -28,6 +28,7 @@ Page({
     ishiddenres:true,
     buttonhide:false,
     showimg:true,
+    select:false,
     showModal: false, // 控制弹窗显示隐藏
     selectedOptionIndex: -1 // 选中的选项的下标
   },
@@ -208,7 +209,8 @@ selectOption(e) {
   this.setData({
     selectedOptionIndex: index, // 保存选中的选项的下标
     showModal: false, // 关闭弹窗
-    buttonhide:true
+    buttonhide:true,
+    select:true
   })
   this.setData({
     numlist:[]
@@ -474,6 +476,11 @@ selectOption(e) {
       animationData: animation.export()
     })
     var timenum = this.data.animationData.actions[0].option.transition.duration
+    setTimeout(()=>{
+      this.setData({
+        select:false
+      })
+      },timenum)
     timenum = timenum + 2000
     setTimeout(()=>{
     this.setData({
