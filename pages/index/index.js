@@ -9,11 +9,23 @@ Page({
     current: 0,
     imgload:true,
     imgnoload:false,
+    indexhidden:true
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: async function () {
+    const accountInfo = wx.getAccountInfoSync()
+    console.log(accountInfo.miniProgram.envVersion)
+    if (accountInfo.miniProgram.envVersion === 'develop' || accountInfo.miniProgram.envVersion === 'trial'){
+      wx.navigateTo({
+        url: '../test/test',
+      })
+    }else{
+      this.setData({
+        indexhidden:false
+      })
+    }
     this.openid = await getApp().getOpenid()
     var openid = this.openid
     db.collection("user_info").where({

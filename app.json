@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/info/info",
     "pages/mine/mine",
-    "pages/tool/tool"
+    "pages/tool/tool",
+    "pages/test/test"
   ],
   "subPackages": [
     {
