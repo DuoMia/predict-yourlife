@@ -206,9 +206,10 @@
   font-family: 'HYXingZBJJ'
 }
 .restart{
-  width: 432rpx;
-  height: 94rpx;
-  flex-grow: 94rpx;
+  font-size:60rpx;
+  height: 90rpx;
+  line-height: 80rpx;
+  flex-grow: 90rpx;
   margin: auto;
   position: absolute;
   left: 0;

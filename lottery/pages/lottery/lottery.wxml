@@ -40,7 +40,7 @@
   <text hidden="{{imghide3}}" class="text2">{{title}}</text>
   <text hidden="{{texthide}}" class="text3">每日24点刷新抽签次数哦~</text>
   <text hidden="{{texthide}}" class="text4">（点击上方灵签也可跳转至解签页面）</text>
-  <button bindtap="restart" type="primary" hidden="{{texthide}}"class="restart">实在等不及就点我</button>
+  <button bindtap="restart" type="primary" hidden="{{texthide}}"class="restart"style="width:600rpx;font-family: HYXingZBJJ;background-color: transparent;text-align: center;color: #09bb07">实在等不及就点我</button>
 </view>
 <view hidden="{{isShow}}">
   <image class="loading-image" src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/抽签动图.gif" bindload="imgload"></image>
