@@ -18,7 +18,7 @@ Page({
     const accountInfo = wx.getAccountInfoSync()
     console.log(accountInfo.miniProgram.envVersion)
     if (accountInfo.miniProgram.envVersion === 'develop' || accountInfo.miniProgram.envVersion === 'trial'){
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../test/test',
       })
     }else{
