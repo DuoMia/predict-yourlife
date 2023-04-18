@@ -1,5 +1,4 @@
-// pages/index/index.js
-const db = wx.cloud.database()
+// pages/tool/tool.js
 Page({
 
   /**
@@ -13,26 +12,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: async function () {
-    this.openid = await getApp().getOpenid()
-    var openid = this.openid
-    db.collection("user_info").where({
-      _openid:openid   //进行筛选
-    }).get().then(res=>{
-      if(res.data.length==0){
-        console.log("添加用户")
-        db.collection("user_info").add({
-          data:{
-            status:0,
-            datetime:db.serverDate(),
-            lottery:0
-          }
-        })
-      }
-      else{
-        console.log("已有该用户")
-      }
-    })
+  onLoad() {
   },
   imgload:function(){
       this.setData({
@@ -104,19 +84,14 @@ Page({
   onShareAppMessage() {
 
   },
-  gototool(){
+  goto1(){
     wx.navigateTo({
-      url: '../tool/tool',
+      url: '../../datetime/pages/datetime/datetime',
     })
   },
-  gotoinfo(){
+  goto2(){
     wx.navigateTo({
-      url: '../info/info',
-    })
-  },
-  gotomine(){
-    wx.navigateTo({
-      url: '../mine/mine',
+      url: '../../random/pages/random/random',
     })
   }
 })

@@ -1,13 +1,13 @@
 <view class="container">
 <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/背景终图.png" class="background"/>
-<image bindtap="goto2" src="../../../pages/image/switch.png" class="imgbutton"/>
+<text style="font-family: HYXingZBJJ;background-color: transparent;color: black;text-align: center;font-size: 50rpx;font-weight: bold;" class="switch" bindtap="goto2">切换</text>
 <image src="../../../pages/image/xzbagua.png" id="myImage" animation="{{animationData}}" class="image">
   <view class="turn" style="left: {{left}}; top: {{top}};transform: rotate({{rotate}}deg);"hidden="{{select}}">
     <image src="../../../pages/image/left.png" class="left"/>
     <image src="../../../pages/image/right.png" class="right"/>
   </view>
 </image>
-<image src="../../../pages/image/explain.png" class="imgexplain" bindtap="openexplain"/>
+<text style="font-family: HYXingZBJJ;background-color: transparent;color: black;text-align: center;font-size: 50rpx;font-weight: bold;" class="btnexplain" bindtap="openexplain">提示</text>
 <view class="modal-mask" hidden="{{showimg}}" bindtap="closeimg" catchtouchmove="touchmove"></view>
 <view class="modal" hidden="{{showimg}}" catchtouchmove="touchmove">
   <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/首页说明.png" class="modal-img"/>
@@ -27,7 +27,7 @@
     <view class="picker-text" style="font-size: 15px;">{{hours[hourIndex]}}</view>
   </picker>
 </modal>
-<button type="primary" bindtap="chooseModal" disabled="{{buttonhide}}" style="width: 368rpx; height: 80rpx;" class="start">开始预测</button>
+<button type="primary" bindtap="chooseModal" disabled="{{buttonhide}}" style="width: 450rpx; height: 120rpx;font-family: HYXingZBJJ;background-color: transparent;color: {{color}};font-size: 80rpx;font-weight: bold;text-align: center;" class="start">开始预测</button>
 <modal-choose showModal="{{showModal}}" bind:closeModal="closeModal" bind:selectOption="selectOption" catchtouchmove="touchmove"></modal-choose>
 <modal hidden="{{ishiddenres}}" bindconfirm="resonmodal" catchtouchmove="touchmove" no-cancel="true">
     <view style="color: black;">你的测算选择是【{{resp_type}}】</view>

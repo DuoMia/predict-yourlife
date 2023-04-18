@@ -69,6 +69,56 @@ Page({
         img:"cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/签文/签10.jpg"
       })
     }
+    if(options.sign=='11'){
+      this.setData({
+        img:"cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/签文/签11.jpg"
+      })
+    }
+    if(options.sign=='12'){
+      this.setData({
+        img:"cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/签文/签12.jpg"
+      })
+    }
+    if(options.sign=='13'){
+      this.setData({
+        img:"cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/签文/签13.jpg"
+      })
+    }
+    if(options.sign=='14'){
+      this.setData({
+        img:"cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/签文/签14.jpg"
+      })
+    }
+    if(options.sign=='15'){
+      this.setData({
+        img:"cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/签文/签15.jpg"
+      })
+    }
+    if(options.sign=='16'){
+      this.setData({
+        img:"cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/签文/签16.jpg"
+      })
+    }
+    if(options.sign=='17'){
+      this.setData({
+        img:"cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/签文/签17.jpg"
+      })
+    }
+    if(options.sign=='18'){
+      this.setData({
+        img:"cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/签文/签18.jpg"
+      })
+    }
+    if(options.sign=='19'){
+      this.setData({
+        img:"cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/签文/签19.jpg"
+      })
+    }
+    if(options.sign=='20'){
+      this.setData({
+        img:"cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/签文/签20.jpg"
+      })
+    }
     var image = this.data.img
     wx.getImageInfo({
       src: image,

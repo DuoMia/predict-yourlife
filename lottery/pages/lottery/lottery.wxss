@@ -30,28 +30,25 @@
   font-family: 'HYXingZBJJ'
 }
 .button {
-  width: 200px;
-  height: 60px;
-  border-radius: 30px;
-  font-size: 24px;
-  color: #fff;
-  background-color: #09bb07;
-  margin-bottom: 20px;
+  font-size:80rpx;
+  height: 110rpx;
+  line-height: 80rpx;
+  margin-bottom: 20rpx;
   flex-grow: 60rpx;
   margin: auto;
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 25%;
+  bottom: 27%;
 }
 .sign {
-  font-size: 20px;
+  font-size: 50rpx;
   color: #f00;
   text-align: center;
   flex-grow: 94rpx;
   margin: auto;
   position: absolute;
-  bottom: 56%;
+  bottom: 55%;
   left: -80%;
   font-weight: bold;
   width: 100vw;

@@ -6,7 +6,7 @@ Page({
    */
   data: {
     signList: [
-      1,2,3,4,5,6,7,8,9,10
+      1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
     ],
     sign: "",
     isShow:true,
@@ -26,6 +26,7 @@ Page({
     image3: '',
     count: 0, // 计数器，记录页面中出现的图片a数量,
     buttonhide:false,
+    color:"rgb(124, 11, 11)",
     texthide:true,
     texthide2:true,
     resopen:true
@@ -42,9 +43,27 @@ Page({
     db.collection("user_info").where({
       _openid:openid   //进行筛选
     }).get().then(res=>{
+      if(res.data.length==0){
+        console.log("添加用户")
+        db.collection("user_info").add({
+          data:{
+            status:0,
+            datetime:db.serverDate(),
+            lottery:0
+          }
+        })
+      }
+      else{
+        console.log("已有该用户")
+      }
+    })
+    db.collection("user_info").where({
+      _openid:openid   //进行筛选
+    }).get().then(res=>{
       if(res.data[0].status==1){
         this.setData({
           buttonhide:true,
+          color:"grey",
           texthide:false,
           imghide:false,
           imghide2:true,
@@ -77,6 +96,7 @@ Page({
         }).then(res=>{
           this.setData({
             buttonhide:false,
+            color:"rgb(124, 11, 11)",
             texthide:true,
             texthide2:false
           })
@@ -94,6 +114,7 @@ Page({
           }).then(res=>{
             this.setData({
               buttonhide:false,
+              color:"rgb(124, 11, 11)",
               texthide:true,
               texthide2:false
             })
@@ -111,6 +132,7 @@ Page({
             }).then(res=>{
               this.setData({
                 buttonhide:false,
+                color:"rgb(124, 11, 11)",
                 texthide:true,
                 texthide2:false
               })
@@ -128,6 +150,7 @@ Page({
       if(res.data[0].status==0){
         this.setData({
           buttonhide:false,
+          color:"rgb(124, 11, 11)",
           texthide:true
         })
         if(res.data[0].lottery != 0){
@@ -280,6 +303,7 @@ Page({
       btnhide3:true,
       btnhide2:false,
       buttonhide:true,
+      color:"grey",
       texthide:false,
       resopen:true,
       imghide3:true

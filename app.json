@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/info/info",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/tool/tool"
   ],
   "subPackages": [
     {

@@ -8,6 +8,7 @@ Page({
     resp:"",
     inputlist:[""],
     sum:0,
+    color:"rgb(124, 11, 11)",
     animationData: {},
     rotatenum:0,
     ishidden:true,
@@ -130,7 +131,8 @@ Page({
     var inputlist = this.data.inputlist
     this.setData({
       ishidden:true,
-      buttonhide:false
+      buttonhide:false,
+      color:"rgb(124, 11, 11)"
     })
     if(inputlist.length != 1){
       this.setData({
@@ -193,6 +195,7 @@ Page({
       showModal: false, // 关闭弹窗
       buttonhide:true,
       buttonhide2:true,
+      color:"grey",
       select:true
     })
     var rotateDegree = 0

@@ -53,16 +53,6 @@
   display: flex;
   position: relative;
 }
-.imgbutton{
-  z-index: 1;
-  left: 0;
-  bottom: 88%;
-  height: 80rpx;
-  width: 140rpx;
-  margin: auto;
-  flex-grow: 80rpx;
-  position: absolute;
-}
 .image{
   left: 0;
   right: 0;
@@ -77,16 +67,7 @@
   margin: auto;
   flex-grow: 80rpx;
   position: absolute;
-  bottom:7% ;
-}
-.imgexplain{
-  position: absolute;
-  margin: auto;
-  height: 75rpx;
-  width: 75rpx;
-  right: 0;
-  bottom: 88%;
-  flex-grow: 70rpx;
+  bottom:8% ;
 }
 .modal-mask {
   position: fixed;
@@ -147,4 +128,17 @@
   flex-grow: 200rpx;
   position: absolute;
   left: 31%;
+}
+.btnexplain{
+  position: absolute;
+  margin: auto;
+  right: 0;
+  bottom: 88%;
+}
+.switch{
+  position: absolute;
+  margin: auto;
+  left: 0;
+  bottom: 88%;
+  z-index: 1;
 }

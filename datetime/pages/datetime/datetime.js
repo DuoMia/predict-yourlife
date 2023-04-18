@@ -8,6 +8,7 @@ Page({
     hours: "",
     hourIndex: "",
     hournum:"no",
+    color:"rgb(124, 11, 11)",
     ishidden:true,
     ishiddendate:true,
     ishiddentime:true,
@@ -147,7 +148,8 @@ Page({
   resonmodal:function(){
     this.setData({
       ishiddenres:true,
-      buttonhide:false
+      buttonhide:false,
+      color:"rgb(124, 11, 11)"
     })
   },
 goto2:function(){
@@ -212,6 +214,7 @@ selectOption(e) {
     selectedOptionIndex: index, // 保存选中的选项的下标
     showModal: false, // 关闭弹窗
     buttonhide:true,
+    color:"grey",
     select:true
   })
   this.setData({

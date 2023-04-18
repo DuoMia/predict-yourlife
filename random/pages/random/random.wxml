@@ -1,13 +1,13 @@
 <view class="container">
   <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/背景终图.png" class="background"/>
-  <image bindtap="goto1" src="../../../pages/image/switch.png" class="imgbutton"/>
+  <text style="font-family: HYXingZBJJ;background-color: transparent;color: black;text-align: center;font-size: 50rpx;font-weight: bold;" class="switch" bindtap="goto1">切换</text>
   <image src="../../../pages/image/xzbagua.png" id="myImage" animation="{{animationData}}" class="image">
   <view class="turn" style="left: {{left}}; top: {{top}};transform: rotate({{rotate}}deg);"hidden="{{select}}">
     <image src="../../../pages/image/left.png" class="left"/>
     <image src="../../../pages/image/right.png" class="right"/>
   </view>
   </image>
-  <image src="../../../pages/image/explain.png" class="imgexplain" bindtap="openexplain" catchtouchmove="touchmove"/>
+  <text style="font-family: HYXingZBJJ;background-color: transparent;color: black;text-align: center;font-size: 50rpx;font-weight: bold;" class="btnexplain" bindtap="openexplain">提示</text>
 <view class="modal-mask" hidden="{{showimg}}" bindtap="closeimg" catchtouchmove="touchmove"></view>
 <view class="modal" hidden="{{showimg}}" catchtouchmove="touchmove">
   <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/首页说明.png" class="modal-img"/>
@@ -25,7 +25,7 @@
     </view>
   </block>
   </scroll-view>
-  <button disabled="{{buttonhide}}" type="primary" bindtap="chooseModal" class="start"> 开始预测 </button>
+  <button disabled="{{buttonhide}}" type="primary" bindtap="chooseModal" class="start"style="width: 450rpx; height: 120rpx;font-family: HYXingZBJJ;background-color: transparent;color: {{color}};font-size: 80rpx;font-weight: bold;text-align: center;"> 开始预测 </button>
   <modal-ran showModal="{{showModal}}" bind:closeModal="closeModal" bind:selectOption="selectOption" catchtouchmove="touchmove"></modal-ran>
   <modal hidden="{{ishidden}}" bindconfirm="onmodal" catchtouchmove="touchmove" no-cancel="true">
     <view style="color: black;">你的测算选择是【{{resp_type}}】</view>

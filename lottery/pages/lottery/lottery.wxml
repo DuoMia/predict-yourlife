@@ -29,10 +29,9 @@
     上次结果
   </text>
   </image>
-  <!-- <view class="sign" bindtap="gotores" hidden="{{imghide}}">{{sign}}</view> -->
-  <button class="button" bindtap="onButtonClick" hidden="{{btnhide}}">请掷杯</button>
-  <button class="button" bindtap="draw" hidden="{{btnhide2}}" disabled="{{buttonhide}}">请抽签</button>
-  <button class="button" bindtap="getres" hidden="{{btnhide3}}">请取签</button>
+  <button class="button" bindtap="onButtonClick" hidden="{{btnhide}}"style="width:450rpx;font-family: HYXingZBJJ;background-color: transparent;text-align: center;color: rgb(124, 11, 11)">点击掷杯</button>
+  <button class="button" bindtap="draw" hidden="{{btnhide2}}" disabled="{{buttonhide}}"style="width:450rpx;font-family: HYXingZBJJ;background-color: transparent;text-align: center;color: {{color}};">点击抽签</button>
+  <button class="button" bindtap="getres" hidden="{{btnhide3}}"style="width:450rpx;font-family: HYXingZBJJ;background-color: transparent;text-align: center;color: rgb(124, 11, 11)">点击取签</button>
   <view class="image-container" hidden="{{imghide3}}">
     <image src="{{image1}}" mode="aspectFit" class="cup1"></image>
     <image src="{{image2}}" mode="aspectFit" class="cup2"></image>
