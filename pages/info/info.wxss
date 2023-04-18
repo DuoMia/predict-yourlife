@@ -103,11 +103,10 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 47%;
+  bottom: 40%;
   text-align: center;
-  font-size: 40rpx;
+  font-size: 100rpx;
   font-family: 'HYXingZBJJ';
-  font-weight: bold;
 }
 .background{
   position:absolute;

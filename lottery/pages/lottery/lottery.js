@@ -62,9 +62,9 @@ Page({
     db.collection("user_info").where({
       _openid:openid   //进行筛选
     }).get().then(res=>{
-      console.log(res.data[0].status)
-      console.log(res.data[0].datetime.getDate())
-      console.log(new Date().getDate())
+      console.log("抽签状态："+res.data[0].status)
+      console.log("抽签时间"+res.data[0].datetime.getDate())
+      console.log("本地时间"+new Date().getDate())
       if(res.data[0].datetime.getFullYear() < new Date().getFullYear()){
         console.log("判断年份")
         db.collection("user_info").where({

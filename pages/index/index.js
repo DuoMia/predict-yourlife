@@ -19,8 +19,8 @@ Page({
     db.collection("user_info").where({
       _openid:openid   //进行筛选
     }).get().then(res=>{
-      console.log(res.data.length)
       if(res.data.length==0){
+        console.log("添加用户")
         db.collection("user_info").add({
           data:{
             status:0,

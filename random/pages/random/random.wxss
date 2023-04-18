@@ -118,23 +118,26 @@
   height: 100%;
   z-index: -1;
 }
-.left{
+.turn{
+  position: absolute;
+  width: 100vw;
   height: 90rpx;
-  width: 100rpx;
+}
+.left{
+  height: 80rpx;
+  width: 90rpx;
   z-index: 1;
   margin: auto;
   flex-grow: 200rpx;
   position: absolute;
-  top: -1%;
-  right: 18%;
+  right: 27%;
 }
 .right{
-  height: 90rpx;
-  width: 100rpx;
+  height: 80rpx;
+  width: 90rpx;
   z-index: 1;
   margin: auto;
   flex-grow: 200rpx;
   position: absolute;
-  top: -1%;
-  left: 18%;
+  left: 31%;
 }

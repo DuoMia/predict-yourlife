@@ -28,7 +28,10 @@ Page({
     ishiddenres:true,
     buttonhide:false,
     showimg:true,
-    select:false,
+    select:true,
+    left:"",
+    top:"",
+    rotate:"",
     showModal: false, // 控制弹窗显示隐藏
     selectedOptionIndex: -1 // 选中的选项的下标
   },
@@ -51,7 +54,6 @@ Page({
       ishiddendate:false,
       ishidden:true
     })
-    console.log(e)
     var timedate = this.data.timedate
     this.setData({
       info:"你选择的阴历日期是:"+timedate.lunar+"\n("+"阳历为"+timedate.solar+")"
@@ -233,7 +235,7 @@ selectOption(e) {
     datetime = datetime.replace("廿","二十")
     datetime = datetime.replace(" ",",")
     datetime = datetime.split(",")
-    console.log(datetime)
+    console.log("日期是"+datetime)
     for(var i in datetime){
       if (datetime[i] == "一"){
         this.data.numlist.push("1")
@@ -329,7 +331,7 @@ selectOption(e) {
     var hours = this.data.hours
     var hournum = this.data.hournum
     var time = hours[hournum].charAt(0)
-    console.log(time)
+    console.log("时辰是"+time)
     if(time == "子"){
       this.data.numlist.push("1")
     }
@@ -371,13 +373,16 @@ selectOption(e) {
     for (var i = 0 ; i < numlist.length ; i++){
       sum = sum + parseInt(numlist[i])
     }
-    console.log(sum)
     sum = (sum-2)%6
+    console.log("sum"+sum)
     if(sum==0){
       this.setData({
        resp:"空亡",
        rotatenum:1620,
-       respinfo:"音信稀时，五行属土，颜色黄色，方位中央;临勾陈。谋事主三、六、九。有不吉、无结果、忧虑之含义。诀曰:空亡事不祥，阴人多乖张。求财无利益，行人有灾殃。失物寻不见，官事有刑伤。病人逢暗鬼，析解可安康。"
+       respinfo:"音信稀时，五行属土，颜色黄色，方位中央;临勾陈。谋事主三、六、九。有不吉、无结果、忧虑之含义。诀曰:空亡事不祥，阴人多乖张。求财无利益，行人有灾殃。失物寻不见，官事有刑伤。病人逢暗鬼，析解可安康。",
+       left:"-15%",
+        top:"83%",
+        rotate:180
      })
      var info = this.data.resp
      var selectedOptionIndex = parseInt(this.data.selectedOptionIndex)
@@ -392,7 +397,10 @@ selectOption(e) {
      this.setData({
        resp:"大安",
        rotatenum:1680,
-       respinfo:"身不动时，五行属木，颜色青色，方位东方。临青龙，谋事主一、五、七。有静止、心安。吉祥之含义。诀曰:大安事事昌，求谋在东方，失物去不远，宅舍保安康。行人身未动，病者主无妨。将军回田野，仔细好推详。"
+       respinfo:"身不动时，五行属木，颜色青色，方位东方。临青龙，谋事主一、五、七。有静止、心安。吉祥之含义。诀曰:大安事事昌，求谋在东方，失物去不远，宅舍保安康。行人身未动，病者主无妨。将军回田野，仔细好推详。",
+       left:"19%",
+        top:"61%",
+        rotate:120
      })
      var info = this.data.resp
      var selectedOptionIndex = parseInt(this.data.selectedOptionIndex)
@@ -407,7 +415,10 @@ selectOption(e) {
       this.setData({
         resp:"留连",
         rotatenum:1740,
-        respinfo:"人未归时，五行属水，颜色黑色，方位北方，临玄武，凡谋事主二、八、十。有喑味不明，延迟。纠缠.拖延、漫长之含义。诀曰:留连事难成，求谋日未明。官事只宜缓，去者来回程，失物南方去，急寻方心明。更需防口舌，人事且平平。"
+        respinfo:"人未归时，五行属水，颜色黑色，方位北方，临玄武，凡谋事主二、八、十。有喑味不明，延迟。纠缠.拖延、漫长之含义。诀曰:留连事难成，求谋日未明。官事只宜缓，去者来回程，失物南方去，急寻方心明。更需防口舌，人事且平平。",
+        left:"17%",
+        top:"20%",
+        rotate:60
       })
       var info = this.data.resp
      var selectedOptionIndex = parseInt(this.data.selectedOptionIndex)
@@ -422,7 +433,10 @@ selectOption(e) {
       this.setData({
         resp:"速喜",
         rotatenum:1800,
-        respinfo:"人即至时，五行属火，颜色红色方位南方，临朱雀，谋事主三，六，九。有快速、喜庆，吉利之含义。指时机已到。诀曰:速喜喜来临，求财向南行。失物申未午，逢人要打听。官事有福德，病者无须恐。田宅六畜吉，行人音信明。"
+        respinfo:"人即至时，五行属火，颜色红色方位南方，临朱雀，谋事主三，六，九。有快速、喜庆，吉利之含义。指时机已到。诀曰:速喜喜来临，求财向南行。失物申未午，逢人要打听。官事有福德，病者无须恐。田宅六畜吉，行人音信明。",
+        left:"-19%",
+        top:"2%",
+        rotate:0
       })
       var info = this.data.resp
      var selectedOptionIndex = parseInt(this.data.selectedOptionIndex)
@@ -437,7 +451,10 @@ selectOption(e) {
       this.setData({
         resp:"赤口",
         rotatenum:1500,
-        respinfo:"官事凶时，五行属金，颜色白色，方位西方，临白虎，谋事主四、七，十。有不吉、惊恐，凶险、口舌是非之含义。诀曰:赤口主口舌，官非切要防。失物急去寻，行人有惊慌。鸡犬多作怪，病者出西方。更须防咀咒，恐怕染瘟殃。"
+        respinfo:"官事凶时，五行属金，颜色白色，方位西方，临白虎，谋事主四、七，十。有不吉、惊恐，凶险、口舌是非之含义。诀曰:赤口主口舌，官非切要防。失物急去寻，行人有惊慌。鸡犬多作怪，病者出西方。更须防咀咒，恐怕染瘟殃。",
+        left:"-53%",
+        top:"24%",
+        rotate:300
       })
       var info = this.data.resp
      var selectedOptionIndex = parseInt(this.data.selectedOptionIndex)
@@ -452,7 +469,10 @@ selectOption(e) {
       this.setData({
         resp:"小吉",
         rotatenum:1560,
-        respinfo:"人来喜时，五行属木，临六合，凡谋事主一、五、七有和合、吉利之含义。诀曰:小吉最吉昌，路上好商量。阴人来报喜，失物在坤方。行人立便至，交易甚是强，凡事皆和合，病者祈上苍。"
+        respinfo:"人来喜时，五行属木，临六合，凡谋事主一、五、七有和合、吉利之含义。诀曰:小吉最吉昌，路上好商量。阴人来报喜，失物在坤方。行人立便至，交易甚是强，凡事皆和合，病者祈上苍。",
+        left:"-51%",
+        top:"64%",
+        rotate:240
       })
       var info = this.data.resp
      var selectedOptionIndex = parseInt(this.data.selectedOptionIndex)

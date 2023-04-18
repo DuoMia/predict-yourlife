@@ -18,7 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log(options.sign)
+    console.log("抽到的签是"+options.sign)
     if(options.sign=='1'){
       this.setData({
         img:"cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/签文/签1.jpg"

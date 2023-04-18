@@ -2,12 +2,14 @@
   <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/背景终图.png" class="background"/>
   <image bindtap="goto1" src="../../../pages/image/switch.png" class="imgbutton"/>
   <image src="../../../pages/image/xzbagua.png" id="myImage" animation="{{animationData}}" class="image">
-    <image src="../../../pages/image/left.png" class="left" hidden="{{select}}"/>
-    <image src="../../../pages/image/right.png" class="right" hidden="{{select}}"/>
+  <view class="turn" style="left: {{left}}; top: {{top}};transform: rotate({{rotate}}deg);"hidden="{{select}}">
+    <image src="../../../pages/image/left.png" class="left"/>
+    <image src="../../../pages/image/right.png" class="right"/>
+  </view>
   </image>
   <image src="../../../pages/image/explain.png" class="imgexplain" bindtap="openexplain" catchtouchmove="touchmove"/>
-<view class="modal-mask" hidden="{{showimg}}" bindtap="closeimg"></view>
-<view class="modal" hidden="{{showimg}}">
+<view class="modal-mask" hidden="{{showimg}}" bindtap="closeimg" catchtouchmove="touchmove"></view>
+<view class="modal" hidden="{{showimg}}" catchtouchmove="touchmove">
   <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/首页说明.png" class="modal-img"/>
   <button class="modal-btn" bindtap="closeimg" style="width: 284rpx;height: 90rpx;"></button>
 </view>
