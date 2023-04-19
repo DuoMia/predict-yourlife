@@ -1,4 +1,4 @@
-// lottery_answer/pages/lottery_answer/lottery_answer.js
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -18,6 +18,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    db.collection("online").get().then(res=>{
+      if(res.data[0].status==false){
+        wx.redirectTo({
+          url: '../../../pages/test/test',
+        })
+      }else{
+        this.setData({
+          indexhidden:false
+        })
+      }
+    })
     console.log("抽到的签是"+options.sign)
     if(options.sign=='1'){
       this.setData({

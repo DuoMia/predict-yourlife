@@ -70,6 +70,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/tool/tool",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

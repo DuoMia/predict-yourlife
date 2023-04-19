@@ -1,4 +1,5 @@
 // pages/tool/tool.js
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -8,11 +9,23 @@ Page({
     current: 0,
     imgload:true,
     imgnoload:false,
+    indexhidden:true
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    db.collection("online").get().then(res=>{
+      if(res.data[0].status==false){
+        wx.redirectTo({
+          url: '../test/test',
+        })
+      }else{
+        this.setData({
+          indexhidden:false
+        })
+      }
+    })
   },
   imgload:function(){
       this.setData({

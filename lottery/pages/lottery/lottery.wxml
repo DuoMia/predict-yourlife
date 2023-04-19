@@ -1,4 +1,5 @@
-<view class="container" hidden="{{imgnoload}}"> 
+<view hidden="{{indexhidden}}">
+  <view class="container" hidden="{{imgnoload}}"> 
   <view>
     <image class='logo' src='../../image/chouqiantu.png'></image>
     <view class='load'>
@@ -45,5 +46,6 @@
 <view hidden="{{isShow}}">
   <image class="loading-image" src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/抽签动图.gif" bindload="imgload"></image>
   <text class="loading-text" >抽签中</text>
+</view>
 </view>
 </view>

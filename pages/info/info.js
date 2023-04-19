@@ -1,4 +1,5 @@
 // pages/game/game.js
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -6,7 +7,8 @@ Page({
    */
   data: {
     imgload:true,
-    preimg:false
+    preimg:false,
+    indexhidden:true
   },
   imgload:function(){
     this.setData({
@@ -18,7 +20,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    db.collection("online").get().then(res=>{
+      if(res.data[0].status==false){
+        wx.redirectTo({
+          url: '../test/test',
+        })
+      }else{
+        this.setData({
+          indexhidden:false
+        })
+      }
+    })
   },
 
   /**

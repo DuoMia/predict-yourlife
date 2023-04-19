@@ -17,6 +17,7 @@ Page({
     btnhide:true,
     btnhide2:false,
     btnhide3:true,
+    indexhidden:true,
     imghide:true,
     imghide2:false,
     imghide3:false,
@@ -35,6 +36,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function () {
+    db.collection("online").get().then(res=>{
+      if(res.data[0].status==false){
+        wx.redirectTo({
+          url: '../../../pages/test/test'
+        })
+      }else{
+        this.setData({
+          indexhidden:false
+        })
+      }
+    })
     this.setData({
       imghide3:false
     })

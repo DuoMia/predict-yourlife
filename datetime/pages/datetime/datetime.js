@@ -9,6 +9,7 @@ Page({
     hourIndex: "",
     hournum:"no",
     color:"rgb(124, 11, 11)",
+    indexhidden:true,
     ishidden:true,
     ishiddendate:true,
     ishiddentime:true,
@@ -89,7 +90,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    
+    db.collection("online").get().then(res=>{
+      if(res.data[0].status==false){
+        wx.redirectTo({
+          url: '../../../pages/test/test',
+        })
+      }else{
+        this.setData({
+          indexhidden:false
+        })
+      }
+    })
   },
 
   /**
