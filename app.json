@@ -44,7 +44,6 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "算你一卦",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
