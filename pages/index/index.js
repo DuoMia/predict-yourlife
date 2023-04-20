@@ -16,7 +16,7 @@ Page({
    */
   onLoad: async function () {
     db.collection("online").get().then(res=>{
-      if(res.data[0].status==false){
+      if(res.data[0].start==false){
         wx.redirectTo({
           url: '../test/test',
         })

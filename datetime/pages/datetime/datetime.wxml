@@ -1,5 +1,4 @@
-<view hidden="{{indexhidden}}">
-  <view class="container">
+<view class="container">
 <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/背景终图.png" class="background"/>
 <text style="font-family: HYXingZBJJ;background-color: transparent;color: black;text-align: center;font-size: 50rpx;font-weight: bold;" class="switch" bindtap="goto2">切换</text>
 <image src="../../../pages/image/xzbagua.png" id="myImage" animation="{{animationData}}" class="image">
@@ -28,7 +27,7 @@
     <view class="picker-text" style="font-size: 15px;">{{hours[hourIndex]}}</view>
   </picker>
 </modal>
-<button type="primary" bindtap="chooseModal" disabled="{{buttonhide}}" style="width: 450rpx; height: 120rpx;font-family: HYXingZBJJ;background-color: transparent;color: {{color}};font-size: 80rpx;font-weight: bold;text-align: center;" class="start">开始预测</button>
+<button type="primary" bindtap="chooseModal" disabled="{{buttonhide}}" style="width: 450rpx; height: 120rpx;font-family: HYXingZBJJ;background-color: transparent;color: rgb({{color}});font-size: 80rpx;font-weight: bold;text-align: center;border: 6rpx solid rgba({{color}}, 0.8)" class="start">开始预测</button>
 <modal-choose showModal="{{showModal}}" bind:closeModal="closeModal" bind:selectOption="selectOption" catchtouchmove="touchmove"></modal-choose>
 <modal hidden="{{ishiddenres}}" bindconfirm="resonmodal" catchtouchmove="touchmove" no-cancel="true">
     <view style="color: black;">你的测算选择是【{{resp_type}}】</view>
@@ -45,5 +44,4 @@
         本次测算解析：{{resp_info}}
       </view>
   </modal>
-</view>
 </view>

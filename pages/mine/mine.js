@@ -1,28 +1,15 @@
-const db = wx.cloud.database()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    indexhidden:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    db.collection("online").get().then(res=>{
-      if(res.data[0].status==false){
-        wx.redirectTo({
-          url: '../test/test',
-        })
-      }else{
-        this.setData({
-          indexhidden:false
-        })
-      }
-    })
   },
 
   /**

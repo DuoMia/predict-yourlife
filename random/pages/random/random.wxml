@@ -1,5 +1,4 @@
-<view hidden="{{indexhidden}}">
-  <view class="container">
+<view class="container">
   <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/背景终图.png" class="background"/>
   <text style="font-family: HYXingZBJJ;background-color: transparent;color: black;text-align: center;font-size: 50rpx;font-weight: bold;" class="switch" bindtap="goto1">切换</text>
   <image src="../../../pages/image/xzbagua.png" id="myImage" animation="{{animationData}}" class="image">
@@ -26,7 +25,7 @@
     </view>
   </block>
   </scroll-view>
-  <button disabled="{{buttonhide}}" type="primary" bindtap="chooseModal" class="start"style="width: 450rpx; height: 120rpx;font-family: HYXingZBJJ;background-color: transparent;color: {{color}};font-size: 80rpx;font-weight: bold;text-align: center;"> 开始预测 </button>
+  <button disabled="{{buttonhide}}" type="primary" bindtap="chooseModal" class="start"style="width: 450rpx; height: 120rpx;font-family: HYXingZBJJ;background-color: transparent;color: rgb({{color}});font-size: 80rpx;font-weight: bold;text-align: center;border: 6rpx solid rgba({{color}}, 0.8);"> 开始预测 </button>
   <modal-ran showModal="{{showModal}}" bind:closeModal="closeModal" bind:selectOption="selectOption" catchtouchmove="touchmove"></modal-ran>
   <modal hidden="{{ishidden}}" bindconfirm="onmodal" catchtouchmove="touchmove" no-cancel="true">
     <view style="color: black;">你的测算选择是【{{resp_type}}】</view>
@@ -43,5 +42,4 @@
         本次测算解析：{{resp_info}}
       </view>
   </modal>
-</view>
 </view>

@@ -1,4 +1,3 @@
-/* pages/tool/tool.wxss */
 .img{
   position:absolute;
   top: 0;
