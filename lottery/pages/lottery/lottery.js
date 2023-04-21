@@ -1,4 +1,5 @@
 const db = wx.cloud.database()
+const app = getApp()
 Page({
 
   /**
@@ -17,6 +18,7 @@ Page({
     btnhide:true,
     btnhide2:false,
     btnhide3:true,
+    indexhidden:true,
     imghide:true,
     imghide2:false,
     imghide3:false,
@@ -31,10 +33,28 @@ Page({
     texthide2:true,
     resopen:true
   },
+  isonline(){
+    if(app.globalData.online=="no"){
+      setTimeout(()=>{
+        this.isonline()
+        },50)
+    }else{
+      if(app.globalData.online==true){
+        this.setData({
+          indexhidden:false
+        })
+      }else{
+        wx.redirectTo({
+          url: '../../../pages/test/test',
+        })
+      }
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: async function () {
+    this.isonline()
     this.setData({
       imghide3:false
     })

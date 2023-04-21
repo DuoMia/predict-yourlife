@@ -1,4 +1,5 @@
 const db = wx.cloud.database()
+const app = getApp()
 Page({
 
   /**
@@ -28,6 +29,7 @@ Page({
     resp_type:"",
     ishiddenres:true,
     buttonhide:false,
+    indexhidden:true,
     showimg:true,
     select:true,
     left:"",
@@ -35,6 +37,23 @@ Page({
     rotate:"",
     showModal: false, // 控制弹窗显示隐藏
     selectedOptionIndex: -1 // 选中的选项的下标
+  },
+  isonline(){
+    if(app.globalData.online=="no"){
+      setTimeout(()=>{
+        this.isonline()
+        },50)
+    }else{
+      if(app.globalData.online==true){
+        this.setData({
+          indexhidden:false
+        })
+      }else{
+        wx.redirectTo({
+          url: '../../../pages/test/test',
+        })
+      }
+    }
   },
   datemodal:function(){
     this.setData({
@@ -89,6 +108,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.isonline()
   },
 
   /**

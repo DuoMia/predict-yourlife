@@ -1,4 +1,5 @@
-<view class="container">
+<view hidden="{{indexhidden}}">
+  <view class="container">
   <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/背景终图.png" class="background"/>
   <text style="font-family: HYXingZBJJ;background-color: transparent;color: black;text-align: center;font-size: 50rpx;font-weight: bold;" class="switch" bindtap="goto1">切换</text>
   <image src="../../../pages/image/xzbagua.png" id="myImage" animation="{{animationData}}" class="image">
@@ -42,4 +43,5 @@
         本次测算解析：{{resp_info}}
       </view>
   </modal>
+</view>
 </view>

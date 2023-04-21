@@ -60,7 +60,9 @@
   margin: auto;
   flex-grow: 80rpx;
   position: absolute;
+  border-radius: 60rpx;
   bottom:7% ;
+  line-height: 80rpx;
 }
 .modal-mask {
   position: fixed;

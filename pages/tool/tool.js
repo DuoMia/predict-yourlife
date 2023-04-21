@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
 
   /**
@@ -6,12 +7,31 @@ Page({
   data: {
     current: 0,
     imgload:true,
-    imgnoload:false
+    imgnoload:false,
+    indexhidden:true
+  },
+  isonline(){
+    if(app.globalData.online=="no"){
+      setTimeout(()=>{
+        this.isonline()
+        },50)
+    }else{
+      if(app.globalData.online==true){
+        this.setData({
+          indexhidden:false
+        })
+      }else{
+        wx.redirectTo({
+          url: '../test/test',
+        })
+      }
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    this.isonline()
   },
   imgload:function(){
       this.setData({

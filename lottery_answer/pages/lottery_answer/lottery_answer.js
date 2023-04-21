@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
 
   /**
@@ -10,13 +11,32 @@ Page({
     height:"",
     width:"",
     imgload:true,
-    preimg:false
+    preimg:false,
+    indexhidden:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  isonline(){
+    if(app.globalData.online=="no"){
+      setTimeout(()=>{
+        this.isonline()
+        },50)
+    }else{
+      if(app.globalData.online==true){
+        this.setData({
+          indexhidden:false
+        })
+      }else{
+        wx.redirectTo({
+          url: '../../../pages/test/test',
+        })
+      }
+    }
+  },
   onLoad(options) {
+    this.isonline()
     console.log("抽到的签是"+options.sign)
     if(options.sign=='1'){
       this.setData({

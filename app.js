@@ -1,4 +1,8 @@
 App({
+  globalData:{
+    online:"no"
+  }
+  ,
   onLaunch: function () {
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力');
@@ -12,8 +16,12 @@ App({
         traceUser: true,
         env:"pipiyoyo-2ghga83b70065f85"
       });
-    }
-    this.globalData = {};
+    };
+    const db = wx.cloud.database()
+    db.collection("online").get().then(res=>{
+      this.globalData.online=res.data[0].start
+      console.log(this.globalData.online)
+    })
   },
   //如果担心openid的安全，就用这个函数
   getCloudOpenid: async function () {

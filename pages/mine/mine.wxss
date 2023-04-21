@@ -12,6 +12,7 @@
   left: 0;
   right: 0;
   top: 25%;
+  line-height: 70rpx;
 }
 .btn2{
   margin: auto;
@@ -19,6 +20,7 @@
   left: 0;
   right: 0;
   top: 55%;
+  line-height: 70rpx;
 }
 .background{
   position:absolute;

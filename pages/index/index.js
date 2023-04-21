@@ -1,5 +1,6 @@
 // pages/index/index.js
 const db = wx.cloud.database()
+const app = getApp()
 Page({
 
   /**
@@ -14,18 +15,25 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: async function () {
-    db.collection("online").get().then(res=>{
-      if(res.data[0].start==false){
-        wx.redirectTo({
-          url: '../test/test',
-        })
-      }else{
+  isonline(){
+    if(app.globalData.online=="no"){
+      setTimeout(()=>{
+        this.isonline()
+        },50)
+    }else{
+      if(app.globalData.online==true){
         this.setData({
           indexhidden:false
         })
+      }else{
+        wx.redirectTo({
+          url: '../test/test',
+        })
       }
-    })
+    }
+  },
+  onLoad: async function () {
+    this.isonline()
     this.openid = await getApp().getOpenid()
     var openid = this.openid
     db.collection("user_info").where({
