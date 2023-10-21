@@ -19,7 +19,7 @@ App({
     };
     const db = wx.cloud.database()
     db.collection("online").get().then(res=>{
-      this.globalData.online=res.data[0].start
+      this.globalData.online=res.data[0].status
       console.log(this.globalData.online)
     })
   },
