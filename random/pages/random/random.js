@@ -245,7 +245,7 @@ Page({
      })
      var info = this.data.resp
      var selectedOptionIndex = parseInt(this.data.selectedOptionIndex)
-     db.collection("res_info").doc("34117fc0643659440010fd8050428333").get().then(res=>{
+     db.collection("res_info").doc("e33be08d6795cc3201c996163e07ad0a").get().then(res=>{
       var res = res.data[info][selectedOptionIndex]
       this.setData({
         resp_info:res
@@ -263,7 +263,7 @@ Page({
      })
      var info = this.data.resp
      var selectedOptionIndex = parseInt(this.data.selectedOptionIndex)
-     db.collection("res_info").doc("34117fc0643659440010fd8050428333").get().then(res=>{
+     db.collection("res_info").doc("e33be08d6795cc3201c996163e07ad0a").get().then(res=>{
       var res = res.data[info][selectedOptionIndex]
       this.setData({
         resp_info:res
@@ -281,7 +281,7 @@ Page({
       })
       var info = this.data.resp
      var selectedOptionIndex = parseInt(this.data.selectedOptionIndex)
-     db.collection("res_info").doc("34117fc0643659440010fd8050428333").get().then(res=>{
+     db.collection("res_info").doc("e33be08d6795cc3201c996163e07ad0a").get().then(res=>{
       var res = res.data[info][selectedOptionIndex]
       this.setData({
         resp_info:res
@@ -299,7 +299,7 @@ Page({
       })
       var info = this.data.resp
      var selectedOptionIndex = parseInt(this.data.selectedOptionIndex)
-     db.collection("res_info").doc("34117fc0643659440010fd8050428333").get().then(res=>{
+     db.collection("res_info").doc("e33be08d6795cc3201c996163e07ad0a").get().then(res=>{
       var res = res.data[info][selectedOptionIndex]
       this.setData({
         resp_info:res
@@ -317,7 +317,7 @@ Page({
       })
       var info = this.data.resp
      var selectedOptionIndex = parseInt(this.data.selectedOptionIndex)
-     db.collection("res_info").doc("34117fc0643659440010fd8050428333").get().then(res=>{
+     db.collection("res_info").doc("e33be08d6795cc3201c996163e07ad0a").get().then(res=>{
       var res = res.data[info][selectedOptionIndex]
       this.setData({
         resp_info:res
@@ -335,7 +335,7 @@ Page({
       })
       var info = this.data.resp
      var selectedOptionIndex = parseInt(this.data.selectedOptionIndex)
-     db.collection("res_info").doc("34117fc0643659440010fd8050428333").get().then(res=>{
+     db.collection("res_info").doc("e33be08d6795cc3201c996163e07ad0a").get().then(res=>{
       var res = res.data[info][selectedOptionIndex]
       this.setData({
         resp_info:res

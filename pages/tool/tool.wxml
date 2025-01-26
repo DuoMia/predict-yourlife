@@ -11,7 +11,7 @@
   </view> 
 </view>
 <view hidden="{{imgload}}">
-  <image class="img" src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/选择入口.png" bindload="imgload"></image>
+  <image class="img" src="../image/entry.png" bindload="imgload"></image>
   <button class="btn1" bindtap="goto1" style="width: 230rpx;height: 90rpx;"></button>
   <button class="btn2" bindtap="goto2" style="width: 230rpx;height: 90rpx;"></button>
 </view>

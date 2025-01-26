@@ -39,7 +39,7 @@ Page({
     this.isonline()
     console.log("抽到的签是"+options.sign)
     this.setData({
-      img:"cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/签文/签"+options.sign+".jpg"
+      img:"cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/签文小/签"+options.sign+".jpg"
     })
     var image = this.data.img
     wx.getImageInfo({

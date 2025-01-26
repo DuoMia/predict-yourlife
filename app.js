@@ -14,11 +14,12 @@ App({
         //   如不填则使用默认环境（第一个创建的环境）
         // env: 'my-env-id',
         traceUser: true,
-        env:"pipiyoyo-2ghga83b70065f85"
+        env:"pipiyoyo-0ggyytqka90cf293"
       });
     };
     const db = wx.cloud.database()
     db.collection("online").get().then(res=>{
+      console.log(res.data)
       this.globalData.online=res.data[0].status
       console.log(this.globalData.online)
     })

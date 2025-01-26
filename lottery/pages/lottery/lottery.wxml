@@ -9,11 +9,11 @@
       <text class='{{current == 3 ? "sct": ""}}'></text>
     </view>
   </view> 
-  <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/圣杯.png" />
-  <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/笑杯.png" />
+  <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="../../image/good.png" />
+  <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="../../image/ha.png" />
 </view>
 <view class="lottery" hidden="{{imgload}}">
-  <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/背景终图.png" class="background"/>
+  <image src="../../../pages/image/background.jpg" class="background"/>
   <text class="title1">
     抽取灵签后需要掷出三次圣杯方可使灵签显灵，如若掷出笑杯，请重新掷杯。
   </text>
@@ -44,7 +44,7 @@
   <button bindtap="restart" type="primary" hidden="{{texthide}}"class="restart"style="width:600rpx;font-family: HYXingZBJJ;background-color: transparent;text-align: center;color: #09bb07">实在等不及就点我</button>
 </view>
 <view hidden="{{isShow}}">
-  <image class="loading-image" src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/抽签动图.gif" bindload="imgload"></image>
+  <image class="loading-image" src="../../image/抽签动图.gif" bindload="imgload"></image>
   <text class="loading-text" >抽签中</text>
 </view>
 </view>

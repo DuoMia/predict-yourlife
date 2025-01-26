@@ -73,3 +73,14 @@
   height: 100%;
   z-index: -1;
 }
+.topcenter {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: flex-start; /* 垂直置顶 */
+  height: 100vh; /* 设置容器高度为视口高度，确保文本置顶 */
+}
+
+.center-top-text {
+  font-size: 15px;
+  color: #000;
+}

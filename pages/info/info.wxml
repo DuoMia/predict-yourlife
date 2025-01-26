@@ -14,8 +14,8 @@
 </view>
   </view> 
 <view class="info" hidden="{{imgload}}">
-  <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/背景终图.png" class="background"/>
-  <image src="cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/抽签图.png" bindload="imgload" bindtap="goto1" class="img"/>
+  <image src="../image/background.jpg" class="background"/>
+  <image src="../../lottery/image/chouqiantu.png" bindload="imgload" bindtap="goto1" class="img"/>
   <text class="text">抽签</text>
 </view>
 </view>

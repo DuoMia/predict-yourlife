@@ -22,7 +22,7 @@ Page({
     imghide:true,
     imghide2:false,
     imghide3:false,
-    images: ['cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/圣杯.png', 'cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/圣杯.png','cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/圣杯.png', 'cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/圣杯.png', 'cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/笑杯.png','cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/圣杯.png','cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/圣杯.png','cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/圣杯.png'],
+    images: ['../../image/good.png', '../../image/good.png','../../image/good.png', '../../image/good.png', '../../image/ha.png','../../image/good.png','../../image/good.png','../../image/good.png'],
     image1: '',
     image2: '',
     image3: '',
@@ -292,7 +292,7 @@ Page({
     // 随机生成a和b两个字母中的一个
     var randomIndex = Math.floor(Math.random() * this.data.images.length);
     var randomImage = this.data.images[randomIndex];
-    if (randomImage.indexOf('cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/圣杯.png', 'cloud://pipiyoyo-2ghga83b70065f85.7069-pipiyoyo-2ghga83b70065f85-1302175885/圣杯.png') > -1) {
+    if (randomImage.indexOf('../../image/good.png', '../../image/good.png') > -1) {
       // 如果选中的是图片a
       this.setData({
         ['image' + (this.data.count + 1)]: randomImage,
