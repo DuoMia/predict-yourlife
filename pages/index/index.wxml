@@ -12,7 +12,7 @@
   </view> 
 </view>
 <view hidden="{{imgload}}">
-  <image class="img" src="../image/home.jpg" bindload="imgload"></image>
+  <image class="img" src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/home.jpg" bindload="imgload"></image>
   <view class="topcenter">
   <text class="center-top-text">娱乐为主，结果仅供参考</text>
   </view>
