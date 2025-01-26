@@ -44,7 +44,7 @@
   <button bindtap="restart" type="primary" hidden="{{texthide}}"class="restart"style="width:600rpx;font-family: HYXingZBJJ;background-color: transparent;text-align: center;color: #09bb07">实在等不及就点我</button>
 </view>
 <view hidden="{{isShow}}">
-  <image class="loading-image" src="../../image/抽签动图.gif" bindload="imgload"></image>
+  <image class="loading-image" src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/抽签动图.gif" bindload="imgload"></image>
   <text class="loading-text" >抽签中</text>
 </view>
 </view>
