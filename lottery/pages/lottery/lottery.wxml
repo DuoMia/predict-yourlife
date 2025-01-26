@@ -9,8 +9,8 @@
       <text class='{{current == 3 ? "sct": ""}}'></text>
     </view>
   </view> 
-  <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/good.png" />
-  <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/ha.png" />
+  <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/圣杯.jpg" />
+  <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/笑杯.jpg" />
 </view>
 <view class="lottery" hidden="{{imgload}}">
   <image src="../../../pages/image/background.jpg" class="background"/>
