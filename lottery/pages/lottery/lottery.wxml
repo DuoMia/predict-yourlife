@@ -1,0 +1,51 @@
+<view hidden="{{indexhidden}}">
+  <view class="container" hidden="{{imgnoload}}"> 
+  <view>
+    <image class='logo' src='../../image/chouqiantu.png'></image>
+    <view class='load'>
+      <text class='{{current == 0 ? "sct": ""}}'></text>
+      <text class='{{current == 1 ? "sct": ""}}'></text>
+      <text class='{{current == 2 ? "sct": ""}}'></text>
+      <text class='{{current == 3 ? "sct": ""}}'></text>
+    </view>
+  </view> 
+  <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/圣杯.png" />
+  <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/笑杯.png" />
+</view>
+<view class="lottery" hidden="{{imgload}}">
+  <image src="../../../pages/image/background.jpg" class="background"/>
+  <text class="title1">
+    抽取灵签后需要掷出三次圣杯方可使灵签显灵，如若掷出笑杯，请重新掷杯。
+  </text>
+  <text class="title2">请抽取今日灵签</text>
+  <text class="title3">
+    一日只可取一签,多取无用
+  </text>
+<view>
+  <image hidden="{{imghide2}}" src="../../image/chouqiantu.png" mode="widthFix" class="img1"/>
+  <image bindtap="gotores" hidden="{{imghide}}" src="../../image/qianmian.png" mode="widthFix" class="img2">
+  <view class="sign" bindtap="gotores" hidden="{{imghide}}">{{sign}}
+  </view>
+  <text hidden="{{texthide2}}" class="text1">
+    上次结果
+  </text>
+  </image>
+  <button class="button" bindtap="onButtonClick" hidden="{{btnhide}}"style="width:450rpx;font-family: HYXingZBJJ;background-color: transparent;text-align: center;color: rgb(124, 11, 11)">点击掷杯</button>
+  <button class="button" bindtap="draw" hidden="{{btnhide2}}" disabled="{{buttonhide}}"style="width:450rpx;font-family: HYXingZBJJ;background-color: transparent;text-align: center;color: {{color}};">点击抽签</button>
+  <button class="button" bindtap="getres" hidden="{{btnhide3}}"style="width:450rpx;font-family: HYXingZBJJ;background-color: transparent;text-align: center;color: rgb(124, 11, 11)">点击取签</button>
+  <view class="image-container" hidden="{{imghide3}}">
+    <image src="{{image1}}" mode="aspectFit" class="cup1"></image>
+    <image src="{{image2}}" mode="aspectFit" class="cup2"></image>
+    <image src="{{image3}}" mode="aspectFit" class="cup3"></image>
+  </view>
+  <text hidden="{{imghide3}}" class="text2">{{title}}</text>
+  <text hidden="{{texthide}}" class="text3">每日24点刷新抽签次数哦~</text>
+  <text hidden="{{texthide}}" class="text4">（点击上方灵签也可跳转至解签页面）</text>
+  <button bindtap="restart" type="primary" hidden="{{texthide}}"class="restart"style="width:600rpx;font-family: HYXingZBJJ;background-color: transparent;text-align: center;color: #09bb07">实在等不及就点我</button>
+</view>
+<view hidden="{{isShow}}">
+  <image class="loading-image" src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/抽签动图-min.gif" bindload="imgload"></image>
+  <text class="loading-text" >抽签中</text>
+</view>
+</view>
+</view>

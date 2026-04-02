@@ -1,0 +1,23 @@
+<view hidden="{{indexhidden}}">
+  <view class="container" hidden="{{imgnoload}}"> 
+  <image src="../image/background.jpg" class="background"/>
+  <view>
+    <image class='logo' src='../image/preimg.jpg'></image>
+    <view class='load'>
+      <text class='{{current == 0 ? "sct": ""}}'></text>
+      <text class='{{current == 1 ? "sct": ""}}'></text>
+      <text class='{{current == 2 ? "sct": ""}}'></text>
+      <text class='{{current == 3 ? "sct": ""}}'></text>
+    </view>
+  </view> 
+</view>
+<view hidden="{{imgload}}">
+  <image class="img" src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/首页图片.jpg" bindload="imgload"></image>
+  <view class="topcenter">
+  <text class="center-top-text">娱乐为主，结果仅供参考</text>
+  </view>
+  <button class="btn1" bindtap="gototool" style="width: 350rpx;height: 110rpx;"></button>
+  <button class="btn2" bindtap="gotoinfo" style="width: 350rpx;height: 100rpx;"></button>
+  <button class="btn3" bindtap="gotomine" style="width: 350rpx;height: 100rpx;"></button>
+</view>
+</view>

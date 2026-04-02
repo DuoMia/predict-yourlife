@@ -1,0 +1,9 @@
+<view class="modal-mask" hidden="{{!showModal}}" bindtap="closeModal"></view>
+<view class="modal" hidden="{{!showModal}}">
+  <text class="modal-title">{{title}}</text>
+  <view class="modal-content">
+    <block wx:for="{{options}}" wx:key="index">
+      <view class="option" bindtap="selectOption" data-index="{{index}}">{{item}}</view>
+    </block>
+  </view>
+</view>

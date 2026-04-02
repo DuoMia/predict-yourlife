@@ -1,0 +1,47 @@
+<view hidden="{{indexhidden}}">
+  <view class="container">
+  <image src="../../../pages/image/background.jpg" class="background"/>
+  <text style="font-family: HYXingZBJJ;background-color: transparent;color: black;text-align: center;font-size: 50rpx;font-weight: bold;" class="switch" bindtap="goto1">切换</text>
+  <image src="../../../pages/image/xzbagua.png" id="myImage" animation="{{animationData}}" class="image">
+  <view class="turn" style="left: {{left}}; top: {{top}};transform: rotate({{rotate}}deg);"hidden="{{select}}">
+    <image src="../../../pages/image/left.png" class="left"/>
+    <image src="../../../pages/image/right.png" class="right"/>
+  </view>
+  </image>
+  <text style="font-family: HYXingZBJJ;background-color: transparent;color: black;text-align: center;font-size: 50rpx;font-weight: bold;" class="btnexplain" bindtap="openexplain">提示</text>
+<view class="modal-mask" hidden="{{showimg}}" bindtap="closeimg" catchtouchmove="touchmove"></view>
+<view class="modal" hidden="{{showimg}}" catchtouchmove="touchmove">
+  <image src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/首页说明.jpg" class="modal-img"/>
+  <button class="modal-btn" bindtap="closeimg" style="width: 284rpx;height: 90rpx;"></button>
+</view>
+  <text class="title">请输入你心中所想的一个或多个数，并点击开始按钮</text>
+  <scroll-view  enable-flex="true" class="fixed-area" scroll-y="{{true}}">
+  <block wx:for="{{inputlist}}" wx:key="index">
+    <view class="input-item" style="width: 326rpx; height: 70rpx; display: flex; box-sizing: border-box">
+      <input style="width: 330rpx; height: 58rpx; display: block; box-sizing: border-box" type="number" placeholder="请输入数字" bindinput="checknums" data-index="{{index}}" value="{{item}}"/>
+      <view class="btn-group" style="position: absolute;">
+      <button class="btn" bindtap="addinput" hidden="{{buttonhide}}"  style="width: 100rpx; height: 100rpx; display: block; box-sizing: border-box; left: 326rpx; top: -50rpx; position: absolute"><image src="../../image/add.png" mode="widthFix" style="height: 60rpx; width: 60rpx; display: inline-block; box-sizing: border-box; position: absolute; left: 15rpx; top: 15rpx"/></button>
+      <button class="btn" bindtap="deletedq" hidden="{{buttonhide2}}" data-index="{{index}}" value="{{item}}" style="width: 100rpx; height: 100rpx; display: block; box-sizing: border-box; left: 426rpx; top: -50rpx; position: absolute"><image src="../../image/delete.png" mode="widthFix" style="width: 60rpx; height: 60rpx; position: absolute; left: 15rpx; top: 15rpx"/></button>
+    </view>
+    </view>
+  </block>
+  </scroll-view>
+  <button disabled="{{buttonhide}}" type="primary" bindtap="chooseModal" class="start"style="width: 450rpx; height: 120rpx;font-family: HYXingZBJJ;background-color: transparent;color: rgb({{color}});font-size: 80rpx;font-weight: bold;text-align: center;border: 6rpx solid rgba({{color}}, 0.8);"> 开始预测 </button>
+  <modal-ran showModal="{{showModal}}" bind:closeModal="closeModal" bind:selectOption="selectOption" catchtouchmove="touchmove"></modal-ran>
+  <modal hidden="{{ishidden}}" bindconfirm="onmodal" catchtouchmove="touchmove" no-cancel="true">
+    <view style="color: black;">你的测算选择是【{{resp_type}}】</view>
+    <view style="color: black;">
+      测算结果是【{{resp}}】
+    </view>
+    <view bindtap="openinfo" style="color: blue;">
+      {{resp_title}}【{{resp}}】的通用解释
+    </view>
+    <view hidden="{{hiddeninfo}}" style="color: red;">
+      {{respinfo}}
+    </view>
+      <view style="color: black;">
+        本次测算解析：{{resp_info}}
+      </view>
+  </modal>
+</view>
+</view>

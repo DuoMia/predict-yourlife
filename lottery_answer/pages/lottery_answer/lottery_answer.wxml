@@ -1,0 +1,17 @@
+<view hidden="{{indexhidden}}">
+  <view class="container" hidden="{{preimg}}"> 
+  <view class="box">
+  <view class="loading">
+    <view></view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view></view>
+  </view>
+</view>
+  </view> 
+<image style="width: 100%; height: {{height}}rpx; " src="{{image}}" mode="widthFix" bindload="imgload" hidden="{{imgload}}"/>
+</view>

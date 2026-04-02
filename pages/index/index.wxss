@@ -1,0 +1,86 @@
+/**index.wxss**/
+.img{
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.container {
+  background-color: #faf8ee;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+}
+.load {
+  text-align: center;
+  margin-top: 10px;
+}
+.load text {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 5px;
+}
+.load text.sct {
+  background-color: #ccc;
+}
+.btn1{
+  background-color: transparent;
+  flex-grow: 60rpx;
+  margin: auto;
+  position: absolute;
+  bottom: 52%;
+  left: 0;
+  right: 0;
+  border: 5rpx solid rgb(111, 112, 124,0.8);
+}
+.btn2{
+  background-color: transparent;
+  flex-grow: 60rpx;
+  margin: auto;
+  position: absolute;
+  bottom: 42%;
+  left: 0;
+  right: 0;
+  border: 5rpx solid rgb(111, 112, 124,0.8);
+}
+.btn3{
+  background-color: transparent;
+  flex-grow: 60rpx;
+  margin: auto;
+  position: absolute;
+  bottom: 32%;
+  left: 0;
+  right: 0;
+  border: 5rpx solid rgb(111, 112, 124,0.8);
+}
+.background{
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.topcenter {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: flex-start; /* 垂直置顶 */
+  height: 100vh; /* 设置容器高度为视口高度，确保文本置顶 */
+}
+
+.center-top-text {
+  font-size: 15px;
+  color: #000;
+}

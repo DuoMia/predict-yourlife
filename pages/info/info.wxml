@@ -1,0 +1,21 @@
+<view hidden="{{indexhidden}}">
+  <view class="container" hidden="{{preimg}}">
+  <view class="box">
+  <view class="loading">
+    <view></view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view></view>
+  </view>
+</view>
+  </view> 
+<view class="info" hidden="{{imgload}}">
+  <image src="../image/background.jpg" class="background"/>
+  <image src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/抽签.png" bindload="imgload" bindtap="goto1" class="img"/>
+  <text class="text">抽签</text>
+</view>
+</view>

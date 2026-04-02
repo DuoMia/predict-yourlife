@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/info/info",
+    "pages/mine/mine",
+    "pages/tool/tool",
+    "pages/test/test"
+  ],
+  "subPackages": [
+    {
+      "root": "random",
+      "name": "random",
+      "pages": [
+        "pages/random/random"
+      ],
+      "independent": false
+    },
+    {
+      "root": "lottery",
+      "name": "lottery",
+      "pages": [
+        "pages/lottery/lottery"
+      ],
+      "independent": false
+    },
+    {
+      "root": "datetime",
+      "name": "datetime",
+      "pages": [
+        "pages/datetime/datetime"
+      ],
+      "independent": false
+    },
+    {
+      "root": "lottery_answer",
+      "name": "lottery_answer",
+      "pages": [
+        "pages/lottery_answer/lottery_answer"
+      ],
+      "independent": false
+    }
+  ],
+  "lazyCodeLoading": "requiredComponents",
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

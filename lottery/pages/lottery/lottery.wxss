@@ -1,0 +1,236 @@
+.title1{
+  margin: auto;
+  position: absolute;
+  bottom: 90%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 40rpx;
+  font-family: 'HYXingZBJJ'
+}
+.title2 {
+  font-size: 60rpx;
+  font-weight: bold;
+  margin: auto;
+  position: absolute;
+  bottom: 83%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'HYXingZBJJ'
+}
+.title3{
+  margin: auto;
+  position: absolute;
+  bottom: 78%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 40rpx;
+  font-family: 'HYXingZBJJ'
+}
+.button {
+  font-size:80rpx;
+  height: 110rpx;
+  line-height: 80rpx;
+  margin-bottom: 20rpx;
+  flex-grow: 60rpx;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 27%;
+}
+.sign {
+  font-size: 50rpx;
+  color: #f00;
+  text-align: center;
+  flex-grow: 94rpx;
+  margin: auto;
+  position: absolute;
+  bottom: 55%;
+  left: -80%;
+  font-weight: bold;
+  width: 100vw;
+  font-family: 'HYXingZBJJ'
+}
+.loading-image {
+  width: 372rpx;
+  height: 404rpx;
+  flex-grow: 404rpx;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 40%;
+}
+.container {
+  background-color: #faf8ee;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+}
+.lottery {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+}
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+}
+.load {
+  text-align: center;
+  margin-top: 10px;
+}
+.load text {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 5px;
+}
+.load text.sct {
+  background-color: #ccc;
+}
+.imgnone{
+  z-index: -1;
+}
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.img1{
+  height: 328rpx;
+  width: 328rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  flex-grow: 328rpx;
+  position: absolute;
+  bottom: 40%;
+}
+.img2{
+  height:526rpx ;
+  width: 286rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  flex-grow: 526rpx;
+  position: absolute;
+  bottom: 35%;
+  display: flex;
+}
+.text1{
+  margin: auto;
+  position: absolute;
+  bottom: 63%;
+  left: 10%;
+  width: 42rpx;
+  height: 42rpx;
+  flex-grow: 42rpx;
+  font-weight: bold;
+  font-size: 35rpx;
+  font-family: 'HYXingZBJJ'
+}
+.cup1{
+  width: 230rpx;
+  height: 230rpx;
+  flex-grow: 200rpx;
+  margin: auto;
+  position: absolute;
+  left: 2.5%;
+  bottom: 9%;
+}
+.cup2{
+  width: 230rpx;
+  height: 230rpx;
+  flex-grow: 200rpx;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 9%;
+}
+.cup3{
+  width: 230rpx;
+  height: 230rpx;
+  flex-grow: 200rpx;
+  margin: auto;
+  position: absolute;
+  right: 2.5%;
+  bottom: 9%;
+}
+.text2{
+  height:42rpx ;
+  text-align: center;
+  flex-grow: 42rpx;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8%;
+  font-size: 40rpx;
+  font-family: 'HYXingZBJJ';
+  font-weight: bold;
+}
+.text3{
+  height: 60rpx;
+  text-align: center;
+  flex-grow: 60rpx;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20%;
+  font-size: 40rpx;
+  font-family: 'HYXingZBJJ'
+}
+.text4{
+  height: 60rpx;
+  text-align: center;
+  flex-grow: 60rpx;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 15%;
+  font-size: 40rpx;
+  font-family: 'HYXingZBJJ'
+}
+.restart{
+  font-size:60rpx;
+  height: 90rpx;
+  line-height: 80rpx;
+  flex-grow: 90rpx;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8%;
+}
+.loading-text{
+  margin: auto;
+  position: absolute;
+  bottom: 37%;
+  left: 45%;
+  text-align: center;
+  font-size: 35rpx;
+  font-weight: bold;
+  font-family: 'HYXingZBJJ'
+}
+.background{
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}

@@ -1,0 +1,139 @@
+.input{
+  border:1.5px solid black; padding: 10rpx;
+  margin-top: 2px;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+}
+.fixed-area {
+  width: 560rpx;
+  height: 300rpx;
+  border: 0rpx solid rgb(167, 29, 29);
+  padding: 10rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 400rpx;
+  margin: auto;
+  position: absolute;
+  bottom: 15%;
+}
+.image{
+  left: 0;
+  right: 0;
+  width: 560rpx;
+  height: 560rpx;
+  margin: auto;
+  flex-grow: 560rpx;
+  bottom:50% ;
+  position: absolute;
+}
+.title{
+  position: absolute;
+  bottom: 41%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 45rpx;
+  font-family: 'HYXingZBJJ';
+}
+.btn-group{
+  display: flex;
+  margin-left: 20rpx;
+}
+.input-item {
+  display: flex;
+  height: 70rpx;
+  border: 4rpx solid rgb(136, 172, 142);
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.btn{
+  background-color: transparent;
+}
+.start{
+  margin: auto;
+  flex-grow: 80rpx;
+  position: absolute;
+  border-radius: 60rpx;
+  bottom:7% ;
+  line-height: 80rpx;
+}
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+.modal {
+  position: fixed;
+  z-index: 100;
+  top:8%
+}
+.modal-img{
+  position: relative;
+  height: 80vh;
+  width: 90vw;
+}
+.modal-btn{
+  flex-grow: 60rpx;
+  margin: auto;
+  position: absolute;
+  bottom: 3%;
+  left: 0;
+  right: 0;
+  z-index: 101;
+  background-color: transparent;
+}
+.background{
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.turn{
+  position: absolute;
+  width: 100vw;
+  height: 90rpx;
+}
+.left{
+  height: 80rpx;
+  width: 90rpx;
+  z-index: 1;
+  margin: auto;
+  flex-grow: 200rpx;
+  position: absolute;
+  right: 27%;
+}
+.right{
+  height: 80rpx;
+  width: 90rpx;
+  z-index: 1;
+  margin: auto;
+  flex-grow: 200rpx;
+  position: absolute;
+  left: 31%;
+}
+.btnexplain{
+  position: absolute;
+  margin: auto;
+  right: 0;
+  bottom: 88%;
+}
+.switch{
+  position: absolute;
+  margin: auto;
+  left: 0;
+  bottom: 88%;
+  z-index: 1;
+}

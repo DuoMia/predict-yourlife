@@ -1,0 +1,49 @@
+<view hidden="{{indexhidden}}">
+  <view class="container">
+<image src="../../../pages/image/background.jpg" class="background"/>
+<text style="font-family: HYXingZBJJ;background-color: transparent;color: black;text-align: center;font-size: 50rpx;font-weight: bold;" class="switch" bindtap="goto2">切换</text>
+<image src="../../../pages/image/xzbagua.png" id="myImage" animation="{{animationData}}" class="image">
+  <view class="turn" style="left: {{left}}; top: {{top}};transform: rotate({{rotate}}deg);"hidden="{{select}}">
+    <image src="../../../pages/image/left.png" class="left"/>
+    <image src="../../../pages/image/right.png" class="right"/>
+  </view>
+</image>
+<text style="font-family: HYXingZBJJ;background-color: transparent;color: black;text-align: center;font-size: 50rpx;font-weight: bold;" class="btnexplain" bindtap="openexplain">提示</text>
+<view class="modal-mask" hidden="{{showimg}}" bindtap="closeimg" catchtouchmove="touchmove"></view>
+<view class="modal" hidden="{{showimg}}" catchtouchmove="touchmove">
+  <image src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/首页说明.jpg" class="modal-img"/>
+  <button class="modal-btn" bindtap="closeimg" style="width: 284rpx;height: 90rpx;"></button>
+</view>
+<view class="button1" bindtap="datemodal">
+<text style="text-align: center;font-family: HYXingZBJJ;font-size: 33rpx;font-weight: bolder;">{{info}}</text>
+</view>
+<modal  hidden="{{ishidden}}" bindconfirm="onmodal" bindcancel="offmodal" title="测算日期选择" catchtouchmove="touchmove">
+  <calendar-week bind:solarAndLunar="solarAndLunar" style="font-weight: bold;"></calendar-week>
+</modal>
+<view class="button2" bindtap="timemodal">
+<text style="text-align: center;font-family: HYXingZBJJ;font-size: 33rpx;font-weight: bolder;">{{timeinfo}}</text>
+</view>
+<modal title="点击可以切换十二时辰" hidden="{{ishiddentime}}" bindconfirm="openmodal" bindcancel="cancelmodal" catchtouchmove="touchmove">
+  <picker value="{{hourIndex}}" range="{{hours}}" bindchange="onHourChange">
+    <view class="picker-text" style="font-size: 15px;">{{hours[hourIndex]}}</view>
+  </picker>
+</modal>
+<button type="primary" bindtap="chooseModal" disabled="{{buttonhide}}" style="width: 450rpx; height: 120rpx;font-family: HYXingZBJJ;background-color: transparent;color: rgb({{color}});font-size: 80rpx;font-weight: bold;text-align: center;border: 6rpx solid rgba({{color}}, 0.8)" class="start">开始预测</button>
+<modal-choose showModal="{{showModal}}" bind:closeModal="closeModal" bind:selectOption="selectOption" catchtouchmove="touchmove"></modal-choose>
+<modal hidden="{{ishiddenres}}" bindconfirm="resonmodal" catchtouchmove="touchmove" no-cancel="true">
+    <view style="color: black;">你的测算选择是【{{resp_type}}】</view>
+    <view style="color: black;">
+      测算结果是【{{resp}}】
+    </view>
+    <view bindtap="openinfo" style="color: blue;">
+      {{resp_title}}【{{resp}}】的通用解释
+    </view>
+    <view hidden="{{hiddeninfo}}" style="color: red;">
+      {{respinfo}}
+    </view>
+      <view style="color: black;">
+        本次测算解析：{{resp_info}}
+      </view>
+  </modal>
+</view>
+</view>
