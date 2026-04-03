@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>抽签解签</title>
+  <link rel="stylesheet" href="../../css/common.css">
+  <style>
+    body {
+      background: linear-gradient(180deg, #f8e8d0 0%, #fff 100%);
+      min-height: 100vh;
+      padding: 60px 20px;
+    }
+    .title {
+      text-align: center;
+      font-size: 22px;
+      color: #8b4513;
+      margin-bottom: 20px;
+    }
+    .lottery-container {
+      position: relative;
+      width: 200px;
+      height: 300px;
+      margin: 0 auto 30px;
+    }
+    .lottery-box {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #d4a574, #b8956e);
+      border-radius: 10px 10px 50% 50%;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .lottery-box::before {
+      content: '签';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 60px;
+      color: rgba(255,255,255,0.3);
+    }
+    .stick {
+      position: absolute;
+      width: 8px;
+      height: 80px;
+      background: linear-gradient(90deg, #f5deb3, #deb887);
+      border-radius: 4px;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .stick:hover {
+      transform: translateX(-50%) translateY(-10px);
+    }
+    .stick.selected {
+      transform: translateX(-50%) translateY(-30px);
+      background: linear-gradient(90deg, #ffd700, #daa520);
+    }
+    .stick-number {
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      color: #8b4513;
+    }
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .btn {
+      padding: 12px 30px;
+      border-radius: 25px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .btn-shake {
+      background: linear-gradient(135deg, #d4a574, #b8956e);
+      color: #fff;
+    }
+    .btn-result {
+      background: linear-gradient(135deg, #8b4513, #a0522d);
+      color: #fff;
+    }
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .cup-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .cup {
+      font-size: 60px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .cup:active {
+      transform: scale(0.9);
+    }
+    .cup-result {
+      font-size: 18px;
+      color: #8b4513;
+      margin-top: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+    .status-text {
+      text-align: center;
+      color: #666;
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+  <button class="back-btn" onclick="history.back()">←</button>
+  
+  <h2 class="title">🎋 抽签解签</h2>
+  <p class="status-text" id="status">请先摇签</p>
+  
+  <div class="lottery-container">
+    <div class="lottery-box" id="lottery-box">
+      <div class="stick" id="stick-0" onclick="selectStick(0)">
+        <span class="stick-number">1</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="btn-group">
+    <button class="btn btn-shake" id="btn-shake" onclick="shakeLottery()">摇签</button>
+    <button class="btn btn-result" id="btn-result" onclick="getResult()" disabled>查看结果</button>
+  </div>
+  
+  <div id="cup-section" class="cup-container hidden">
+    <p style="margin-bottom:10px;color:#8b4513;">请掷杯问卦</p>
+    <div class="cup" onclick="throwCup()">🥢</div>
+    <p class="cup-result" id="cup-result"></p>
+  </div>
+
+  <script src="../../js/common.js"></script>
+  <script>
+    var currentSign = 0;
+    var canViewResult = false;
+    var cupSuccess = false;
+    
+    function shakeLottery() {
+      var box = document.getElementById('lottery-box');
+      box.style.animation = 'shake 0.5s ease-in-out';
+      
+      setTimeout(function() {
+        currentSign = Math.floor(Math.random() * 100) + 1;
+        var stick = document.getElementById('stick-0');
+        stick.classList.add('selected');
+        stick.querySelector('.stick-number').textContent = currentSign;
+        
+        document.getElementById('status').textContent = '已抽中第 ' + currentSign + ' 签，请掷杯';
+        document.getElementById('cup-section').classList.remove('hidden');
+        document.getElementById('btn-shake').disabled = true;
+      }, 500);
+    }
+    
+    function throwCup() {
+      if (!currentSign) {
+        showToast('请先摇签');
+        return;
+      }
+      
+      // 随机掷杯结果
+      var rand = Math.random();
+      if (rand > 0.5) {
+        // 圣杯 - 成功
+        document.getElementById('cup-result').textContent = '圣杯！卦象已成';
+        cupSuccess = true;
+        canViewResult = true;
+        document.getElementById('btn-result').disabled = false;
+        document.getElementById('status').textContent = '掷杯成功，可查看签文';
+      } else {
+        // 笑杯 - 重试
+        document.getElementById('cup-result').textContent = '笑杯，请重新掷杯';
+      }
+    }
+    
+    function getResult() {
+      if (!canViewResult) {
+        showToast('请先完成掷杯');
+        return;
+      }
+      // 跳转到解签页面
+      window.location.href = '../lottery_answer/lottery_answer.html?sign=' + currentSign;
+    }
+    
+    // 添加摇签动画
+    var style = document.createElement('style');
+    style.textContent = '@keyframes shake{0%,100%{transform:rotate(0)}25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}}';
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

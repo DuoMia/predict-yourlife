@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>今日运势</title>
+  <link rel="stylesheet" href="../../css/common.css">
+  <style>
+    body {
+      background: linear-gradient(180deg, #fff5e6 0%, #fff 100%);
+      min-height: 100vh;
+      padding: 60px 20px;
+    }
+    .title {
+      text-align: center;
+      font-size: 22px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .result-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .result-name {
+      font-size: 48px;
+      font-weight: bold;
+      color: #d4a574;
+      margin-bottom: 20px;
+    }
+    .result-info {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.8;
+      text-align: left;
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .type-tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .type-tab {
+      padding: 8px 16px;
+      background: #f0f0f0;
+      border-radius: 20px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+    }
+    .type-tab.active {
+      background: #d4a574;
+      color: #fff;
+    }
+    .detail-box {
+      background: #fff8f0;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    .detail-title {
+      font-size: 14px;
+      color: #d4a574;
+      margin-bottom: 10px;
+    }
+    .detail-text {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.6;
+    }
+    .btn-calculate {
+      background: linear-gradient(135deg, #d4a574, #c49464);
+      color: #fff;
+      border: none;
+      padding: 15px 40px;
+      border-radius: 30px;
+      font-size: 18px;
+      cursor: pointer;
+      margin: 20px 0;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <button class="back-btn" onclick="history.back()">←</button>
+  
+  <h2 class="title">🔮 今日运势</h2>
+  
+  <div id="init-box" class="result-box">
+    <p style="color:#999;font-size:16px;">点击下方按钮测算今日运势</p>
+    <button class="btn-calculate" onclick="calculateFortune()">开始测算</button>
+  </div>
+  
+  <div id="result-box" class="result-box hidden">
+    <div id="result-name" class="result-name"></div>
+    <div id="result-info" class="result-info"></div>
+    
+    <div class="type-tabs">
+      <button class="type-tab active" onclick="showDetail(0)">出行求财</button>
+      <button class="type-tab" onclick="showDetail(1)">疾病康愈</button>
+      <button class="type-tab" onclick="showDetail(2)">失物寻找</button>
+      <button class="type-tab" onclick="showDetail(3)">吊宫修造</button>
+    </div>
+    
+    <div class="detail-box">
+      <div class="detail-title" id="detail-title">出行求财</div>
+      <div class="detail-text" id="detail-text"></div>
+    </div>
+    
+    <button class="btn-calculate" onclick="calculateFortune()" style="margin-top:20px;">重新测算</button>
+  </div>
+
+  <script src="../../js/common.js"></script>
+  <script>
+    var currentResult = '';
+    var currentType = 0;
+    
+    // 基于日期生成运势
+    function calculateFortune() {
+      var today = new Date();
+      var seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+      var results = ['大安', '留连', '速喜', '赤口', '小吉', '空亡'];
+      
+      // 使用日期作为种子生成伪随机数
+      var index = (seed * 9301 + 49297) % 233280;
+      index = Math.floor((index / 233280) * 6);
+      currentResult = results[index];
+      
+      showResult();
+    }
+    
+    function showResult() {
+      document.getElementById('init-box').classList.add('hidden');
+      document.getElementById('result-box').classList.remove('hidden');
+      document.getElementById('result-name').textContent = currentResult;
+      document.getElementById('result-info').textContent = resultData[currentResult].info;
+      showDetail(0);
+    }
+    
+    function showDetail(type) {
+      currentType = type;
+      var tabs = document.querySelectorAll('.type-tab');
+      tabs.forEach(function(tab, i) {
+        tab.classList.toggle('active', i === type);
+      });
+      document.getElementById('detail-title').textContent = typeNames[type];
+      document.getElementById('detail-text').textContent = getDetailInfo(currentResult, type);
+    }
+  </script>
+</body>
+</html>

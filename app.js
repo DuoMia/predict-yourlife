@@ -146,7 +146,11 @@ function throwCup() {
 
 // 取签结果
 function getResult() {
-    viewResult();
+    if (!canViewResult || !currentSign) {
+        showToast('请先完成抽签和掷杯');
+        return;
+    }
+    showAnswerPage();
 }
 
 // 查看结果
@@ -155,9 +159,17 @@ function viewResult() {
         showToast('请先完成抽签和掷杯');
         return;
     }
-    
-    // 跳转到解签页面(这里简化处理,直接显示)
-    showToast('第' + currentSign + '签 - 请查看解签图片');
+    showAnswerPage();
+}
+
+// 显示解签页面
+function showAnswerPage() {
+    const answerImg = document.getElementById('answer-img');
+    const answerLoading = document.getElementById('answer-loading');
+    answerImg.style.display = 'none';
+    answerLoading.style.display = 'block';
+    answerImg.src = 'picture/签文/签' + currentSign + '.jpg';
+    showPage('answer-page');
 }
 
 // 随机数预测相关变量

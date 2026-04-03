@@ -622,6 +622,15 @@
         <button class="modal-btn" onclick="closeModal('explain-modal')">我知道了</button>
     </div>
     
+    <!-- 解签页 -->
+    <div id="answer-page" class="page">
+        <button class="back-btn" onclick="showPage('main-page')">←</button>
+        <div id="answer-loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #666;">
+            <p>签文加载中...</p>
+        </div>
+        <img id="answer-img" src="" alt="签文" style="display: none; width: 100%; position: absolute; top: 0; left: 0;" onload="document.getElementById('answer-loading').style.display='none'; this.style.display='block';">
+    </div>
+
     <!-- Toast -->
     <div id="toast" class="toast"></div>
     
