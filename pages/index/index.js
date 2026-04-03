@@ -1,6 +1,4 @@
 // pages/index/index.js
-const db = wx.cloud.database()
-const app = getApp()
 Page({
 
   /**
@@ -10,49 +8,8 @@ Page({
     current: 0,
     imgload:true,
     imgnoload:false,
-    indexhidden:true
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  isonline(){
-    if(app.globalData.online=="no"){
-      setTimeout(()=>{
-        this.isonline()
-        },50)
-    }else{
-      if(app.globalData.online==true){
-        this.setData({
-          indexhidden:false
-        })
-      }else{
-        wx.redirectTo({
-          url: '../test/test',
-        })
-      }
-    }
-  },
-  onLoad: async function () {
-    this.isonline()
-    this.openid = await getApp().getOpenid()
-    var openid = this.openid
-    db.collection("user_info").where({
-      _openid:openid   //进行筛选
-    }).get().then(res=>{
-      if(res.data.length==0){
-        console.log("添加用户")
-        db.collection("user_info").add({
-          data:{
-            status:0,
-            datetime:db.serverDate(),
-            lottery:0
-          }
-        })
-      }
-      else{
-        console.log("已有该用户")
-      }
-    })
+  onLoad: function () {
   },
   imgload:function(){
       this.setData({

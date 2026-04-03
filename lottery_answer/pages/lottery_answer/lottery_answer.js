@@ -1,9 +1,5 @@
-const app = getApp()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     sign:"",
     img:"",
@@ -12,34 +8,12 @@ Page({
     width:"",
     imgload:true,
     preimg:false,
-    indexhidden:true
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  isonline(){
-    if(app.globalData.online=="no"){
-      setTimeout(()=>{
-        this.isonline()
-        },50)
-    }else{
-      if(app.globalData.online==true){
-        this.setData({
-          indexhidden:false
-        })
-      }else{
-        wx.redirectTo({
-          url: '../../../pages/test/test',
-        })
-      }
-    }
-  },
   onLoad(options) {
-    this.isonline()
     console.log("抽到的签是"+options.sign)
     this.setData({
-      img:"cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/签文小/签"+options.sign+".jpg"
+      img:"../../image/签文/签"+options.sign+".jpg"
     })
     var image = this.data.img
     wx.getImageInfo({

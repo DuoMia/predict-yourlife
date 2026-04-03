@@ -1,48 +1,19 @@
-const app = getApp()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     current: 0,
     imgload:true,
     imgnoload:false,
-    indexhidden:true
   },
-  isonline(){
-    if(app.globalData.online=="no"){
-      setTimeout(()=>{
-        this.isonline()
-        },50)
-    }else{
-      if(app.globalData.online==true){
-        this.setData({
-          indexhidden:false
-        })
-      }else{
-        wx.redirectTo({
-          url: '../test/test',
-        })
-      }
-    }
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   onLoad() {
-    this.isonline()
   },
   imgload:function(){
-      this.setData({
-        imgload:false,
-        imgnoload:true
-      })
-    },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+    this.setData({
+      imgload:false,
+      imgnoload:true
+    })
+  },
   onReady() {
     this.load()
   },
@@ -55,54 +26,19 @@ Page({
       this.setData({
         current: this.data.current+1
       });
-      if(this.data.current > 3) 
+      if(this.data.current > 3)
         this.setData({
           current: 0
         });
         n++;
     }, 400);
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  },
+  onShow() {},
+  onHide() {},
+  onUnload() {},
+  onPullDownRefresh() {},
+  onReachBottom() {},
+  onShareAppMessage() {},
   goto1(){
     wx.navigateTo({
       url: '../../datetime/pages/datetime/datetime',

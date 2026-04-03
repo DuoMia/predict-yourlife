@@ -1,5 +1,4 @@
-<view hidden="{{indexhidden}}">
-  <view class="container">
+<view class="container">
   <image src="../../../pages/image/background.jpg" class="background"/>
   <text style="font-family: HYXingZBJJ;background-color: transparent;color: black;text-align: center;font-size: 50rpx;font-weight: bold;" class="switch" bindtap="goto1">切换</text>
   <image src="../../../pages/image/xzbagua.png" id="myImage" animation="{{animationData}}" class="image">
@@ -11,7 +10,7 @@
   <text style="font-family: HYXingZBJJ;background-color: transparent;color: black;text-align: center;font-size: 50rpx;font-weight: bold;" class="btnexplain" bindtap="openexplain">提示</text>
 <view class="modal-mask" hidden="{{showimg}}" bindtap="closeimg" catchtouchmove="touchmove"></view>
 <view class="modal" hidden="{{showimg}}" catchtouchmove="touchmove">
-  <image src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/首页说明.jpg" class="modal-img"/>
+  <image src="../../image/首页说明.png" class="modal-img"/>
   <button class="modal-btn" bindtap="closeimg" style="width: 284rpx;height: 90rpx;"></button>
 </view>
   <text class="title">请输入你心中所想的一个或多个数，并点击开始按钮</text>
@@ -43,5 +42,4 @@
         本次测算解析：{{resp_info}}
       </view>
   </modal>
-</view>
 </view>

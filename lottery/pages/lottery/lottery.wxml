@@ -1,5 +1,4 @@
-<view hidden="{{indexhidden}}">
-  <view class="container" hidden="{{imgnoload}}"> 
+<view class="container" hidden="{{imgnoload}}">
   <view>
     <image class='logo' src='../../image/chouqiantu.png'></image>
     <view class='load'>
@@ -8,9 +7,9 @@
       <text class='{{current == 2 ? "sct": ""}}'></text>
       <text class='{{current == 3 ? "sct": ""}}'></text>
     </view>
-  </view> 
-  <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/圣杯.png" />
-  <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/笑杯.png" />
+  </view>
+  <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="../../image/圣杯.png" />
+  <image class="imgnone" style="opacity: 0; width: 0;height: 0;" src="../../image/笑杯.png" />
 </view>
 <view class="lottery" hidden="{{imgload}}">
   <image src="../../../pages/image/background.jpg" class="background"/>
@@ -44,8 +43,7 @@
   <button bindtap="restart" type="primary" hidden="{{texthide}}"class="restart"style="width:600rpx;font-family: HYXingZBJJ;background-color: transparent;text-align: center;color: #09bb07">实在等不及就点我</button>
 </view>
 <view hidden="{{isShow}}">
-  <image class="loading-image" src="cloud://pipiyoyo-0ggyytqka90cf293.7069-pipiyoyo-0ggyytqka90cf293-1302175885/小程序图片素材/抽签动图-min.gif" bindload="imgload"></image>
+  <image class="loading-image" src="../../image/抽签动图.gif" bindload="imgload"></image>
   <text class="loading-text" >抽签中</text>
-</view>
 </view>
 </view>

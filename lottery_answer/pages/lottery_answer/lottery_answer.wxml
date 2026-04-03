@@ -1,5 +1,4 @@
-<view hidden="{{indexhidden}}">
-  <view class="container" hidden="{{preimg}}"> 
+<view class="container" hidden="{{preimg}}">
   <view class="box">
   <view class="loading">
     <view></view>
