@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>预测人生</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'HYXingZBJJ', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .page {
+            display: none;
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+        
+        /* 首页样式 */
+        .index-page .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .index-page .load {
+            position: absolute;
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        
+        .load-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 0 5px;
+        }
+        
+        .load-dot.active {
+            background-color: #ccc;
+        }
+        
+        .main-page .top-text {
+            position: absolute;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 15px;
+            color: #000;
+            text-align: center;
+        }
+        
+        .main-page .btn1,
+        .main-page .btn2,
+        .main-page .btn3 {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: transparent;
+            border: 2px solid rgba(111, 112, 124, 0.8);
+            cursor: pointer;
+            outline: none;
+        }
+        
+        .main-page .btn1 {
+            bottom: 52%;
+            width: 175px;
+            height: 55px;
+        }
+        
+        .main-page .btn2 {
+            bottom: 42%;
+            width: 175px;
+            height: 50px;
+        }
+        
+        .main-page .btn3 {
+            bottom: 32%;
+            width: 175px;
+            height: 50px;
+        }
+        
+        /* 工具选择页样式 */
+        .tool-page .btn1,
+        .tool-page .btn2 {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: transparent;
+            border: 2px solid rgba(111, 112, 124, 0.8);
+            cursor: pointer;
+            outline: none;
+            width: 115px;
+            height: 45px;
+        }
+        
+        .tool-page .btn1 {
+            bottom: 55%;
+        }
+        
+        .tool-page .btn2 {
+            bottom: 40%;
+        }
+        
+        /* 抽签页样式 */
+        .lottery-page .title1 {
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        .lottery-page .title2 {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            font-weight: bold;
+            color: #7c0b0b;
+        }
+        
+        .lottery-page .title3 {
+            position: absolute;
+            top: 18%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .lottery-page .sign-img {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: auto;
+            cursor: pointer;
+        }
+        
+        .lottery-page .sign-number {
+            position: absolute;
+            top: 32%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: #7c0b0b;
+            cursor: pointer;
+        }
+        
+        .lottery-page .action-btn {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 225px;
+            background-color: transparent;
+            color: #7c0b0b;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 10px;
+            font-family: inherit;
+        }
+        
+        .lottery-page .draw-btn {
+            bottom: 40%;
+        }
+        
+        .lottery-page .throw-btn {
+            bottom: 35%;
+        }
+        
+        .lottery-page .get-btn {
+            bottom: 30%;
+        }
+        
+        .lottery-page .cup-container {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+        
+        .lottery-page .cup-img {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .lottery-page .result-text {
+            position: absolute;
+            bottom: 55%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+            width: 80%;
+        }
+        
+        /* 预测页样式 */
+        .predict-page .switch-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 18px;
+            color: #000;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .predict-page .explain-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 18px;
+            color: #000;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .predict-page .bagua-img {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            transition: transform 1s linear;
+        }
+        
+        .predict-page .input-area {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        
+        .predict-page .input-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .predict-page .num-input {
+            width: 163px;
+            height: 29px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .predict-page .add-btn,
+        .predict-page .del-btn {
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+        .predict-page .start-btn {
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 225px;
+            height: 60px;
+            background-color: transparent;
+            color: rgb(124, 11, 11);
+            font-size: 28px;
+            font-weight: bold;
+            border: 3px solid rgba(124, 11, 124, 0.8);
+            cursor: pointer;
+            outline: none;
+            font-family: inherit;
+        }
+        
+        .predict-page .start-btn:disabled {
+            color: grey;
+            border-color: rgba(128, 128, 128, 0.8);
+        }
+        
+        /* 日期选择页样式 */
+        .datetime-page .date-btn,
+        .datetime-page .time-btn {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(111, 112, 124, 0.5);
+            cursor: pointer;
+            text-align: center;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        .datetime-page .date-btn {
+            bottom: 45%;
+        }
+        
+        .datetime-page .time-btn {
+            bottom: 35%;
+        }
+        
+        /* 模态框 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            z-index: 1001;
+            max-width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+        
+        .modal.active {
+            display: block;
+        }
+        
+        .modal-mask {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        
+        .modal-mask.active {
+            display: block;
+        }
+        
+        .modal-btn {
+            margin-top: 15px;
+            padding: 8px 20px;
+            background-color: #09bb07;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .modal-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .option-item {
+            padding: 12px;
+            margin: 8px 0;
+            background: #f5f5f5;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .option-item:hover {
+            background: #e0e0e0;
+        }
+        
+        /* 返回按钮 */
+        .back-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 10;
+        }
+        
+        /* Toast提示 */
+        .toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            z-index: 2000;
+            display: none;
+        }
+        
+        .toast.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 首页 - 加载页 -->
+    <div id="loading-page" class="page active">
+        <img src="pages/image/background.jpg" class="background" alt="背景">
+        <img src="pages/image/preimg.jpg" class="logo" alt="Logo">
+        <div class="load">
+            <span class="load-dot"></span>
+            <span class="load-dot"></span>
+            <span class="load-dot"></span>
+            <span class="load-dot"></span>
+        </div>
+    </div>
+    
+    <!-- 主页面 -->
+    <div id="main-page" class="page main-page">
+        <img src="picture/首页图.jpg" class="background" alt="背景">
+        <p class="top-text">娱乐为主,结果仅供参考</p>
+        <button class="btn1" onclick="showPage('tool-page')"></button>
+        <button class="btn2" onclick="showPage('info-page')"></button>
+        <button class="btn3" onclick="showPage('mine-page')"></button>
+    </div>
+    
+    <!-- 工具选择页 -->
+    <div id="tool-page" class="page tool-page">
+        <img src="picture/选择入口.png" class="background" alt="背景">
+        <button class="back-btn" onclick="showPage('main-page')">←</button>
+        <button class="btn1" onclick="showPage('datetime-page')"></button>
+        <button class="btn2" onclick="showPage('random-page')"></button>
+    </div>
+    
+    <!-- 抽签信息页 -->
+    <div id="info-page" class="page">
+        <img src="pages/image/background.jpg" class="background" alt="背景">
+        <button class="back-btn" onclick="showPage('main-page')">←</button>
+        <img src="lottery/image/chouqiantu.png" class="sign-img" onclick="showPage('lottery-page')" style="top: 40%; cursor: pointer;" alt="抽签图">
+    </div>
+    
+    <!-- 个人中心页 -->
+    <div id="mine-page" class="page">
+        <img src="pages/image/background.jpg" class="background" alt="背景">
+        <button class="back-btn" onclick="showPage('main-page')">←</button>
+        <div style="position: absolute; top: 30%; left: 50%; transform: translateX(-50%); width: 80%;">
+            <button class="modal-btn" style="width: 100%; font-size: 24px; margin-bottom: 20px; background-color: transparent; color: rgb(90, 90, 90); border: 2px solid rgba(90, 90, 90, 0.8);">在线客服</button>
+            <button class="modal-btn" style="width: 100%; font-size: 24px; background-color: transparent; color: rgb(90, 90, 90); border: 2px solid rgba(90, 90, 90, 0.8);">反馈建议</button>
+        </div>
+    </div>
+    
+    <!-- 抽签页 -->
+    <div id="lottery-page" class="page lottery-page">
+        <img src="pages/image/background.jpg" class="background" alt="背景">
+        <button class="back-btn" onclick="showPage('main-page')">←</button>
+        
+        <p class="title1">抽取灵签后需要掷出三次圣杯方可使灵签显灵,如若掷出笑杯,请重新掷杯。</p>
+        <p class="title2">请抽取今日灵签</p>
+        <p class="title3">一日只可取一签,多取无用</p>
+        
+        <img id="sign-img" src="lottery/image/chouqiantu.png" class="sign-img" onclick="viewResult()" alt="签">
+        <div id="sign-number" class="sign-number" onclick="viewResult()"></div>
+        
+        <button id="throw-btn" class="action-btn throw-btn" onclick="throwCup()">点击掷杯</button>
+        <button id="draw-btn" class="action-btn draw-btn" onclick="drawLot()" style="display: none;">点击抽签</button>
+        <button id="get-btn" class="action-btn get-btn" onclick="getResult()" style="display: none;">点击取签</button>
+        
+        <div id="cup-container" class="cup-container" style="display: none;">
+            <img id="cup1" class="cup-img" src="" alt="杯">
+            <img id="cup2" class="cup-img" src="" alt="杯">
+            <img id="cup3" class="cup-img" src="" alt="杯">
+        </div>
+        
+        <p id="result-text" class="result-text"></p>
+    </div>
+    
+    <!-- 随机数预测页 -->
+    <div id="random-page" class="page predict-page">
+        <img src="pages/image/background.jpg" class="background" alt="背景">
+        <button class="back-btn" onclick="showPage('tool-page')">←</button>
+        <span class="switch-btn" onclick="showPage('datetime-page')">切换</span>
+        <span class="explain-btn" onclick="showModal('explain-modal')">提示</span>
+        
+        <img id="random-bagua" src="pages/image/xzbagua.png" class="bagua-img" alt="八卦">
+        
+        <div class="input-area">
+            <p style="text-align: center; margin-bottom: 10px;">请输入你心中所想的一个或多个数,并点击开始按钮</p>
+            <div id="random-inputs">
+                <div class="input-item">
+                    <input type="number" class="num-input" placeholder="请输入数字" onchange="updateSum()">
+                    <button class="del-btn" onclick="removeInput(this)" style="display: none;">−</button>
+                </div>
+            </div>
+            <button class="add-btn" onclick="addInput()" style="display: block; margin: 10px auto; font-size: 24px;">+</button>
+        </div>
+        
+        <button id="random-start-btn" class="start-btn" onclick="startRandomPredict()">开始预测</button>
+    </div>
+    
+    <!-- 日期时辰预测页 -->
+    <div id="datetime-page" class="page predict-page datetime-page">
+        <img src="pages/image/background.jpg" class="background" alt="背景">
+        <button class="back-btn" onclick="showPage('tool-page')">←</button>
+        <span class="switch-btn" onclick="showPage('random-page')">切换</span>
+        <span class="explain-btn" onclick="showModal('explain-modal')">提示</span>
+        
+        <img id="datetime-bagua" src="pages/image/xzbagua.png" class="bagua-img" alt="八卦">
+        
+        <button id="date-btn" class="date-btn" onclick="showModal('date-modal')">点击选择你想测算的日期</button>
+        <button id="time-btn" class="time-btn" onclick="showModal('time-modal')">点击选择你想测算的时辰</button>
+        
+        <button id="datetime-start-btn" class="start-btn" onclick="startDatetimePredict()">开始预测</button>
+    </div>
+    
+    <!-- 结果模态框 -->
+    <div id="result-modal" class="modal">
+        <div class="modal-title">测算结果</div>
+        <p id="result-type" style="margin: 10px 0; color: #333;"></p>
+        <p id="result-res" style="margin: 10px 0; color: #333;"></p>
+        <p id="result-info-toggle" style="color: blue; cursor: pointer; margin: 10px 0;" onclick="toggleInfo()"></p>
+        <p id="result-info" style="color: red; margin: 10px 0; display: none;"></p>
+        <p id="result-detail" style="color: #333; margin: 10px 0;"></p>
+        <button class="modal-btn" onclick="closeModal('result-modal')">确定</button>
+    </div>
+    
+    <!-- 选择类型模态框 -->
+    <div id="type-modal" class="modal">
+        <div class="modal-title">选择测算类型</div>
+        <div class="option-item" onclick="selectType(0)">出行求财</div>
+        <div class="option-item" onclick="selectType(1)">疾病康愈</div>
+        <div class="option-item" onclick="selectType(2)">失物寻找</div>
+        <div class="option-item" onclick="selectType(3)">吊宫修造</div>
+    </div>
+    
+    <!-- 时辰选择模态框 -->
+    <div id="time-modal" class="modal">
+        <div class="modal-title">选择时辰</div>
+        <select id="time-select" style="width: 100%; padding: 10px; font-size: 14px;">
+            <option value="0">子时(23点整至1点整)</option>
+            <option value="1">丑时(1点整至3点整)</option>
+            <option value="2">寅时(3点整至5点整)</option>
+            <option value="3">卯时(5点整至7点整)</option>
+            <option value="4">辰时(7点整至9点整)</option>
+            <option value="5">巳时(9点整至11点整)</option>
+            <option value="6">午时(11点整至13点整)</option>
+            <option value="7">未时(13点整至15点整)</option>
+            <option value="8">申时(15点整至17点整)</option>
+            <option value="9">酉时(17点整至19点整)</option>
+            <option value="10">戌时(19点整至21点整)</option>
+            <option value="11">亥时(21点整至23点整)</option>
+        </select>
+        <button class="modal-btn" onclick="confirmTime()" style="width: 100%; margin-top: 15px;">确定</button>
+    </div>
+    
+    <!-- 日期选择模态框 -->
+    <div id="date-modal" class="modal">
+        <div class="modal-title">选择日期</div>
+        <input type="date" id="date-input" style="width: 100%; padding: 10px; font-size: 14px;">
+        <p style="margin-top: 10px; font-size: 12px; color: #666;">注: 将使用农历日期进行测算</p>
+        <button class="modal-btn" onclick="confirmDate()" style="width: 100%; margin-top: 15px;">确定</button>
+    </div>
+    
+    <!-- 提示模态框 -->
+    <div id="explain-modal" class="modal">
+        <div class="modal-title">使用说明</div>
+        <p style="line-height: 1.8; color: #333;">
+            1. 随机数预测: 输入你心中所想的数字(可多个),系统将根据数字之和进行测算<br><br>
+            2. 日期时辰预测: 选择农历日期和时辰,系统将根据日期和时辰进行测算<br><br>
+            3. 本程序仅供娱乐,请勿迷信
+        </p>
+        <button class="modal-btn" onclick="closeModal('explain-modal')">我知道了</button>
+    </div>
+    
+    <!-- 解签页 -->
+    <div id="answer-page" class="page">
+        <button class="back-btn" onclick="showPage('main-page')">←</button>
+        <div id="answer-loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #666;">
+            <p>签文加载中...</p>
+        </div>
+        <img id="answer-img" src="" alt="签文" style="display: none; width: 100%; position: absolute; top: 0; left: 0;" onload="document.getElementById('answer-loading').style.display='none'; this.style.display='block';">
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+    
+    <!-- 遮罩 -->
+    <div id="modal-mask" class="modal-mask" onclick="closeAllModals()"></div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
