@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>时辰测算</title>
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="datetime.css">
+</head>
+<body>
+  <div class="container">
+    <img src="../../../picture/背景图.jpg" class="background">
+    <span class="switch" onclick="goto2()">切换</span>
+    <img src="../../../picture/xzbagua.png" id="myImage" class="image">
+    <div id="turn" class="turn">
+      <img src="../../../picture/left.png" class="left">
+      <img src="../../../picture/right.png" class="right">
+    </div>
+    <span class="btnexplain" onclick="openexplain()">提示</span>
+    
+    <div id="date-btn" class="button1" onclick="datemodal()">
+      <span>点击选择你想测算的日期</span>
+    </div>
+    
+    <div id="time-btn" class="button2" onclick="timemodal()">
+      <span>点击选择你想测算的时辰</span>
+    </div>
+    
+    <button id="startBtn" class="start" onclick="chooseModal()">开始预测</button>
+  </div>
+
+  <!-- 说明弹窗 -->
+  <div id="modal-mask" class="modal-mask"></div>
+  <div id="explain-modal" class="modal">
+    <img src="../../../picture/首页说明.png" class="modal-img">
+    <button class="modal-btn" onclick="closeimg()"></button>
+  </div>
+
+  <!-- 日期选择弹窗 -->
+  <div id="date-modal" class="date-modal">
+    <h3>选择测算日期</h3>
+    <input type="date" id="date-input">
+    <button onclick="confirmDate()">确定</button>
+    <button onclick="closeDateModal()">取消</button>
+  </div>
+
+  <!-- 时辰选择弹窗 -->
+  <div id="time-modal" class="time-modal">
+    <h3>点击可以切换十二时辰</h3>
+    <select id="hour-select" onchange="onHourChange(this.value)">
+      <option value="0">子时（23点整至1点整）</option>
+      <option value="1">丑时（1点整至3点整）</option>
+      <option value="2">寅时（3点整至5点整）</option>
+      <option value="3">卯时（5点整至7点整）</option>
+      <option value="4">辰时（7点整至9点整）</option>
+      <option value="5">巳时（9点整至11点整）</option>
+      <option value="6">午时（11点整至13点整）</option>
+      <option value="7">未时（13点整至15点整）</option>
+      <option value="8">申时（15点整至17点整）</option>
+      <option value="9">酉时（17点整至19点整）</option>
+      <option value="10">戌时（19点整至21点整）</option>
+      <option value="11">亥时（21点整至23点整）</option>
+    </select>
+    <button onclick="confirmTime()">确定</button>
+    <button onclick="closeTimeModal()">取消</button>
+  </div>
+
+  <!-- 选项弹窗 -->
+  <div id="option-mask" class="modal-mask" onclick="closeModal()"></div>
+  <div id="option-modal" class="option-modal">
+    <h3>请选择测算类型</h3>
+    <button onclick="selectOption(0)">出行求财</button>
+    <button onclick="selectOption(1)">疾病康愈</button>
+    <button onclick="selectOption(2)">失物寻找</button>
+    <button onclick="selectOption(3)">吊宫修造</button>
+  </div>
+
+  <!-- 结果弹窗 -->
+  <div id="result-modal" class="modal">
+    <div class="modal-content">
+      <p>你的测算选择是【<span id="resp-type"></span>】</p>
+      <p>测算结果是【<span id="resp-result"></span>】</p>
+      <p class="click-expand" onclick="openinfo()" style="color:blue;cursor:pointer;"><span id="resp-title">点击展开</span>【<span id="resp-name"></span>】的通用解释</p>
+      <p id="info-text" class="info-text" style="color:red;display:none;"></p>
+      <p>本次测算解析：<span id="resp-detail"></span></p>
+      <button onclick="resonmodal()" style="margin-top:15px;padding:10px 30px;cursor:pointer;">确定</button>
+    </div>
+  </div>
+
+  <script src="../../js/common.js"></script>
+  <script src="datetime.js"></script>
+</body>
+</html>

@@ -1,52 +1,54 @@
-Page({
+var current = 0;
+var hasSwitched = false;
 
-  data: {
-    current: 0,
-    imgload:true,
-    imgnoload:false,
-  },
+document.addEventListener('DOMContentLoaded', function() {
+  load();
+  // 3秒后自动切换到主页面
+  setTimeout(function() {
+    if (!hasSwitched) {
+      showMainPage();
+    }
+  }, 3000);
+});
 
-  onLoad() {
-  },
-  imgload:function(){
-    this.setData({
-      imgload:false,
-      imgnoload:true
-    })
-  },
-  onReady() {
-    this.load()
-  },
-  load: function() {
-    var n = 1;
-    var timer = setInterval(()=>{
-      if(n == 10) {
-        clearInterval(timer);
-      }
-      this.setData({
-        current: this.data.current+1
-      });
-      if(this.data.current > 3)
-        this.setData({
-          current: 0
-        });
-        n++;
-    }, 400);
-  },
-  onShow() {},
-  onHide() {},
-  onUnload() {},
-  onPullDownRefresh() {},
-  onReachBottom() {},
-  onShareAppMessage() {},
-  goto1(){
-    wx.navigateTo({
-      url: '../../datetime/pages/datetime/datetime',
-    })
-  },
-  goto2(){
-    wx.navigateTo({
-      url: '../../random/pages/random/random',
-    })
-  }
-})
+function load() {
+  var n = 1;
+  var timer = setInterval(function() {
+    if (n == 10) {
+      clearInterval(timer);
+    }
+    current++;
+    if (current > 3) current = 0;
+    updateLoadDots();
+    n++;
+  }, 400);
+}
+
+function updateLoadDots() {
+  var dots = document.querySelectorAll('.load span');
+  dots.forEach(function(dot, i) {
+    if (i === current) {
+      dot.classList.add('sct');
+    } else {
+      dot.classList.remove('sct');
+    }
+  });
+}
+
+function showMainPage() {
+  hasSwitched = true;
+  document.getElementById('loading-container').style.display = 'none';
+  document.getElementById('main-container').style.display = 'block';
+}
+
+function onMainImgLoad() {
+  showMainPage();
+}
+
+function goto1() {
+  window.location.href = '../../datetime/pages/datetime/datetime.html';
+}
+
+function goto2() {
+  window.location.href = '../../random/pages/random/random.html';
+}

@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>选择入口</title>
+  <title>抽签</title>
   <link rel="stylesheet" href="../../css/common.css">
-  <link rel="stylesheet" href="tool.css">
+  <link rel="stylesheet" href="info.css">
 </head>
 <body>
   <!-- 加载页 -->
   <div id="loading-container" class="container">
-    <div style="margin: auto;">
+    <div style="margin: auto; text-align: center;">
       <img class="logo" src="../../picture/xzbagua.png" alt="logo">
       <div class="load">
         <span class="sct"></span>
@@ -22,13 +22,13 @@
   </div>
 
   <!-- 主页面 -->
-  <div id="main-container" style="display: none;">
-    <img class="img" src="../../picture/选择入口.png" alt="选择入口" onload="onMainImgLoad()" onerror="onMainImgLoad()">
-    <button class="btn1" onclick="goto1()"></button>
-    <button class="btn2" onclick="goto2()"></button>
+  <div id="info-container" class="info" style="display: none;">
+    <img src="../../picture/背景图.jpg" class="background">
+    <img src="../../picture/chouqiantu.png" onload="onImgLoad()" onerror="onImgLoad()" onclick="goto1()" class="img">
+    <span class="text">抽签</span>
   </div>
 
   <script src="../../js/common.js"></script>
-  <script src="tool.js"></script>
+  <script src="info.js"></script>
 </body>
 </html>

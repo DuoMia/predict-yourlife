@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>随机预测</title>
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="random.css">
+</head>
+<body>
+  <div class="container">
+    <img src="../../../picture/背景图.jpg" class="background">
+    <span class="switch" onclick="goto1()">切换</span>
+    <img src="../../../picture/xzbagua.png" id="myImage" class="image">
+    <div id="turn" class="turn">
+      <img src="../../../picture/left.png" class="left">
+      <img src="../../../picture/right.png" class="right">
+    </div>
+    <span class="btnexplain" onclick="openexplain()">提示</span>
+    
+    <p class="title">请输入你心中所想的一个或多个数，并点击开始按钮</p>
+    
+    <div id="fixed-area" class="fixed-area"></div>
+    
+    <button id="startBtn" class="start" onclick="chooseModal()">开始预测</button>
+  </div>
+
+  <!-- 说明弹窗 -->
+  <div id="modal-mask" class="modal-mask" onclick="closeimg()"></div>
+  <div id="explain-modal" class="modal">
+    <img src="../../../picture/首页说明.png" class="modal-img">
+    <button class="modal-btn" onclick="closeimg()"></button>
+  </div>
+
+  <!-- 选项弹窗 -->
+  <div id="option-mask" class="modal-mask" onclick="closeModal()"></div>
+  <div id="option-modal" class="option-modal">
+    <h3>请选择测算类型</h3>
+    <button onclick="selectOption(0)">出行求财</button>
+    <button onclick="selectOption(1)">疾病康愈</button>
+    <button onclick="selectOption(2)">失物寻找</button>
+    <button onclick="selectOption(3)">吊宫修造</button>
+  </div>
+
+  <!-- 结果弹窗 -->
+  <div id="result-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <p>你的测算选择是【<span id="resp-type"></span>】</p>
+      <p>测算结果是【<span id="resp-result"></span>】</p>
+      <p class="click-expand" onclick="openinfo()"><span id="resp-title">点击展开</span>【<span id="resp-name"></span>】的通用解释</p>
+      <p id="info-text" class="info-text"></p>
+      <p>本次测算解析：<span id="resp-detail"></span></p>
+      <button onclick="onmodal()" style="margin-top:15px;padding:10px 30px;cursor:pointer;">确定</button>
+    </div>
+  </div>
+
+  <script src="../../js/common.js"></script>
+  <script src="random.js"></script>
+</body>
+</html>

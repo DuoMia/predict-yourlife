@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>抽签解签</title>
+  <link rel="stylesheet" href="../../../css/common.css">
+  <link rel="stylesheet" href="lottery.css">
+</head>
+<body>
+  <!-- 加载页 -->
+  <div id="loading-container" class="container">
+    <div style="margin: auto;">
+      <img class="logo" src="../../image/chouqiantu.png" alt="logo">
+      <div class="load">
+        <span class="sct"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 抽签主页面 -->
+  <div id="lottery-container" class="lottery" style="display:none;">
+    <img src="../../../picture/背景图.jpg" class="background">
+    
+    <p class="title1">抽取灵签后需要掷出三次圣杯方可使灵签显灵，如若掷出笑杯，请重新掷杯。</p>
+    <p class="title2">请抽取今日灵签</p>
+    <p class="title3">一日只可取一签,多取无用</p>
+    
+    <div class="sign-container">
+      <img id="img1" src="../../image/chouqiantu.png" class="img1">
+      <img id="img2" src="../../image/qianmian.png" onclick="gotores()" class="img2" style="display:none;">
+      <span id="sign" class="sign" onclick="gotores()" style="display:none;"></span>
+    </div>
+    
+    <button id="btn-throw" class="button" onclick="onButtonClick()" style="display:none;">点击掷杯</button>
+    <button id="btn-draw" class="button" onclick="draw()">点击抽签</button>
+    <button id="btn-getres" class="button" onclick="getres()" style="display:none;">点击取签</button>
+    
+    <div id="cups-container" class="image-container" style="display:none;">
+      <img id="cup1" class="cup1" src="">
+      <img id="cup2" class="cup2" src="">
+      <img id="cup3" class="cup3" src="">
+    </div>
+    
+    <p id="text2" class="text2"></p>
+    <p id="text3" class="text3" style="display:none;">每日24点刷新抽签次数哦~</p>
+    <p id="text4" class="text4" style="display:none;">（点击上方灵签也可跳转至解签页面）</p>
+    <button id="restart-btn" class="restart" onclick="restart()" style="display:none;">实在等不及就点我</button>
+    
+    <!-- 抽签动画 -->
+    <div id="loading-lottery" style="display:none;">
+      <img class="loading-image" src="../../../picture/抽签动图.gif" onload="imgloadDone()" onerror="imgloadDone()">
+      <p class="loading-text">抽签中</p>
+    </div>
+  </div>
+
+  <script src="../../../js/common.js"></script>
+  <script src="lottery.js"></script>
+</body>
+</html>

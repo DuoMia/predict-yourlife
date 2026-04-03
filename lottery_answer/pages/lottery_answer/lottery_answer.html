@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>选择入口</title>
+  <title>签文</title>
   <link rel="stylesheet" href="../../css/common.css">
-  <link rel="stylesheet" href="tool.css">
+  <link rel="stylesheet" href="lottery_answer.css">
 </head>
 <body>
   <!-- 加载页 -->
   <div id="loading-container" class="container">
-    <div style="margin: auto;">
-      <img class="logo" src="../../picture/xzbagua.png" alt="logo">
+    <div style="margin: auto; text-align: center;">
       <div class="load">
         <span class="sct"></span>
         <span></span>
@@ -21,14 +20,12 @@
     </div>
   </div>
 
-  <!-- 主页面 -->
-  <div id="main-container" style="display: none;">
-    <img class="img" src="../../picture/选择入口.png" alt="选择入口" onload="onMainImgLoad()" onerror="onMainImgLoad()">
-    <button class="btn1" onclick="goto1()"></button>
-    <button class="btn2" onclick="goto2()"></button>
+  <!-- 签文图片 -->
+  <div id="main-container" style="display:none;">
+    <img id="sign-image" class="sign-image" onload="onImgLoad()" onerror="onImgLoad()">
   </div>
 
   <script src="../../js/common.js"></script>
-  <script src="tool.js"></script>
+  <script src="lottery_answer.js"></script>
 </body>
 </html>

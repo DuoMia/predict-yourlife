@@ -1,182 +1,222 @@
-Page({
+var signList = [];
+for (var i = 1; i <= 100; i++) signList.push(i);
 
-  data: {
-    signList: [
-      1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100
-    ],
-    sign: "",
-    isShow:true,
-    current: 0,
-    imgload:true,
-    imgnoload:false,
-    title:"",
-    btnhide:true,
-    btnhide2:false,
-    btnhide3:true,
-    imghide:true,
-    imghide2:false,
-    imghide3:false,
-    images: [
-      '../../image/圣杯.png',
-      '../../image/圣杯.png',
-      '../../image/圣杯.png',
-      '../../image/圣杯.png',
-      '../../image/笑杯.png',
-      '../../image/圣杯.png',
-      '../../image/圣杯.png',
-      '../../image/圣杯.png'
-    ],
-    image1: '',
-    image2: '',
-    image3: '',
-    count: 0,
-    buttonhide:false,
-    color:"rgb(124, 11, 11)",
-    texthide:true,
-    texthide2:true,
-    resopen:true
-  },
+var sign = "";
+var isShow = true;
+var current = 0;
+var hasSwitched = false;
+var title = "";
+var btnhide = true;      // 掷杯按钮隐藏
+var btnhide2 = false;    // 抽签按钮显示
+var btnhide3 = true;     // 取签按钮隐藏
+var imghide = true;      // 签面隐藏
+var imghide2 = false;    // 抽签图显示
+var imghide3 = true;     // 圣杯容器隐藏
+var image1 = '';
+var image2 = '';
+var image3 = '';
+var count = 0;
+var buttonhide = false;
+var color = "rgb(124, 11, 11)";
+var texthide = true;
+var texthide2 = true;
+var resopen = false;     // 初始不能跳转
+var timer = null;
+var isDrawing = false;
 
-  onLoad: function () {
-    this.setData({
-      imghide3:false
-    })
-  },
-
-  imgload:function(){
-    this.setData({
-      imgload:false,
-      imgnoload:true
-    })
-  },
-
-  onReady() {
-    this.load()
-  },
-
-  load: function() {
-    var n = 1;
-    var timer = setInterval(()=>{
-      if(n == 10) {
-        clearInterval(timer);
-      }
-      this.setData({
-        current: this.data.current+1
-      });
-      if(this.data.current > 3)
-        this.setData({
-          current: 0
-        });
-        n++;
-    }, 400);
-  },
-
-  onShow() {},
-  onHide() {},
-  onUnload() {},
-  onPullDownRefresh() {},
-  onReachBottom() {},
-  onShareAppMessage() {},
-
-  shake: function (res) {
-    if (res.x > 1.5 || res.y > 1.5 || res.z > 1.5) {
-      this.draw()
+document.addEventListener('DOMContentLoaded', function() {
+  load();
+  updateUI();
+  // 3秒后自动显示主页面
+  setTimeout(function() {
+    if (!hasSwitched) {
+      showMainPage();
     }
-  },
+  }, 3000);
+});
 
-  timechange:function(){
-    this.setData({
-      isShow:true
-    })
-    this.timer && clearInterval(this.timer)
-    var index = Math.floor(Math.random() * this.data.signList.length)
-    this.setData({
-      sign: this.data.signList[index],
-      imghide:false
-    })
-  },
-
-  draw: function () {
-    this.setData({
-      isShow:false,
-      imghide2:true,
-      btnhide3:true,
-      title:"",
-      btnhide:true,
-      image1:"",
-      image2:"",
-      image3:"",
-      count:0,
-      sign:"",
-      imghide:true,
-      texthide2:true,
-      resopen:false
-    })
-    this.timer = setInterval(function(){
-      this.timechange()
-      this.setData({
-        btnhide2:true,
-        btnhide:false
-      })
-    }.bind(this),2000)
-  },
-
-  onButtonClick: function() {
-    var randomIndex = Math.floor(Math.random() * this.data.images.length);
-    var randomImage = this.data.images[randomIndex];
-    if (randomImage.indexOf('圣杯.png') > -1) {
-      this.setData({
-        ['image' + (this.data.count + 1)]: randomImage,
-        count: this.data.count + 1,
-        title:"你掷出了一次圣杯，请再掷一次！"
-      })
-      if (this.data.count === 3) {
-        this.setData({
-          aCount: 0,
-          title:"恭喜你,连续三次掷出了圣杯，请取灵签!",
-          btnhide:true,
-          btnhide3:false
-        });
-      }
-    } else {
-      this.setData({
-        ['image' + (this.data.count + 1)]: randomImage,
-        title:"你掷出了笑杯，此签不灵，请重新抽签",
-        btnhide2:false,
-        btnhide:true
-      })
+function load() {
+  var n = 1;
+  var t = setInterval(function() {
+    if (n == 10) {
+      clearInterval(t);
     }
-  },
+    current++;
+    if (current > 3) current = 0;
+    updateLoadDots();
+    n++;
+  }, 400);
+}
 
-  getres:function(){
-    this.setData({
-      btnhide3:true,
-      btnhide2:false,
-      buttonhide:true,
-      color:"grey",
-      texthide:false,
-      resopen:true,
-      imghide3:true
-    })
-    var sign = this.data.sign
-    wx.navigateTo({
-      url: '../../../lottery_answer/pages/lottery_answer/lottery_answer?sign='+sign,
-    })
-  },
+function updateLoadDots() {
+  var dots = document.querySelectorAll('.load span');
+  dots.forEach(function(dot, i) {
+    dot.classList.toggle('sct', i === current);
+  });
+}
 
-  gotores(){
-    var sign = this.data.sign
-    var resopen = this.data.resopen
-    if(resopen == true){
-      wx.navigateTo({
-        url: '../../../lottery_answer/pages/lottery_answer/lottery_answer?sign='+sign,
-      })
-    }
-  },
+function showMainPage() {
+  hasSwitched = true;
+  document.getElementById('loading-container').style.display = 'none';
+  document.getElementById('lottery-container').style.display = 'block';
+}
 
-  restart(){
-    wx.redirectTo({
-      url: '../lottery/lottery',
-    })
+function imgloadDone() {
+  showMainPage();
+}
+
+function draw() {
+  if (isDrawing) return;
+  isDrawing = true;
+  
+  // 重置状态
+  isShow = false;
+  imghide2 = true;     // 隐藏抽签图
+  btnhide3 = true;     // 隐藏取签按钮
+  title = "";
+  btnhide = true;      // 隐藏掷杯按钮
+  image1 = "";
+  image2 = "";
+  image3 = "";
+  count = 0;
+  sign = "";
+  imghide = true;      // 隐藏签面
+  imghide3 = true;     // 隐藏圣杯容器
+  texthide = true;
+  texthide2 = true;
+  resopen = false;
+  
+  // 清空圣杯图片
+  document.getElementById('cup1').src = "";
+  document.getElementById('cup2').src = "";
+  document.getElementById('cup3').src = "";
+  
+  updateUI();
+  
+  document.getElementById('loading-lottery').style.display = 'block';
+  
+  // 2秒后显示签面
+  setTimeout(function() {
+    var index = Math.floor(Math.random() * signList.length);
+    sign = signList[index];
+    imghide = false;    // 显示签面
+    imghide2 = true;    // 隐藏抽签图
+    
+    // 显示签号（格式：第 X 签）
+    document.getElementById('sign').textContent = "第 " + sign + " 签";
+    document.getElementById('img2').style.display = 'block';
+    document.getElementById('sign').style.display = 'block';
+    
+    btnhide2 = true;    // 隐藏抽签按钮
+    btnhide = false;    // 显示掷杯按钮
+    // 圣杯容器等掷杯时再显示
+    
+    document.getElementById('loading-lottery').style.display = 'none';
+    isDrawing = false;
+    
+    updateUI();
+  }, 2000);
+}
+
+function onButtonClick() {
+  // 第一次掷杯时显示圣杯容器
+  if (count === 0) {
+    imghide3 = false;
+    updateUI();
   }
-})
+  
+  // 随机选择圣杯或笑杯（7/8概率圣杯，1/8概率笑杯）
+  var isShengbei = Math.random() < 0.875;  // 87.5%概率圣杯
+  
+  var cupImage = isShengbei ? '../../../picture/圣杯.png' : '../../../picture/笑杯.png';
+  
+  if (isShengbei) {
+    count++;
+    if (count === 1) image1 = cupImage;
+    if (count === 2) image2 = cupImage;
+    if (count === 3) image3 = cupImage;
+    
+    document.getElementById('cup1').src = image1;
+    document.getElementById('cup2').src = image2;
+    document.getElementById('cup3').src = image3;
+    
+    if (count === 3) {
+      title = "恭喜你,连续三次掷出了圣杯，请取灵签!";
+      btnhide = true;
+      btnhide3 = false;
+      resopen = true;
+    } else {
+      title = "你掷出了一次圣杯，请再掷一次！";
+    }
+    
+    document.getElementById('text2').textContent = title;
+  } else {
+    // 笑杯
+    count++;
+    document.getElementById('cup' + count).src = cupImage;
+    title = "你掷出了笑杯，此签不灵，请重新抽签";
+    document.getElementById('text2').textContent = title;
+    
+    // 1.5秒后重置
+    setTimeout(function() {
+      btnhide2 = false;   // 显示抽签按钮
+      btnhide = true;     // 隐藏掷杯按钮
+      imghide = true;     // 隐藏签面
+      imghide3 = true;    // 隐藏圣杯容器
+      count = 0;
+      image1 = "";
+      image2 = "";
+      image3 = "";
+      document.getElementById('cup1').src = "";
+      document.getElementById('cup2').src = "";
+      document.getElementById('cup3').src = "";
+      document.getElementById('img2').style.display = 'none';
+      document.getElementById('sign').style.display = 'none';
+      updateUI();
+    }, 1500);
+    return;
+  }
+  
+  updateUI();
+}
+
+function getres() {
+  if (!resopen) return;
+  
+  btnhide3 = true;
+  btnhide2 = false;
+  buttonhide = true;
+  color = "grey";
+  texthide = false;
+  imghide3 = true;
+  
+  updateUI();
+  
+  window.location.href = '../../../lottery_answer/pages/lottery_answer/lottery_answer.html?sign=' + sign;
+}
+
+function gotores() {
+  if (resopen) {
+    window.location.href = '../../../lottery_answer/pages/lottery_answer/lottery_answer.html?sign=' + sign;
+  }
+}
+
+function restart() {
+  window.location.reload();
+}
+
+function updateUI() {
+  document.getElementById('btn-throw').style.display = btnhide ? 'none' : 'block';
+  document.getElementById('btn-draw').style.display = btnhide2 ? 'none' : 'block';
+  document.getElementById('btn-getres').style.display = btnhide3 ? 'none' : 'block';
+  document.getElementById('img1').style.display = imghide2 ? 'none' : 'block';
+  document.getElementById('img2').style.display = imghide ? 'none' : 'block';
+  document.getElementById('sign').style.display = imghide ? 'none' : 'block';
+  document.getElementById('cups-container').style.display = imghide3 ? 'none' : 'flex';
+  document.getElementById('text2').style.display = (imghide3 && !title) ? 'none' : 'block';
+  document.getElementById('text3').style.display = texthide ? 'none' : 'block';
+  document.getElementById('text4').style.display = texthide ? 'none' : 'block';
+  document.getElementById('restart-btn').style.display = texthide ? 'none' : 'block';
+  document.getElementById('btn-draw').disabled = buttonhide;
+  document.getElementById('btn-draw').style.color = color;
+}

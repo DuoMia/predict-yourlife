@@ -1,0 +1,222 @@
+.button1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  width: 310px;
+  height: 57px;
+  bottom: 35%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: absolute;
+  cursor: pointer;
+}
+.button2 {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  width: 310px;
+  height: 57px;
+  bottom: 20%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  cursor: pointer;
+}
+.picker-text {
+  font-size: 15px;
+  color: #333;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+}
+.image {
+  left: 0;
+  right: 0;
+  width: 280px;
+  height: 280px;
+  margin: auto;
+  bottom: 50%;
+  position: absolute;
+  transition: transform 4s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+.start {
+  margin: auto;
+  position: absolute;
+  border-radius: 30px;
+  bottom: 7%;
+  width: 225px;
+  height: 60px;
+  font-family: 'HYXingZBJJ', serif;
+  background-color: transparent;
+  text-align: center;
+  color: rgb(124, 11, 11);
+  font-size: 40px;
+  font-weight: bold;
+  border: 3px solid rgba(124, 11, 11, 0.8);
+  cursor: pointer;
+}
+.start:disabled {
+  color: grey;
+  border-color: grey;
+}
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  display: none;
+}
+.modal {
+  position: fixed;
+  z-index: 100;
+  top: 8%;
+  left: 5%;
+  width: 90%;
+  background: #fff;
+  border-radius: 8px;
+  display: none;
+}
+.modal-content {
+  padding: 20px;
+}
+.modal-img {
+  position: relative;
+  height: 80vh;
+  width: 90vw;
+}
+.modal-btn {
+  margin: auto;
+  position: absolute;
+  bottom: 3%;
+  left: 0;
+  right: 0;
+  z-index: 101;
+  background-color: transparent;
+  width: 142px;
+  height: 45px;
+  border: none;
+}
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.turn {
+  position: absolute;
+  width: 100vw;
+  height: 45px;
+  display: none;
+}
+.left {
+  height: 40px;
+  width: 45px;
+  z-index: 1;
+  margin: auto;
+  position: absolute;
+  right: 27%;
+}
+.right {
+  height: 40px;
+  width: 45px;
+  z-index: 1;
+  margin: auto;
+  position: absolute;
+  left: 31%;
+}
+.btnexplain {
+  position: absolute;
+  margin: auto;
+  right: 0;
+  bottom: 88%;
+  font-family: 'HYXingZBJJ', serif;
+  background-color: transparent;
+  color: black;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.switch {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  bottom: 88%;
+  z-index: 1;
+  font-family: 'HYXingZBJJ', serif;
+  background-color: transparent;
+  color: black;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.option-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 101;
+  display: none;
+}
+.option-modal h3 {
+  margin-bottom: 15px;
+  text-align: center;
+}
+.option-modal button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  font-size: 16px;
+  cursor: pointer;
+}
+.date-modal, .time-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 101;
+  display: none;
+}
+.date-modal h3, .time-modal h3 {
+  margin-bottom: 15px;
+}
+.date-modal input, .time-modal select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.date-modal button, .time-modal button {
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+}

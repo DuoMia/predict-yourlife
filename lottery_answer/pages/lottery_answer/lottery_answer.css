@@ -1,0 +1,84 @@
+.container {
+  background-color: #faf8ee;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+.box {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.loading {
+  position: relative;
+}
+.loading > div {
+  position: absolute;
+  width: 4px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #b3205d;
+}
+.loading > div:nth-child(1) {
+  top: 20px;
+  left: 0px;
+  animation: loading 1s infinite;
+}
+.loading > div:nth-child(2) {
+  top: 14.1442px;
+  left: 14.1442px;
+  transform: rotate(-45deg);
+  animation: loading 1s infinite 0.125s;
+}
+.loading > div:nth-child(3) {
+  top: 0px;
+  left: 20px;
+  transform: rotate(90deg);
+  animation: loading 1s infinite 0.25s;
+}
+.loading > div:nth-child(4) {
+  top: -14.1442px;
+  left: 14.1442px;
+  transform: rotate(45deg);
+  animation: loading 1s infinite 0.375s;
+}
+.loading > div:nth-child(5) {
+  top: -20px;
+  left: 0px;
+  transform: rotate(0deg);
+  animation: loading 1s infinite 0.5s;
+}
+.loading > div:nth-child(6) {
+  top: -14.1442px;
+  left: -14.1442px;
+  transform: rotate(-45deg);
+  animation: loading 1s infinite 0.625s;
+}
+.loading > div:nth-child(7) {
+  top: 0px;
+  left: -20px;
+  transform: rotate(90deg);
+  animation: loading 1s infinite 0.75s;
+}
+.loading > div:nth-child(8) {
+  top: 14.1442px;
+  left: -14.1442px;
+  transform: rotate(45deg);
+  animation: loading 1s infinite 0.875s;
+}
+
+@keyframes loading {
+  50% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.sign-image {
+  width: 100%;
+  display: block;
+}
