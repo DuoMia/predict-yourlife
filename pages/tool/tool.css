@@ -15,9 +15,9 @@
   display: flex;
 }
 .logo {
-  width: 100px;
-  height: 100px;
-  border-radius: 20px;
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
 }
 .load {
   text-align: center;
