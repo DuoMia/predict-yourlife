@@ -60,10 +60,12 @@ function getDetailInfo(resultName, typeIndex) {
   return '';
 }
 
-// 实时流量统计
+// 实时流量统计（累计总流量）
 (function() {
   var trafficEl = null;
-  var totalSize = 0;
+  var currentPageSize = 0;
+  var lastRecordedSize = 0;
+  var STORAGE_KEY = 'total_traffic';
   
   function formatSize(bytes) {
     if (bytes > 1024 * 1024) {
@@ -75,22 +77,44 @@ function getDetailInfo(resultName, typeIndex) {
     }
   }
   
-  function updateTraffic() {
+  function getTotalTraffic() {
+    var stored = localStorage.getItem(STORAGE_KEY);
+    return stored ? parseInt(stored, 10) : 0;
+  }
+  
+  function setTotalTraffic(bytes) {
+    localStorage.setItem(STORAGE_KEY, bytes.toString());
+  }
+  
+  function getCurrentPageSize() {
+    var size = 0;
     if (window.performance && performance.getEntriesByType) {
       var resources = performance.getEntriesByType('resource');
-      totalSize = 0;
-      
       resources.forEach(function(resource) {
         if (resource.transferSize) {
-          totalSize += resource.transferSize;
+          size += resource.transferSize;
         } else if (resource.encodedBodySize) {
-          totalSize += resource.encodedBodySize;
+          size += resource.encodedBodySize;
         }
       });
-      
-      if (trafficEl) {
-        trafficEl.textContent = '流量: ' + formatSize(totalSize);
-      }
+    }
+    return size;
+  }
+  
+  function updateTraffic() {
+    currentPageSize = getCurrentPageSize();
+    var total = getTotalTraffic();
+    
+    // 累加新增的流量（当前页面加载完成后才累加）
+    if (currentPageSize > lastRecordedSize) {
+      var newBytes = currentPageSize - lastRecordedSize;
+      total += newBytes;
+      setTotalTraffic(total);
+      lastRecordedSize = currentPageSize;
+    }
+    
+    if (trafficEl) {
+      trafficEl.textContent = '总流量: ' + formatSize(total);
     }
   }
   
@@ -98,7 +122,7 @@ function getDetailInfo(resultName, typeIndex) {
     if (!document.getElementById('traffic-stats')) {
       trafficEl = document.createElement('div');
       trafficEl.id = 'traffic-stats';
-      trafficEl.textContent = '流量: 计算中...';
+      trafficEl.textContent = '总流量: 计算中...';
       document.body.appendChild(trafficEl);
     } else {
       trafficEl = document.getElementById('traffic-stats');
