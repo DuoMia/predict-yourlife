@@ -59,3 +59,68 @@ function getDetailInfo(resultName, typeIndex) {
   }
   return '';
 }
+
+// 实时流量统计
+(function() {
+  var trafficEl = null;
+  var totalSize = 0;
+  
+  function formatSize(bytes) {
+    if (bytes > 1024 * 1024) {
+      return (bytes / 1024 / 1024).toFixed(2) + ' MB';
+    } else if (bytes > 1024) {
+      return (bytes / 1024).toFixed(2) + ' KB';
+    } else {
+      return bytes + ' B';
+    }
+  }
+  
+  function updateTraffic() {
+    if (window.performance && performance.getEntriesByType) {
+      var resources = performance.getEntriesByType('resource');
+      totalSize = 0;
+      
+      resources.forEach(function(resource) {
+        if (resource.transferSize) {
+          totalSize += resource.transferSize;
+        } else if (resource.encodedBodySize) {
+          totalSize += resource.encodedBodySize;
+        }
+      });
+      
+      if (trafficEl) {
+        trafficEl.textContent = '流量: ' + formatSize(totalSize);
+      }
+    }
+  }
+  
+  function createTrafficElement() {
+    if (!document.getElementById('traffic-stats')) {
+      trafficEl = document.createElement('div');
+      trafficEl.id = 'traffic-stats';
+      trafficEl.textContent = '流量: 计算中...';
+      document.body.appendChild(trafficEl);
+    } else {
+      trafficEl = document.getElementById('traffic-stats');
+    }
+  }
+  
+  // DOM加载完成后创建元素
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      createTrafficElement();
+      updateTraffic();
+    });
+  } else {
+    createTrafficElement();
+    updateTraffic();
+  }
+  
+  // 实时更新（每500ms）
+  setInterval(updateTraffic, 500);
+  
+  // 页面完全加载后更新
+  window.addEventListener('load', function() {
+    setTimeout(updateTraffic, 100);
+  });
+})();

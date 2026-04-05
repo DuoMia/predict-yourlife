@@ -59,38 +59,3 @@ function gotoinfo() {
 function gotomine() {
   window.location.href = '../mine/mine.html';
 }
-
-// 流量统计
-function updateTrafficStats() {
-  if (window.performance && performance.getEntriesByType) {
-    var resources = performance.getEntriesByType('resource');
-    var totalSize = 0;
-    
-    resources.forEach(function(resource) {
-      if (resource.transferSize) {
-        totalSize += resource.transferSize;
-      } else if (resource.encodedBodySize) {
-        totalSize += resource.encodedBodySize;
-      }
-    });
-    
-    var sizeText;
-    if (totalSize > 1024 * 1024) {
-      sizeText = (totalSize / 1024 / 1024).toFixed(2) + ' MB';
-    } else if (totalSize > 1024) {
-      sizeText = (totalSize / 1024).toFixed(2) + ' KB';
-    } else {
-      sizeText = totalSize + ' B';
-    }
-    
-    var trafficEl = document.getElementById('traffic-stats');
-    if (trafficEl) {
-      trafficEl.textContent = '流量: ' + sizeText;
-    }
-  }
-}
-
-// 页面完全加载后更新流量统计
-window.addEventListener('load', function() {
-  setTimeout(updateTrafficStats, 100);
-});
