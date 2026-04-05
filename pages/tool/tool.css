@@ -59,3 +59,27 @@
 .hidden {
   display: none;
 }
+
+/* 响应式适配 */
+@media screen and (max-width: 380px) {
+  .btn1, .btn2 {
+    width: 95px;
+    height: 38px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .btn1, .btn2 {
+    width: 150px;
+    height: 55px;
+  }
+}
+
+/* 适配不同高度屏幕 */
+@media screen and (max-height: 700px) {
+  .btn1, .btn2 { bottom: 14%; }
+}
+
+@media screen and (min-height: 850px) {
+  .btn1, .btn2 { bottom: 18%; }
+}

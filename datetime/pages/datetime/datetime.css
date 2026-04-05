@@ -220,3 +220,53 @@
   margin: 5px;
   cursor: pointer;
 }
+
+/* 响应式适配 */
+@media screen and (max-width: 380px) {
+  .start {
+    width: 180px;
+    height: 50px;
+    font-size: 32px;
+  }
+  .button1, .button2 {
+    width: 260px;
+    height: 48px;
+    font-size: 14px;
+  }
+  .image {
+    width: 220px;
+    height: 220px;
+  }
+  .btnexplain, .switch {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .start {
+    width: 280px;
+    height: 70px;
+    font-size: 48px;
+  }
+  .button1, .button2 {
+    width: 380px;
+    height: 65px;
+  }
+  .image {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .start { bottom: 5%; }
+  .button1 { bottom: 32%; }
+  .button2 { bottom: 17%; }
+  .image { bottom: 45%; }
+}
+
+@media screen and (min-height: 850px) {
+  .start { bottom: 9%; }
+  .button1 { bottom: 37%; }
+  .button2 { bottom: 22%; }
+}

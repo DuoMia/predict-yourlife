@@ -232,3 +232,76 @@
 .hidden {
   display: none;
 }
+
+/* 响应式适配 */
+@media screen and (max-width: 380px) {
+  .button {
+    font-size: 32px;
+    height: 45px;
+  }
+  .title1, .title3 {
+    font-size: 16px;
+  }
+  .title2 {
+    font-size: 24px;
+  }
+  .sign {
+    font-size: 20px;
+  }
+  .text2, .text3, .text4 {
+    font-size: 16px;
+  }
+  .cup1, .cup2, .cup3 {
+    width: 90px;
+    height: 90px;
+  }
+  .img1 {
+    width: 130px;
+    height: 130px;
+  }
+  .img2 {
+    width: 115px;
+    height: 210px;
+  }
+  .loading-image {
+    width: 150px;
+    height: 160px;
+  }
+  .restart {
+    font-size: 24px;
+    height: 38px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+    font-size: 48px;
+    height: 65px;
+  }
+  .title1, .title3 {
+    font-size: 24px;
+  }
+  .title2 {
+    font-size: 36px;
+  }
+  .cup1, .cup2, .cup3 {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .button { bottom: 24%; }
+  .cup1, .cup2, .cup3 { bottom: 7%; }
+  .img1 { bottom: 35%; }
+  .img2 { bottom: 30%; }
+  .title1 { bottom: 88%; }
+  .title2 { bottom: 81%; }
+  .title3 { bottom: 76%; }
+}
+
+@media screen and (min-height: 850px) {
+  .button { bottom: 30%; }
+  .cup1, .cup2, .cup3 { bottom: 11%; }
+  .text2 { bottom: 10%; }
+}

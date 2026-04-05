@@ -246,3 +246,45 @@
   width: 30px;
   height: 30px;
 }
+
+/* 响应式适配 */
+@media screen and (max-width: 380px) {
+  .start {
+    width: 180px;
+    height: 50px;
+    font-size: 32px;
+  }
+  .image {
+    width: 220px;
+    height: 220px;
+  }
+  .title {
+    font-size: 18px;
+    bottom: 39%;
+  }
+  .fixed-area {
+    width: 240px;
+  }
+  .btnexplain, .switch {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .start {
+    width: 280px;
+    height: 70px;
+    font-size: 48px;
+  }
+  .image {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .start { bottom: 5%; }
+  .fixed-area { bottom: 12%; }
+  .image { bottom: 45%; }
+  .title { bottom: 36%; }
+}
