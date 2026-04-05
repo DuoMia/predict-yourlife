@@ -130,16 +130,12 @@ function onButtonClick() {
   
   var cupImage = isShengbei ? '../../../picture/圣杯.png' : '../../../picture/笑杯.png';
   
+  count++;
+  
+  // 只设置当前掷出的杯
+  document.getElementById('cup' + count).src = cupImage;
+  
   if (isShengbei) {
-    count++;
-    if (count === 1) image1 = cupImage;
-    if (count === 2) image2 = cupImage;
-    if (count === 3) image3 = cupImage;
-    
-    document.getElementById('cup1').src = image1;
-    document.getElementById('cup2').src = image2;
-    document.getElementById('cup3').src = image3;
-    
     if (count === 3) {
       title = "恭喜你,连续三次掷出了圣杯，请取灵签!";
       btnhide = true;
@@ -152,8 +148,6 @@ function onButtonClick() {
     document.getElementById('text2').textContent = title;
   } else {
     // 笑杯
-    count++;
-    document.getElementById('cup' + count).src = cupImage;
     title = "你掷出了笑杯，此签不灵，请重新抽签";
     document.getElementById('text2').textContent = title;
     
