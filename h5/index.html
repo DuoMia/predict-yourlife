@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>预测你的人生</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="loading-screen">
+<div class="loading-box">
+<div class="loading">
+<div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div>
+</div>
+</div>
+</div>
+
+<div id="page-index" class="page">
+<div class="index-loading" data-show="imgnoload">
+<div class="index-logo"><img src="images/preimg.jpg" class="logo-img"></div>
+<div class="index-load-dots">
+<span class="dot" data-dot="0"></span>
+<span class="dot" data-dot="1"></span>
+<span class="dot" data-dot="2"></span>
+<span class="dot" data-dot="3"></span>
+</div>
+</div>
+<div class="index-main" data-show="imgload">
+<img src="images/首页图片.png" class="main-bg" data-action="imgload">
+<div class="topcenter">
+<span class="center-top-text">娱乐为主，结果仅供参考</span>
+</div>
+<button class="btn1" data-action="gototool"></button>
+<button class="btn2" data-action="gotoinfo"></button>
+<button class="btn3" data-action="gotomine"></button>
+</div>
+</div>
+
+<div id="page-info" class="page">
+<div class="info-loading" data-show="preimg">
+<div class="info-loading-box">
+<div class="loading">
+<div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div>
+</div>
+</div>
+</div>
+<div class="info-main" data-show="imgload">
+<img src="images/background.jpg" class="page-bg">
+<img src="images/chouqiantu.png" class="info-img" data-action="imgload goto1">
+<span class="info-text">抽签</span>
+</div>
+</div>
+
+<div id="page-mine" class="page">
+<img src="images/background.jpg" class="page-bg">
+<button class="mine-btn1" data-action="contact">在线客服</button>
+<button class="mine-btn2" data-action="feedback">反馈建议</button>
+</div>
+
+<div id="page-tool" class="page">
+<div class="tool-loading" data-show="imgnoload">
+<div class="tool-logo"><img src="images/xzbagua.png" class="logo-img"></div>
+<div class="tool-load-dots">
+<span class="dot" data-dot="0"></span>
+<span class="dot" data-dot="1"></span>
+<span class="dot" data-dot="2"></span>
+<span class="dot" data-dot="3"></span>
+</div>
+</div>
+<div class="tool-main" data-show="imgload">
+<img src="images/入口选择.png" class="main-bg" data-action="imgload">
+<button class="tool-btn1" data-action="goto1"></button>
+<button class="tool-btn2" data-action="goto2"></button>
+</div>
+</div>
+
+<div id="page-lottery" class="page">
+<div class="lottery-loading" data-show="imgnoload">
+<div class="lottery-load-logo"><img src="images/chouqiantu.png" class="logo-img"></div>
+<div class="lottery-load-dots">
+<span class="dot" data-dot="0"></span>
+<span class="dot" data-dot="1"></span>
+<span class="dot" data-dot="2"></span>
+<span class="dot" data-dot="3"></span>
+</div>
+<img class="lottery-preload-cup" src="images/圣杯.png">
+<img class="lottery-preload-cup" src="images/笑杯.png">
+</div>
+<div class="lottery-main" data-show="imgload">
+<img src="images/background.jpg" class="page-bg">
+<span class="lottery-title1">抽取灵签后需要掷出三次圣杯方可使灵签显灵，如若掷出笑杯，请重新掷杯。</span>
+<span class="lottery-title2">请抽取今日灵签</span>
+<span class="lottery-title3">一日只可取一签,多取无用</span>
+<div class="lottery-img-area">
+<img src="images/chouqiantu.png" class="lottery-img1" data-show="imghide2">
+<img src="images/qianmian.png" class="lottery-img2" data-show="imghide" data-action="gotores">
+<div class="sign-text" data-show="imghide" data-action="gotores"></div>
+<span class="lottery-last-result" data-show="texthide2">上次结果</span>
+</div>
+<button class="lottery-btn lottery-btn-throw" data-show="btnhide" data-action="onButtonClick">点击掷杯</button>
+<button class="lottery-btn lottery-btn-draw" data-show="btnhide2" data-action="draw">点击抽签</button>
+<button class="lottery-btn lottery-btn-get" data-show="btnhide3" data-action="getres">点击取签</button>
+<div class="cup-images" data-show="imghide3">
+<img class="cup1" src="" data-slot="1">
+<img class="cup2" src="" data-slot="2">
+<img class="cup3" src="" data-slot="3">
+</div>
+<span class="lottery-result-text" data-show="imghide3"></span>
+<span class="lottery-refresh-text" data-show="texthide">每日24点刷新抽签次数哦~</span>
+<span class="lottery-hint-text" data-show="texthide">（点击上方灵签也可跳转至解签页面）</span>
+<button class="lottery-restart-btn" data-show="texthide" data-action="restart">实在等不及就点我</button>
+<div class="lottery-drawing" data-show="isShow">
+<img src="images/抽签动图.gif" class="lottery-drawing-img" data-action="imgload">
+<span class="lottery-drawing-text">抽签中</span>
+</div>
+</div>
+</div>
+
+<div id="page-lottery-answer" class="page">
+<img src="" class="lottery-answer-img" data-role="sign-image">
+</div>
+
+<div id="page-datetime" class="page">
+<img src="images/background.jpg" class="page-bg">
+<span class="datetime-switch" data-action="goto2">切换</span>
+<div class="bagua-container">
+<img src="images/xzbagua.png" class="bagua-image" id="datetime-bagua">
+<div class="bagua-pointer" data-show="select">
+<img src="images/left.png" class="pointer-left">
+<img src="images/right.png" class="pointer-right">
+</div>
+</div>
+<span class="datetime-explain" data-action="openexplain">提示</span>
+<div class="explain-mask" data-show="showimg" data-action="closeimg"></div>
+<div class="explain-modal" data-show="showimg">
+<img src="images/首页说明.png" class="explain-modal-img">
+<button class="explain-modal-btn" data-action="closeimg"></button>
+</div>
+<div class="datetime-date-btn" data-action="datemodal">
+<span class="datetime-date-text">点击选择你想测算的日期</span>
+</div>
+<div class="datetime-modal" data-show="ishidden">
+<div class="calendar-container" data-component="calendar"></div>
+<div class="datetime-modal-btns">
+<button class="datetime-modal-cancel" data-action="offmodal">取消</button>
+<button class="datetime-modal-confirm" data-action="onmodal">确定</button>
+</div>
+</div>
+<div class="datetime-time-btn" data-action="timemodal">
+<span class="datetime-time-text">点击选择你想测算的时辰</span>
+</div>
+<div class="time-modal" data-show="ishiddentime">
+<div class="time-modal-title">点击可以切换十二时辰</div>
+<div class="time-picker">
+<select class="time-select">
+<option value="0">子时（23点整至1点整）</option>
+<option value="1">丑时（1点整至3点整）</option>
+<option value="2">寅时（3点整至5点整）</option>
+<option value="3">卯时（5点整至7点整）</option>
+<option value="4">辰时（7点整至9点整）</option>
+<option value="5">巳时（9点整至11点整）</option>
+<option value="6">午时（11点整至13点整）</option>
+<option value="7">未时（13点整至15点整）</option>
+<option value="8">申时（15点整至17点整）</option>
+<option value="9">酉时（17点整至19点整）</option>
+<option value="10">戌时（19点整至21点整）</option>
+<option value="11">亥时（21点整至23点整）</option>
+</select>
+</div>
+<div class="time-modal-btns">
+<button class="time-modal-cancel" data-action="cancelmodal">取消</button>
+<button class="time-modal-confirm" data-action="openmodal">确定</button>
+</div>
+</div>
+<button class="datetime-start-btn" data-action="chooseModal">开始预测</button>
+<div class="type-modal" data-show="showModal">
+<div class="type-modal-mask" data-action="closeModal"></div>
+<div class="type-modal-content">
+<span class="type-modal-title">请选择你想测算的方向</span>
+<div class="type-modal-options">
+<div class="type-option" data-index="0" data-action="selectOption">出行求财</div>
+<div class="type-option" data-index="1" data-action="selectOption">疾病康愈</div>
+<div class="type-option" data-index="2" data-action="selectOption">失物寻找</div>
+<div class="type-option" data-index="3" data-action="selectOption">吊宫修造</div>
+</div>
+</div>
+</div>
+<div class="result-modal" data-show="ishiddenres">
+<div class="result-modal-content">
+<div class="result-type" data-role="resp_type"></div>
+<div class="result-value" data-role="resp"></div>
+<div class="result-explain-link" data-action="openinfo" data-role="resp_title">点击展开</div>
+<div class="result-explain-detail" data-show="hiddeninfo" data-role="respinfo"></div>
+<div class="result-analysis" data-role="resp_info"></div>
+</div>
+<button class="result-modal-confirm" data-action="resonmodal">确定</button>
+</div>
+</div>
+
+<div id="page-random" class="page">
+<img src="images/background.jpg" class="page-bg">
+<span class="random-switch" data-action="goto1">切换</span>
+<div class="bagua-container">
+<img src="images/xzbagua.png" class="bagua-image" id="random-bagua">
+<div class="bagua-pointer" data-show="select">
+<img src="images/left.png" class="pointer-left">
+<img src="images/right.png" class="pointer-right">
+</div>
+</div>
+<span class="random-explain" data-action="openexplain">提示</span>
+<div class="explain-mask" data-show="showimg" data-action="closeimg"></div>
+<div class="explain-modal" data-show="showimg">
+<img src="images/首页说明.png" class="explain-modal-img">
+<button class="explain-modal-btn" data-action="closeimg"></button>
+</div>
+<span class="random-title">请输入你心中所想的一个或多个数，并点击开始按钮</span>
+<div class="random-input-area">
+<div class="random-input-list">
+<div class="random-input-item">
+<input type="number" placeholder="请输入数字" data-index="0">
+<button class="random-add-btn" data-action="addinput"><img src="images/add.png"></button>
+<button class="random-delete-btn" data-action="deletedq" data-index="0"><img src="images/delete.png"></button>
+</div>
+</div>
+</div>
+<button class="random-start-btn" data-action="chooseModal">开始预测</button>
+<div class="type-modal" data-show="showModal">
+<div class="type-modal-mask" data-action="closeModal"></div>
+<div class="type-modal-content">
+<span class="type-modal-title">请选择你想测算的方向</span>
+<div class="type-modal-options">
+<div class="type-option" data-index="0" data-action="selectOption">出行求财</div>
+<div class="type-option" data-index="1" data-action="selectOption">疾病康愈</div>
+<div class="type-option" data-index="2" data-action="selectOption">失物寻找</div>
+<div class="type-option" data-index="3" data-action="selectOption">吊宫修造</div>
+</div>
+</div>
+</div>
+<div class="result-modal" data-show="ishidden">
+<div class="result-modal-content">
+<div class="result-type" data-role="resp_type"></div>
+<div class="result-value" data-role="resp"></div>
+<div class="result-explain-link" data-action="openinfo" data-role="resp_title">点击展开</div>
+<div class="result-explain-detail" data-show="hiddeninfo" data-role="respinfo"></div>
+<div class="result-analysis" data-role="resp_info"></div>
+</div>
+<button class="result-modal-confirm" data-action="onmodal">确定</button>
+</div>
+</div>
+
+<div id="page-calculator" class="page">
+<div class="calculator">
+<div class="calculator-display">
+<span class="display-num" data-slot="0"></span>
+<span class="display-op" data-slot="1"></span>
+<span class="display-num" data-slot="2"></span>
+</div>
+<div class="calculator-btns">
+<div class="calc-row">
+<div class="calc-col calc-clear" data-action="resetBtn">C</div>
+<div class="calc-col" data-action="delBtn">DEL</div>
+<div class="calc-col calc-op" data-action="opBtn" data-val="%">%</div>
+<div class="calc-col calc-op" data-action="opBtn" data-val="÷">÷</div>
+</div>
+<div class="calc-row">
+<div class="calc-col" data-action="numBtn" data-val="7">7</div>
+<div class="calc-col" data-action="numBtn" data-val="8">8</div>
+<div class="calc-col" data-action="numBtn" data-val="9">9</div>
+<div class="calc-col calc-op" data-action="opBtn" data-val="×">×</div>
+</div>
+<div class="calc-row">
+<div class="calc-col" data-action="numBtn" data-val="4">4</div>
+<div class="calc-col" data-action="numBtn" data-val="5">5</div>
+<div class="calc-col" data-action="numBtn" data-val="6">6</div>
+<div class="calc-col calc-op" data-action="opBtn" data-val="-">-</div>
+</div>
+<div class="calc-row">
+<div class="calc-col" data-action="numBtn" data-val="1">1</div>
+<div class="calc-col" data-action="numBtn" data-val="2">2</div>
+<div class="calc-col" data-action="numBtn" data-val="3">3</div>
+<div class="calc-col calc-op" data-action="opBtn" data-val="+">+</div>
+</div>
+<div class="calc-row">
+<div class="calc-col calc-zero" data-action="numBtn" data-val="0">0</div>
+<div class="calc-col" data-action="numBtn" data-val=".">.</div>
+<div class="calc-col calc-equal" data-action="finish">=</div>
+</div>
+</div>
+</div>
+</div>
+
+<script src="js/storage.js"></script>
+<script src="js/lunar.js"></script>
+<script src="js/accurate.js"></script>
+<script src="js/app.js"></script>
+<script src="js/components/calendar.js"></script>
+<script src="js/components/modal.js"></script>
+<script src="js/pages/index.js"></script>
+<script src="js/pages/info.js"></script>
+<script src="js/pages/mine.js"></script>
+<script src="js/pages/tool.js"></script>
+<script src="js/pages/lottery.js"></script>
+<script src="js/pages/lottery-answer.js"></script>
+<script src="js/pages/datetime.js"></script>
+<script src="js/pages/random.js"></script>
+<script src="js/pages/calculator.js"></script>
+</body>
+</html>

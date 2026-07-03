@@ -12,3 +12,23 @@ $RECYCLE.BIN/
 
 # Node.js
 node_modules/
+package-lock.json
+yarn.lock
+
+# 微信开发者工具缓存
+.miniprogram/
+.cache/
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 日志
+*.log
+npm-debug.log*
+
+# 临时文件
+*.tmp
+*.bak

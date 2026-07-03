@@ -1,0 +1,178 @@
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+@font-face{font-family:'HYXingZBJJ';src:url('../fonts/HYXingZBJJ.woff') format('woff');font-weight:normal;font-style:normal;font-display:swap}
+html{font-size:calc(100vw / 7.5)}
+body{margin:0;padding:0;font-family:'HYXingZBJJ',sans-serif;background:#faf8ee;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;overflow:hidden}
+img{display:block;border:0}
+button{font-family:'HYXingZBJJ',sans-serif;border:none;outline:none;cursor:pointer;-webkit-appearance:none;appearance:none;background:transparent;padding:0}
+input{font-family:'HYXingZBJJ',sans-serif;outline:none;border:none;-webkit-appearance:none;appearance:none}
+.page{width:100vw;height:100vh;display:none;position:relative;overflow:hidden}
+.page.active{display:block!important}
+.page-bg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;object-fit:fill}
+#loading-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:#faf8ee;display:flex;align-items:center;justify-content:center;z-index:9999}
+.loading-box{height:100px;display:flex;align-items:center;justify-content:center;overflow:unset}
+.loading{position:relative;width:44px;height:44px}
+.loading>div{position:absolute;width:4px;height:20px;border-radius:10px;background-color:#b3205d}
+.loading>div:nth-child(1){top:20px;left:0;animation:loadingFade 1s infinite}
+.loading>div:nth-child(2){top:14.14px;left:14.14px;transform:rotate(-45deg);animation:loadingFade 1s infinite 0.125s}
+.loading>div:nth-child(3){top:0;left:20px;transform:rotate(90deg);animation:loadingFade 1s infinite 0.25s}
+.loading>div:nth-child(4){top:-14.14px;left:14.14px;transform:rotate(45deg);animation:loadingFade 1s infinite 0.375s}
+.loading>div:nth-child(5){top:-20px;left:0;transform:rotate(0deg);animation:loadingFade 1s infinite 0.5s}
+.loading>div:nth-child(6){top:-14.14px;left:-14.14px;transform:rotate(-45deg);animation:loadingFade 1s infinite 0.625s}
+.loading>div:nth-child(7){top:0;left:-20px;transform:rotate(90deg);animation:loadingFade 1s infinite 0.75s}
+.loading>div:nth-child(8){top:14.14px;left:-14.14px;transform:rotate(45deg);animation:loadingFade 1s infinite 0.875s}
+@keyframes loadingFade{0%{opacity:1}50%{opacity:0.1}100%{opacity:1}}
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes baguaRotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.page-loading-spinner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:30px;height:30px;border:3px solid #ccc;border-top-color:#09bb07;border-radius:50%;animation:spin 0.8s linear infinite;z-index:10}
+.index-loading,.tool-loading,.lottery-loading{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.index-logo,.tool-logo,.lottery-load-logo{margin:auto;position:absolute;left:0;right:0;bottom:60%;width:2.5rem;height:2.5rem}
+.logo-img{width:2.5rem;height:2.5rem;border-radius:50%}
+.index-load-dots,.tool-load-dots,.lottery-load-dots{position:absolute;bottom:50%;display:flex;gap:8px}
+.index-load-dots .dot,.tool-load-dots .dot,.lottery-load-dots .dot{width:10px;height:10px;border-radius:50%;background:#ccc;display:inline-block;transition:background 0.2s}
+.index-load-dots .dot.sct,.tool-load-dots .dot.sct,.lottery-load-dots .dot.sct{background:#09bb07}
+.index-main,.tool-main,.lottery-main{position:absolute;top:0;left:0;width:100%;height:100%}
+.main-bg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;object-fit:fill}
+.info-loading{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.info-loading-box{display:flex;align-items:center;justify-content:center}
+.info-main{position:absolute;top:0;left:0;width:100%;height:100%}
+.lottery-preload-cup{opacity:0;width:0;height:0;position:absolute;z-index:-1;visibility:hidden;pointer-events:none}
+#page-index .topcenter{display:flex;justify-content:center;align-items:flex-start;position:absolute;top:0;left:0;width:100%}
+#page-index .center-top-text{font-size:0.3rem;color:#000;text-align:center;padding-top:0.1rem}
+#page-index .btn1{background-color:transparent;margin:auto;position:absolute;bottom:52%;left:0;right:0;width:3.5rem;height:1.1rem;border:0.05rem solid rgba(111,112,124,0.8);font-size:0.6rem;text-align:center;color:#000}
+#page-index .btn2{background-color:transparent;margin:auto;position:absolute;bottom:42%;left:0;right:0;width:3.5rem;height:1rem;border:0.05rem solid rgba(111,112,124,0.8);font-size:0.6rem;text-align:center;color:#000}
+#page-index .btn3{background-color:transparent;margin:auto;position:absolute;bottom:32%;left:0;right:0;width:3.5rem;height:1rem;border:0.05rem solid rgba(111,112,124,0.8);font-size:0.6rem;text-align:center;color:#000}
+#page-info .info-img{height:2.72rem;width:2.72rem;margin:auto;position:absolute;left:0;right:0;bottom:50%;cursor:pointer}
+#page-info .info-text{margin:auto;position:absolute;left:0;right:0;bottom:40%;text-align:center;font-size:0.9rem;font-family:'HYXingZBJJ'}
+#page-mine .mine-btn1{margin:auto;position:absolute;left:0;right:0;top:25%;line-height:0.7rem;font-family:'HYXingZBJJ';background-color:transparent;text-align:center;color:rgb(90,90,90);font-size:0.7rem;width:4rem;border:0.04rem solid rgba(90,90,90,0.8)}
+#page-mine .mine-btn2{margin:auto;position:absolute;left:0;right:0;top:55%;line-height:0.7rem;font-family:'HYXingZBJJ';background-color:transparent;color:rgb(90,90,90);text-align:center;font-size:0.7rem;width:4rem;border:0.04rem solid rgba(90,90,90,0.8)}
+#page-tool .tool-logo{margin:auto;position:absolute;left:0;right:0;bottom:60%;width:2.5rem;height:2.5rem}
+#page-tool .logo-img{width:2.5rem;height:2.5rem;border-radius:50%}
+#page-tool .tool-btn1{background-color:transparent;margin:auto;position:absolute;bottom:16%;left:8%;width:2.3rem;height:0.9rem;font-size:0.6rem;text-align:center;color:#000}
+#page-tool .tool-btn2{background-color:transparent;margin:auto;position:absolute;bottom:16%;right:8%;width:2.3rem;height:0.9rem;font-size:0.6rem;text-align:center;color:#000}
+#page-lottery .lottery-title1{margin:auto;position:absolute;bottom:90%;left:0;right:0;text-align:center;font-size:0.4rem;font-family:'HYXingZBJJ'}
+#page-lottery .lottery-title2{font-size:0.6rem;font-weight:bold;margin:auto;position:absolute;bottom:83%;left:0;right:0;text-align:center;font-family:'HYXingZBJJ'}
+#page-lottery .lottery-title3{margin:auto;position:absolute;bottom:78%;left:0;right:0;text-align:center;font-size:0.4rem;font-family:'HYXingZBJJ'}
+#page-lottery .lottery-img-area{position:absolute;top:0;left:0;width:100%;height:100%}
+#page-lottery .lottery-img1{height:3.28rem;width:3.28rem;left:0;right:0;margin:auto;position:absolute;bottom:40%}
+#page-lottery .lottery-img2{height:5.26rem;width:2.86rem;left:0;right:0;margin:auto;position:absolute;bottom:35%;display:flex;cursor:pointer}
+#page-lottery .sign-text{font-size:0.5rem;color:#f00;text-align:center;margin:auto;position:absolute;bottom:55%;left:-80%;font-weight:bold;width:100vw;font-family:'HYXingZBJJ';cursor:pointer}
+#page-lottery .lottery-last-result{margin:auto;position:absolute;bottom:63%;left:10%;width:0.42rem;height:0.42rem;font-weight:bold;font-size:0.35rem;font-family:'HYXingZBJJ'}
+#page-lottery .lottery-btn{font-size:0.8rem;height:1.1rem;line-height:0.8rem;margin:auto;position:absolute;left:0;right:0;bottom:27%;width:4.5rem;font-family:'HYXingZBJJ';background-color:transparent;text-align:center;color:rgb(124,11,11)}
+#page-lottery .cup1{width:2.3rem;height:2.3rem;margin:auto;position:absolute;left:2.5%;bottom:9%;object-fit:contain}
+#page-lottery .cup1[src=""]{visibility:hidden}
+#page-lottery .cup2{width:2.3rem;height:2.3rem;margin:auto;position:absolute;left:0;right:0;bottom:9%;object-fit:contain}
+#page-lottery .cup2[src=""]{visibility:hidden}
+#page-lottery .cup3{width:2.3rem;height:2.3rem;margin:auto;position:absolute;right:2.5%;bottom:9%;object-fit:contain}
+#page-lottery .cup3[src=""]{visibility:hidden}
+#page-lottery .lottery-result-text{height:0.42rem;text-align:center;margin:auto;position:absolute;left:0;right:0;bottom:8%;font-size:0.4rem;font-family:'HYXingZBJJ';font-weight:bold}
+#page-lottery .lottery-refresh-text{height:0.6rem;text-align:center;margin:auto;position:absolute;left:0;right:0;bottom:20%;font-size:0.4rem;font-family:'HYXingZBJJ'}
+#page-lottery .lottery-hint-text{height:0.6rem;text-align:center;margin:auto;position:absolute;left:0;right:0;bottom:15%;font-size:0.4rem;font-family:'HYXingZBJJ'}
+#page-lottery .lottery-restart-btn{font-size:0.6rem;height:0.9rem;line-height:0.8rem;margin:auto;position:absolute;left:0;right:0;bottom:8%;width:6rem;font-family:'HYXingZBJJ';background-color:transparent;text-align:center;color:#09bb07}
+#page-lottery .lottery-drawing{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10}
+#page-lottery .lottery-drawing-img{width:3.72rem;height:4.04rem;margin:auto;position:absolute;left:0;right:0;bottom:40%}
+#page-lottery .lottery-drawing-text{margin:auto;position:absolute;bottom:37%;left:45%;text-align:center;font-size:0.35rem;font-weight:bold;font-family:'HYXingZBJJ'}
+#page-lottery-answer .lottery-answer-img{width:100%;display:block}
+#page-lottery-answer .answer-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh}
+#page-datetime .bagua-container{left:0;right:0;width:5.6rem;height:5.6rem;margin:auto;bottom:50%;position:absolute}
+#page-datetime .bagua-image{width:100%;height:100%;transition:transform 0s;animation:none}
+#page-datetime .bagua-pointer{position:absolute;width:100vw;height:0.9rem}
+#page-datetime .pointer-left{height:0.8rem;width:0.9rem;z-index:1;margin:auto;position:absolute;right:27%}
+#page-datetime .pointer-right{height:0.8rem;width:0.9rem;z-index:1;margin:auto;position:absolute;left:31%}
+#page-datetime .datetime-switch{position:absolute;margin:auto;left:0;bottom:88%;z-index:1;font-family:'HYXingZBJJ';background-color:transparent;color:black;text-align:center;font-size:0.5rem;font-weight:bold}
+#page-datetime .datetime-explain{position:absolute;margin:auto;right:0;bottom:88%;font-family:'HYXingZBJJ';background-color:transparent;color:black;text-align:center;font-size:0.5rem;font-weight:bold}
+#page-datetime .datetime-date-btn{display:flex;justify-content:center;align-items:center;font-size:0.32rem;color:#333;background-color:#fff;border:1rpx solid #ccc;border-radius:1rem;width:6.2rem;height:1.15rem;bottom:35%;left:0;right:0;margin:auto;position:absolute;cursor:pointer}
+#page-datetime .datetime-time-btn{display:flex;justify-content:center;align-items:center;font-size:0.32rem;color:#333;background-color:#fff;border:1rpx solid #ccc;border-radius:1rem;width:6.2rem;height:1.15rem;bottom:20%;left:0;right:0;margin:auto;position:absolute;cursor:pointer}
+#page-datetime .datetime-start-btn{margin:auto;position:absolute;left:0;right:0;border-radius:0.6rem;bottom:7%;line-height:0.8rem;width:4.5rem;height:1.2rem;font-family:'HYXingZBJJ';background-color:transparent;font-size:0.8rem;font-weight:bold;text-align:center;border:0.06rem solid rgba(124,11,11,0.8);color:rgb(124,11,11)}
+#page-datetime .explain-mask{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);z-index:99}
+#page-datetime .explain-modal{position:fixed;z-index:100;top:8%}
+#page-datetime .explain-modal-img{position:relative;height:80vh;width:90vw}
+#page-datetime .explain-modal-btn{margin:auto;position:absolute;bottom:3%;left:0;right:0;z-index:101;background-color:transparent;width:2.84rem;height:0.9rem}
+#page-datetime .datetime-modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:8px;z-index:300;width:85vw;max-width:400px;padding:20px;max-height:80vh;overflow-y:auto}
+#page-datetime .datetime-modal-btns{display:flex;justify-content:space-between;margin-top:15px}
+#page-datetime .datetime-modal-btns button{padding:8px 20px;border-radius:4px;font-size:0.3rem}
+#page-datetime .time-modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:8px;z-index:300;width:70vw;max-width:300px;padding:20px}
+#page-datetime .time-modal-title{font-size:0.35rem;font-weight:bold;text-align:center;margin-bottom:15px}
+#page-datetime .time-select{width:100%;padding:10px;font-size:15px;text-align:center;border:1px solid #ccc;border-radius:4px;margin:10px 0}
+#page-datetime .time-modal-btns{display:flex;justify-content:space-between;margin-top:15px}
+#page-datetime .time-modal-btns button{padding:8px 20px;border-radius:4px;font-size:0.3rem}
+#page-datetime .type-modal{position:fixed;top:0;left:0;width:100%;height:100%;z-index:400}
+#page-datetime .type-modal-mask{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);z-index:401}
+#page-datetime .type-modal-content{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background-color:#fff;border-radius:4px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:402;width:3.5rem;height:4rem;text-align:center}
+#page-datetime .type-modal-title{font-size:0.35rem;font-weight:bold;margin-bottom:10px}
+#page-datetime .type-modal-options{display:flex;flex-direction:column;align-items:center}
+#page-datetime .type-option{width:100%;padding:10px 0;text-align:center;border-bottom:1px solid #eee;cursor:pointer;font-size:0.35rem}
+#page-datetime .type-option:last-child{border-bottom:none}
+#page-datetime .type-option:active{background:#f5f5f5}
+#page-datetime .result-modal{position:fixed;top:0;left:0;width:100%;height:100%;z-index:500}
+#page-datetime .result-modal-content{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background-color:#fff;border-radius:8px;padding:20px;z-index:502;width:80vw;max-width:350px}
+#page-datetime .result-modal-confirm{display:block;margin:15px auto 0;padding:8px 30px;background:#09bb07;color:#fff;border:none;border-radius:4px;font-size:0.3rem}
+#page-datetime .result-type{color:#000;font-size:0.3rem;margin-bottom:8px}
+#page-datetime .result-value{color:#000;font-size:0.3rem;margin-bottom:8px}
+#page-datetime .result-explain-link{color:blue;cursor:pointer;font-size:0.3rem;margin-bottom:8px}
+#page-datetime .result-explain-detail{color:red;font-size:0.3rem;margin-bottom:8px}
+#page-datetime .result-analysis{color:#000;font-size:0.3rem}
+#page-random .bagua-container{left:0;right:0;width:5.6rem;height:5.6rem;margin:auto;bottom:50%;position:absolute}
+#page-random .bagua-image{width:100%;height:100%;transition:transform 0s;animation:none}
+#page-random .bagua-pointer{position:absolute;width:100vw;height:0.9rem}
+#page-random .pointer-left{height:0.8rem;width:0.9rem;z-index:1;margin:auto;position:absolute;right:27%}
+#page-random .pointer-right{height:0.8rem;width:0.9rem;z-index:1;margin:auto;position:absolute;left:31%}
+#page-random .random-switch{position:absolute;margin:auto;left:0;bottom:88%;z-index:1;font-family:'HYXingZBJJ';background-color:transparent;color:black;text-align:center;font-size:0.5rem;font-weight:bold}
+#page-random .random-explain{position:absolute;margin:auto;right:0;bottom:88%;font-family:'HYXingZBJJ';background-color:transparent;color:black;text-align:center;font-size:0.5rem;font-weight:bold}
+#page-random .random-title{position:absolute;bottom:48%;margin:auto;left:0;right:0;text-align:center;font-size:0.38rem;font-family:'HYXingZBJJ';padding:0 0.3rem;box-sizing:border-box;white-space:nowrap}
+#page-random .random-input-area{width:5.6rem;height:3rem;border:0 solid rgb(167,29,29);padding:0.1rem;box-sizing:border-box;display:flex;flex-direction:column;margin:auto;position:absolute;bottom:15%;overflow-y:auto;-webkit-overflow-scrolling:touch}
+#page-random .random-input-item{display:flex;height:0.7rem;border:0.04rem solid rgb(136,172,142);align-items:center;margin-bottom:0.2rem;box-sizing:border-box;position:relative}
+#page-random .random-input-item input{width:3.26rem;height:0.58rem;display:block;box-sizing:border-box;border:none;outline:none;padding:0 0.1rem;font-size:0.28rem}
+#page-random .random-add-btn{background-color:transparent;position:absolute;left:3.46rem;top:-0.1rem;padding:0;border:none}
+#page-random .random-add-btn img{height:0.6rem;width:0.6rem;display:inline-block}
+#page-random .random-delete-btn{background-color:transparent;position:absolute;left:4.06rem;top:-0.1rem;padding:0;border:none}
+#page-random .random-delete-btn img{height:0.6rem;width:0.6rem;display:inline-block}
+#page-random .random-start-btn{margin:auto;position:absolute;left:0;right:0;border-radius:0.6rem;bottom:7%;line-height:0.8rem;width:4.5rem;height:1.2rem;font-family:'HYXingZBJJ';background-color:transparent;font-size:0.8rem;font-weight:bold;text-align:center;border:0.06rem solid rgba(124,11,11,0.8);color:rgb(124,11,11)}
+#page-random .explain-mask{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);z-index:99}
+#page-random .explain-modal{position:fixed;z-index:100;top:8%}
+#page-random .explain-modal-img{position:relative;height:80vh;width:90vw}
+#page-random .explain-modal-btn{margin:auto;position:absolute;bottom:3%;left:0;right:0;z-index:101;background-color:transparent;width:2.84rem;height:0.9rem}
+#page-random .type-modal{position:fixed;top:0;left:0;width:100%;height:100%;z-index:400}
+#page-random .type-modal-mask{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);z-index:401}
+#page-random .type-modal-content{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background-color:#fff;border-radius:4px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:402;width:3.5rem;height:4rem;text-align:center}
+#page-random .type-modal-title{font-size:0.35rem;font-weight:bold;margin-bottom:10px}
+#page-random .type-modal-options{display:flex;flex-direction:column;align-items:center}
+#page-random .type-option{width:100%;padding:10px 0;text-align:center;border-bottom:1px solid #eee;cursor:pointer;font-size:0.35rem}
+#page-random .type-option:last-child{border-bottom:none}
+#page-random .type-option:active{background:#f5f5f5}
+#page-random .result-modal{position:fixed;top:0;left:0;width:100%;height:100%;z-index:500}
+#page-random .result-modal-content{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background-color:#fff;border-radius:8px;padding:20px;z-index:502;width:80vw;max-width:350px}
+#page-random .result-modal-confirm{display:block;margin:15px auto 0;padding:8px 30px;background:#09bb07;color:#fff;border:none;border-radius:4px;font-size:0.3rem}
+#page-random .result-type{color:#000;font-size:0.3rem;margin-bottom:8px}
+#page-random .result-value{color:#000;font-size:0.3rem;margin-bottom:8px}
+#page-random .result-explain-link{color:blue;cursor:pointer;font-size:0.3rem;margin-bottom:8px}
+#page-random .result-explain-detail{color:red;font-size:0.3rem;margin-bottom:8px}
+#page-random .result-analysis{color:#000;font-size:0.3rem}
+#page-calculator{background-image:linear-gradient(to top,#a8edea 0%,#fed6e3 100%);height:100vh;width:100vw;overflow:hidden}
+#page-calculator .calculator{height:100%;display:flex;flex-direction:column;font-size:0.6rem;border-top:1rpx solid #ccc;border-left:1rpx solid #ccc}
+#page-calculator .calculator-display{flex:1;position:relative;width:100%;box-sizing:border-box;display:flex;align-items:flex-end;justify-content:flex-end;border-bottom:0.05rem solid #d5dde1;background:rgba(215,250,252,0.253)}
+#page-calculator .calculator-display span{font-size:1rem;padding:0.2rem;overflow-x:auto;text-align:end;word-wrap:break-word}
+#page-calculator .calculator-btns{flex:1}
+#page-calculator .calc-row{display:flex}
+#page-calculator .calc-col{transition:all 0.3s;flex-basis:25%;height:1.5rem;border-right:1rpx solid #ccc;border-bottom:1rpx solid #ccc;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:0.5rem;cursor:pointer;user-select:none}
+#page-calculator .calc-clear{color:#f00}
+#page-calculator .calc-zero{flex-basis:50%}
+#page-calculator .calc-op{color:#008bfc}
+#page-calculator .calc-equal{color:#f90808;font-size:0.8rem;font-weight:900}
+#page-calculator .calc-col:active{background:rgba(255,255,255,0.2)}
+.calendar{width:100%;text-align:center;font-size:0.3rem;box-sizing:border-box;padding:0.1rem}
+.calendar-title{line-height:0.7rem;font-size:0.3rem;text-align:left;padding:0.1rem 0.2rem;box-sizing:border-box;margin:0.2rem 0;background:#e9eaec;width:6.4rem;position:relative;left:-11%}
+.calendar-title .ctrl{display:inline-block;padding:0 0.2rem;background:#f5f5f5;border-radius:0.1rem;cursor:pointer}
+.calendar-title .item{display:inline-block;vertical-align:middle;line-height:0.5rem}
+.calendar-title .title-item{min-width:2.5rem;text-align:center}
+.calendar-title .today-btn{float:right;margin-top:0.1rem;position:absolute;height:0.55rem;top:10%;left:75%;cursor:pointer}
+.calendar-week{display:flex;text-align:center;padding:0.2rem 0.1rem;box-sizing:border-box;border-top:1rpx solid #e0e0e0;border-bottom:1rpx solid #e0e0e0;background:#f5f5f5;position:relative;left:-11%;width:6.4rem}
+.calendar-week .item{flex:1}
+.calendar-container{display:flex;flex-wrap:wrap;padding:0.2rem 0.1rem;box-sizing:border-box;position:relative;width:6.4rem;left:-11%}
+.calendar-container .grid{display:inline-block;width:14.28571428571429%;line-height:0.7rem;position:relative;z-index:1;text-align:center}
+.calendar-container .grid .self{position:absolute;top:0;right:0;width:0.15rem;height:0.15rem;border-radius:50%;background:rgb(49,120,228);border:0.03rem solid #fff}
+.calendar-container .grid.gray{color:#ccc}
+.calendar-container .grid .wrap.select{background:rgb(49,120,228);border-radius:0.1rem;color:#fff;width:80%;margin:0 auto}
+.calendar-container .grid .wrap{cursor:pointer}
+.lunar-day{font-size:0.2rem;margin-top:-0.4rem}
+@media screen and (min-width:750px){html{font-size:100px}}
+@media screen and (max-width:320px){html{font-size:calc(100vw / 7.5)}#page-calculator .calc-col{height:1.2rem;font-size:0.4rem}#page-calculator .calculator-display span{font-size:0.8rem}}

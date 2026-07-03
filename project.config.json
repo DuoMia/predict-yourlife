@@ -1,5 +1,4 @@
 {
-  "appid": "wx0b0652d3ad813ec2",
   "compileType": "miniprogram",
   "libVersion": "2.31.0",
   "cloudfunctionRoot": "cloudfunctions/",
@@ -20,7 +19,8 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-    "condition": false
+    "condition": false,
+    "ignoreUploadUnusedFiles": true
   },
   "condition": {},
   "editorSetting": {
