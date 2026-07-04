@@ -76,7 +76,7 @@
     var drawBtn = pageEl.querySelector('.lottery-btn-draw');
     if (drawBtn) {
       drawBtn.disabled = state.buttonhide;
-      drawBtn.style.backgroundColor = state.color;
+      drawBtn.style.color = state.color;
       drawBtn.style.opacity = state.buttonhide ? '0.5' : '1';
     }
   }
@@ -102,7 +102,7 @@
     if (!dots.length) return;
     var current = 0;
     var n = 1;
-    dots[0].style.background = '#09bb07';
+    dots[0].classList.add('sct');
     loadingTimer = setInterval(function () {
       if (n >= 10) {
         clearInterval(loadingTimer);
@@ -110,11 +110,11 @@
         return;
       }
       for (var j = 0; j < dots.length; j++) {
-        dots[j].style.background = '#ccc';
+        dots[j].classList.remove('sct');
       }
       current++;
       if (current > 3) current = 0;
-      dots[current].style.background = '#09bb07';
+      dots[current].classList.add('sct');
       n++;
     }, 400);
   }
