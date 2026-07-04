@@ -101,6 +101,12 @@
       }
     }
 
+    if (state.buttonhide) {
+      pageEl.classList.add('predicting');
+    } else {
+      pageEl.classList.remove('predicting');
+    }
+
     if (baguaEl && state.rotatenum > 0) {
       baguaEl.style.animation = 'none';
     }
@@ -386,7 +392,11 @@
     show: function (params) {
       if (baguaEl) {
         baguaEl.style.transition = 'none';
-        baguaEl.style.transform = 'rotate(0deg)';
+        if (state.rotatenum > 0 && !state.select) {
+          baguaEl.style.transform = 'rotate(' + state.rotatenum + 'deg)';
+        } else {
+          baguaEl.style.transform = 'rotate(0deg)';
+        }
         baguaEl.style.animation = 'none';
       }
       render();

@@ -72,6 +72,12 @@
       }
     }
 
+    if (state.buttonhide) {
+      pageEl.classList.add('predicting');
+    } else {
+      pageEl.classList.remove('predicting');
+    }
+
     if (baguaEl && state.rotatenum > 0) {
       baguaEl.style.animation = 'none';
     }
@@ -82,8 +88,6 @@
       pointerEl.style.top = state.top;
       pointerEl.style.transform = 'rotate(' + state.rotate + 'deg)';
     }
-
-    renderInputList();
   }
 
   function renderInputList() {
@@ -150,6 +154,7 @@
       updates.buttonhide2 = false;
     }
     setState(updates);
+    renderInputList();
   }
 
   function deletedq(index) {
@@ -160,6 +165,7 @@
       updates.buttonhide2 = true;
     }
     setState(updates);
+    renderInputList();
   }
 
   function checknums(e, index) {
@@ -174,7 +180,6 @@
     }
     state.inputlist = list;
     state.sum = sum;
-    render();
   }
 
   function chooseModal() {
@@ -352,12 +357,17 @@
       state.buttonhide2 = true;
       bindEvents();
       render();
+      renderInputList();
     },
 
     show: function (params) {
       if (baguaEl) {
         baguaEl.style.transition = 'none';
-        baguaEl.style.transform = 'rotate(0deg)';
+        if (state.rotatenum > 0 && !state.select) {
+          baguaEl.style.transform = 'rotate(' + state.rotatenum + 'deg)';
+        } else {
+          baguaEl.style.transform = 'rotate(0deg)';
+        }
         baguaEl.style.animation = 'none';
       }
       render();

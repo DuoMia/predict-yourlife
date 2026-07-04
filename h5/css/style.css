@@ -64,7 +64,7 @@ input{font-family:'HYXingZBJJ',sans-serif;outline:none;border:none;-webkit-appea
 #page-lottery .lottery-img1{height:3.28rem;width:3.28rem;left:0;right:0;margin:auto;position:absolute;bottom:40%}
 #page-lottery .lottery-img2-wrap{height:5.26rem;width:2.86rem;left:0;right:0;margin:auto;position:absolute;bottom:35%}
 #page-lottery .lottery-img2{height:100%;width:100%;display:block;cursor:pointer}
-#page-lottery .sign-text{font-size:0.5rem;color:#f00;text-align:center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-weight:bold;font-family:'HYXingZBJJ';cursor:pointer;line-height:1}
+#page-lottery .sign-text{font-size:0.5rem;color:#f00;text-align:center;position:absolute;bottom:55%;left:0;right:0;font-weight:bold;font-family:'HYXingZBJJ';cursor:pointer;line-height:1}
 #page-lottery .lottery-last-result{margin:auto;position:absolute;bottom:63%;left:10%;width:0.42rem;height:0.42rem;font-weight:bold;font-size:0.35rem;font-family:'HYXingZBJJ'}
 #page-lottery .lottery-btn{font-size:0.8rem;height:1.1rem;line-height:0.8rem;margin:auto;position:absolute;left:0;right:0;bottom:27%;width:4.5rem;font-family:'HYXingZBJJ';background-color:transparent;text-align:center;color:rgb(124,11,11)}
 #page-lottery .cup1{width:2.3rem;height:2.3rem;margin:auto;position:absolute;left:2.5%;bottom:9%;object-fit:contain}
@@ -93,6 +93,7 @@ input{font-family:'HYXingZBJJ',sans-serif;outline:none;border:none;-webkit-appea
 #page-datetime .datetime-date-btn{display:flex;justify-content:center;align-items:center;font-size:0.32rem;color:#333;background-color:#fff;border:1rpx solid #ccc;border-radius:1rem;width:6.2rem;height:1.15rem;bottom:35%;left:0;right:0;margin:auto;position:absolute;cursor:pointer}
 #page-datetime .datetime-time-btn{display:flex;justify-content:center;align-items:center;font-size:0.32rem;color:#333;background-color:#fff;border:1rpx solid #ccc;border-radius:1rem;width:6.2rem;height:1.15rem;bottom:20%;left:0;right:0;margin:auto;position:absolute;cursor:pointer}
 #page-datetime .datetime-start-btn{margin:auto;position:absolute;left:0;right:0;border-radius:0.6rem;bottom:7%;line-height:0.8rem;width:4.5rem;height:1.2rem;font-family:'HYXingZBJJ';background-color:transparent;font-size:0.8rem;font-weight:bold;text-align:center;border:0.06rem solid rgba(124,11,11,0.8);color:rgb(124,11,11)}
+#page-datetime.predicting .datetime-switch,#page-datetime.predicting .datetime-explain,#page-datetime.predicting .datetime-date-btn,#page-datetime.predicting .datetime-time-btn{pointer-events:none;opacity:0.5}
 #page-datetime .explain-mask{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);z-index:99}
 #page-datetime .explain-modal{position:fixed;z-index:100;top:8%;left:50%;transform:translateX(-50%)}
 #page-datetime .explain-modal-img{position:relative;height:80vh;width:90vw}
@@ -132,6 +133,7 @@ input{font-family:'HYXingZBJJ',sans-serif;outline:none;border:none;-webkit-appea
 #page-random .random-switch{position:absolute;margin:auto;left:0;bottom:88%;z-index:1;font-family:'HYXingZBJJ';background-color:transparent;color:black;text-align:center;font-size:0.5rem;font-weight:bold}
 #page-random .random-explain{position:absolute;margin:auto;right:0;bottom:88%;font-family:'HYXingZBJJ';background-color:transparent;color:black;text-align:center;font-size:0.5rem;font-weight:bold}
 #page-random .random-title{position:absolute;bottom:41%;left:50%;transform:translateX(-50%);width:90vw;text-align:center;font-size:0.38rem;font-family:'HYXingZBJJ';padding:0 0.3rem;box-sizing:border-box;line-height:1.4}
+#page-random.predicting .random-switch,#page-random.predicting .random-explain,#page-random.predicting .random-input-area,#page-random.predicting .random-start-btn{pointer-events:none;opacity:0.5}
 #page-random .random-input-area{width:5.6rem;height:3rem;border:0 solid rgb(167,29,29);padding:0.1rem;box-sizing:border-box;display:flex;flex-direction:column;left:50%;transform:translateX(-50%);position:absolute;bottom:15%;overflow-y:auto;-webkit-overflow-scrolling:touch}
 #page-random .random-input-item{display:flex;height:0.7rem;border:0.04rem solid rgb(136,172,142);align-items:center;margin-bottom:0.2rem;box-sizing:border-box;position:relative;padding-right:1.6rem}
 #page-random .random-input-item input{flex:1;height:0.58rem;display:block;box-sizing:border-box;border:none;outline:none;padding:0 0.1rem;font-size:0.28rem;min-width:0}
