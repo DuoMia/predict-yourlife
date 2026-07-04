@@ -107,7 +107,9 @@
 
     var pointerEl = pageEl.querySelector('.bagua-pointer');
     if (pointerEl && !state.select) {
-      pointerEl.style.transform = 'translateY(-50%) rotate(' + state.rotate + 'deg)';
+      pointerEl.style.left = state.left;
+      pointerEl.style.top = state.top;
+      pointerEl.style.transform = 'rotate(' + state.rotate + 'deg)';
     }
   }
 

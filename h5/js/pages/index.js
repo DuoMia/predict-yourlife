@@ -76,7 +76,7 @@
       if (bgImg.complete && bgImg.naturalWidth > 0) {
         imgload();
       } else {
-        setTimeout(hideLoadingScreen, 3000);
+        setTimeout(imgload, 3000);
       }
 
       el.querySelector('[data-action="gototool"]').addEventListener('click', function () {

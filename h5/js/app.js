@@ -118,6 +118,7 @@
       Storage.init();
       window.addEventListener('hashchange', onHashChange, false);
       onHashChange();
+      hideLoading();
     }
   };
 

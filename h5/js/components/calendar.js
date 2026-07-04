@@ -21,9 +21,11 @@
     html += '<div class="calendar">';
 
     html += '<div class="calendar-title">';
+    html += '<div class="calendar-title-left">';
     html += '<span class="ctrl item" data-action="prevMonth">◀</span>';
     html += '<span class="item title-item">' + year + '年' + month + '月</span>';
     html += '<span class="ctrl item" data-action="nextMonth">▶</span>';
+    html += '</div>';
     html += '<span class="today-btn" data-action="today">回到今天</span>';
     html += '</div>';
 
