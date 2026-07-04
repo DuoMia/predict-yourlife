@@ -9,9 +9,12 @@
 <body>
 <div id="loading-screen">
 <div class="loading-box">
-<div class="loading">
-<div></div><div></div><div></div><div></div>
-<div></div><div></div><div></div><div></div>
+<img src="images/preimg.jpg" class="loading-logo">
+<div class="loading-dots">
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
 </div>
 </div>
 </div>
@@ -95,8 +98,10 @@
 <span class="lottery-title3">一日只可取一签,多取无用</span>
 <div class="lottery-img-area">
 <img src="images/chouqiantu.png" class="lottery-img1" data-show="imghide2">
-<img src="images/qianmian.png" class="lottery-img2" data-show="imghide" data-action="gotores">
-<div class="sign-text" data-show="imghide" data-action="gotores"></div>
+<div class="lottery-img2-wrap" data-show="imghide">
+<img src="images/qianmian.png" class="lottery-img2" data-action="gotores">
+<div class="sign-text" data-action="gotores"></div>
+</div>
 <span class="lottery-last-result" data-show="texthide2">上次结果</span>
 </div>
 <button class="lottery-btn lottery-btn-throw" data-show="btnhide" data-action="onButtonClick">点击掷杯</button>
@@ -126,10 +131,12 @@
 <img src="images/background.jpg" class="page-bg">
 <span class="datetime-switch" data-action="goto2">切换</span>
 <div class="bagua-container">
-<img src="images/xzbagua.png" class="bagua-image" id="datetime-bagua">
+<div class="bagua-image-wrap" id="datetime-bagua">
+<img src="images/xzbagua.png" class="bagua-image">
 <div class="bagua-pointer" data-show="select">
 <img src="images/left.png" class="pointer-left">
 <img src="images/right.png" class="pointer-right">
+</div>
 </div>
 </div>
 <span class="datetime-explain" data-action="openexplain">提示</span>
@@ -203,10 +210,12 @@
 <img src="images/background.jpg" class="page-bg">
 <span class="random-switch" data-action="goto1">切换</span>
 <div class="bagua-container">
-<img src="images/xzbagua.png" class="bagua-image" id="random-bagua">
+<div class="bagua-image-wrap" id="random-bagua">
+<img src="images/xzbagua.png" class="bagua-image">
 <div class="bagua-pointer" data-show="select">
 <img src="images/left.png" class="pointer-left">
 <img src="images/right.png" class="pointer-right">
+</div>
 </div>
 </div>
 <span class="random-explain" data-action="openexplain">提示</span>

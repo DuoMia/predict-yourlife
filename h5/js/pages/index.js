@@ -42,11 +42,15 @@
     }, 400);
   }
 
+  function hideLoadingScreen() {
+    var loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) loadingScreen.style.display = 'none';
+  }
+
   function imgload() {
     state.imgload = false;
     state.imgnoload = true;
-    var loadingScreen = document.getElementById('loading-screen');
-    if (loadingScreen) loadingScreen.style.display = 'none';
+    hideLoadingScreen();
     updateVisibility();
   }
 
@@ -71,6 +75,8 @@
 
       if (bgImg.complete && bgImg.naturalWidth > 0) {
         imgload();
+      } else {
+        setTimeout(hideLoadingScreen, 3000);
       }
 
       el.querySelector('[data-action="gototool"]').addEventListener('click', function () {
