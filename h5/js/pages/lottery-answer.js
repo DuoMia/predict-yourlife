@@ -14,7 +14,7 @@
 
       loadingEl = document.createElement('div');
       loadingEl.className = 'answer-loading';
-      loadingEl.innerHTML = '<div class="loading-box"><div class="loading"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>';
+      loadingEl.innerHTML = '<div class="answer-spinner"></div>';
       pageEl.appendChild(loadingEl);
 
       signImage.style.display = 'none';
