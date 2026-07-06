@@ -1,5 +1,5 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-@font-face{font-family:'HYXingZBJJ';src:url('../fonts/ZhiMangXing.woff2') format('woff2');font-weight:normal;font-style:normal;font-display:swap}
+@font-face{font-family:'HYXingZBJJ';src:url('../fonts/HYXingZBJJ.woff2') format('woff2');font-weight:normal;font-style:normal;font-display:swap}
 html{font-size:calc(100vw / 7.5)}
 body{margin:0;padding:0;font-family:'HYXingZBJJ',sans-serif;background:#faf8ee;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;overflow:hidden}
 img{display:block;border:0}

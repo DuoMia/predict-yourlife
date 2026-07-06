@@ -32,3 +32,8 @@ npm-debug.log*
 # 临时文件
 *.tmp
 *.bak
+
+# 付费字体原始文件（仅本地保留用于子集化）
+汉仪行者笔记简.TTF
+*.TTF
+!h5/fonts/*.woff2
