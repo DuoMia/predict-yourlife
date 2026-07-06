@@ -64,7 +64,7 @@ input{font-family:'HYXingZBJJ',sans-serif;outline:none;border:none;-webkit-appea
 #page-lottery .lottery-img1{height:3.28rem;width:3.28rem;left:0;right:0;margin:auto;position:absolute;bottom:40%}
 #page-lottery .lottery-img2-wrap{height:5.26rem;width:2.86rem;left:0;right:0;margin:auto;position:absolute;bottom:35%}
 #page-lottery .lottery-img2{height:100%;width:100%;display:block;cursor:pointer}
-#page-lottery .sign-text{font-size:0.5rem;color:#f00;text-align:center;position:absolute;bottom:55%;left:0;right:0;font-weight:bold;font-family:'HYXingZBJJ';cursor:pointer;line-height:1}
+#page-lottery .sign-text{font-size:0.5rem;color:#f00;text-align:center;position:absolute;bottom:55%;left:-80%;width:7.5rem;font-weight:bold;font-family:'HYXingZBJJ';cursor:pointer;line-height:1}
 #page-lottery .lottery-last-result{margin:auto;position:absolute;bottom:63%;left:10%;width:0.42rem;height:0.42rem;font-weight:bold;font-size:0.35rem;font-family:'HYXingZBJJ'}
 #page-lottery .lottery-btn{font-size:0.8rem;height:1.1rem;line-height:0.8rem;margin:auto;position:absolute;left:0;right:0;bottom:27%;width:4.5rem;font-family:'HYXingZBJJ';background-color:transparent;text-align:center;color:rgb(124,11,11)}
 #page-lottery .cup1{width:2.3rem;height:2.3rem;margin:auto;position:absolute;left:2.5%;bottom:9%;object-fit:contain}

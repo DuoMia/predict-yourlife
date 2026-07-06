@@ -185,7 +185,7 @@
   function chooseModal() {
     var inputlist = state.inputlist;
     for (var i = 0; i < inputlist.length; i++) {
-      if (inputlist[i] === 0 || inputlist[i] === '0') {
+      if (inputlist[i] === '' || inputlist[i] === 0 || inputlist[i] === '0') {
         alert('请输入非0整数哦！');
         return;
       }
