@@ -127,10 +127,12 @@
   }
 
   function datemodal() {
+    if (!state.ishiddentime) return;
     setState({ ishidden: false });
   }
 
   function timemodal() {
+    if (!state.ishidden) return;
     setState({ ishiddentime: false, hourIndex: 0 });
     var selectEl = pageEl.querySelector('.time-select');
     if (selectEl) {

@@ -185,7 +185,12 @@
         state.texthide2 = true;
         state.imghide = false;
         state.imghide2 = true;
+        state.imghide3 = true;
         state.sign = String(userInfo.lottery);
+        state.image1 = '';
+        state.image2 = '';
+        state.image3 = '';
+        state.title = '';
       } else {
         // 未抽签或跨天重置
         state.buttonhide = false;
