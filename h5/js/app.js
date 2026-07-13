@@ -39,6 +39,12 @@
     }
   }
 
+  // 使用 visualViewport 获取真正的可见区域高度（不含地址栏/工具栏）
+  function setViewportHeight() {
+    var h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
+    document.documentElement.style.setProperty('--vh', (h * 0.01) + 'px');
+  }
+
   function getPageEl(name) {
     return document.getElementById('page-' + name);
   }
@@ -116,6 +122,14 @@
 
     init: function () {
       Storage.init();
+      setViewportHeight();
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', setViewportHeight);
+      }
+      window.addEventListener('resize', setViewportHeight);
+      window.addEventListener('orientationchange', function () {
+        setTimeout(setViewportHeight, 300);
+      });
       window.addEventListener('hashchange', onHashChange, false);
       onHashChange();
       hideLoading();
