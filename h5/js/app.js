@@ -130,6 +130,15 @@
       window.addEventListener('orientationchange', function () {
         setTimeout(setViewportHeight, 300);
       });
+
+      // Safari 重新打开页面时可能保留之前的 hash，导致直接进入子页面
+      // 新导航（非刷新）时清除 hash，确保从主页开始
+      var navEntry = performance.getEntriesByType && performance.getEntriesByType('navigation');
+      var navType = navEntry && navEntry[0] ? navEntry[0].type : (performance.navigation ? (performance.navigation.type === 0 ? 'navigate' : 'reload') : 'navigate');
+      if (navType === 'navigate' && window.location.hash && window.location.hash !== '#/') {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+
       window.addEventListener('hashchange', onHashChange, false);
       onHashChange();
       hideLoading();
