@@ -39,11 +39,6 @@
     }
   }
 
-  function setViewportHeight() {
-    var vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', vh + 'px');
-  }
-
   function getPageEl(name) {
     return document.getElementById('page-' + name);
   }
@@ -121,11 +116,6 @@
 
     init: function () {
       Storage.init();
-      setViewportHeight();
-      window.addEventListener('resize', setViewportHeight);
-      window.addEventListener('orientationchange', function () {
-        setTimeout(setViewportHeight, 300);
-      });
       window.addEventListener('hashchange', onHashChange, false);
       onHashChange();
       hideLoading();
