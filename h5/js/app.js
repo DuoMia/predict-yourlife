@@ -39,15 +39,6 @@
     }
   }
 
-  // 用 visualViewport 精准设置每个 page 的高度（视觉视口高度，排除地址栏）
-  function setPagesHeight() {
-    var h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
-    var pages = document.querySelectorAll('.page');
-    for (var i = 0; i < pages.length; i++) {
-      pages[i].style.height = h + 'px';
-    }
-  }
-
   function getPageEl(name) {
     return document.getElementById('page-' + name);
   }
@@ -125,13 +116,6 @@
 
     init: function () {
       Storage.init();
-      setPagesHeight();
-      if (window.visualViewport) {
-        window.visualViewport.addEventListener('resize', setPagesHeight);
-      }
-      window.addEventListener('orientationchange', function () {
-        setTimeout(setPagesHeight, 300);
-      });
 
       // Safari 重新打开页面时可能保留之前的 hash，导致直接进入子页面
       // 新导航（非刷新）时清除 hash，确保从主页开始
