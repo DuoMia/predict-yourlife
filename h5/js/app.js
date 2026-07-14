@@ -15,6 +15,15 @@
   var pages = {};
   var currentPage = null;
 
+  function setViewportHeight() {
+    var height = window.innerHeight;
+    if (window.visualViewport && window.visualViewport.height) {
+      height = window.visualViewport.height;
+    }
+    document.documentElement.style.height = height + 'px';
+    document.body.style.height = height + 'px';
+  }
+
   function parseHash() {
     var hash = window.location.hash.replace('#', '');
     var parts = hash.split('?');
@@ -37,13 +46,6 @@
     if (el) {
       el.style.display = 'none';
     }
-  }
-
-  // 设置html元素高度为视觉视口高度（排除地址栏/底部导航栏）
-  // body{height:100%} + .page{position:absolute;height:100%} 继承此高度
-  function setViewportHeight() {
-    var h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
-    document.documentElement.style.height = h + 'px';
   }
 
   function getPageEl(name) {
@@ -85,8 +87,6 @@
     }
 
     currentPage = name;
-
-    // 切换页面后滚回顶部
     window.scrollTo(0, 0);
   }
 
@@ -127,15 +127,11 @@
     init: function () {
       Storage.init();
 
-      // 设置视口高度
       setViewportHeight();
+      window.addEventListener('resize', setViewportHeight, false);
       if (window.visualViewport) {
-        window.visualViewport.addEventListener('resize', setViewportHeight);
+        window.visualViewport.addEventListener('resize', setViewportHeight, false);
       }
-      window.addEventListener('resize', setViewportHeight);
-      window.addEventListener('orientationchange', function () {
-        setTimeout(setViewportHeight, 300);
-      });
 
       // Safari 重新打开页面时可能保留之前的 hash，导致直接进入子页面
       var navEntry = performance.getEntriesByType && performance.getEntriesByType('navigation');

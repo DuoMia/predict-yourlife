@@ -169,15 +169,18 @@
         }
       }
 
-      // 对齐原版 onLoad 的初始值设置
       state.isShow = true;
       state.btnhide = true;
       state.btnhide2 = false;
       state.btnhide3 = true;
       state.resopen = true;
+      state.count = 0;
+      state.title = '';
+      state.image1 = '';
+      state.image2 = '';
+      state.image3 = '';
 
       if (userInfo.status === 1) {
-        // 当日已抽签：显示签面图，隐藏抽签图+杯子+结果，禁用抽签
         state.buttonhide = true;
         state.color = 'grey';
         state.texthide = false;
@@ -186,30 +189,18 @@
         state.imghide2 = true;
         state.imghide3 = true;
         state.sign = String(userInfo.lottery);
-        state.image1 = '';
-        state.image2 = '';
-        state.image3 = '';
-        state.title = '';
       } else {
-        // 未抽签或跨天重置
         state.imghide3 = false;
         state.buttonhide = false;
         state.color = 'rgb(124, 11, 11)';
         state.texthide = true;
-        state.count = 0;
-        state.title = '';
-        state.image1 = '';
-        state.image2 = '';
-        state.image3 = '';
 
         if (userInfo.lottery && userInfo.lottery !== 0) {
-          // 有历史签号：显示签面图+上次结果文字
           state.texthide2 = false;
           state.imghide = false;
           state.imghide2 = true;
           state.sign = String(userInfo.lottery);
         } else {
-          // 首次访问：显示抽签图
           state.texthide2 = true;
           state.imghide = true;
           state.imghide2 = false;
@@ -229,6 +220,7 @@
         clearInterval(loadingTimer);
         loadingTimer = null;
       }
+      pageEl.scrollTop = 0;
     },
 
     draw: function () {
