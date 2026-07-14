@@ -12,7 +12,10 @@
       var sign = params.sign;
       if (!sign) return;
 
-      // CSS 已处理 #page-lottery-answer.active 的 overflow-y:auto，无需修改 body 样式
+      // 确保解签页可滚动（JS 强制设置，覆盖 .page 的 overflow:hidden）
+      pageEl.style.overflowY = 'auto';
+      pageEl.style.webkitOverflowScrolling = 'touch';
+
       loadingEl = document.createElement('div');
       loadingEl.className = 'answer-loading';
       loadingEl.innerHTML = '<div class="answer-spinner"></div>';
@@ -32,6 +35,8 @@
       };
     },
     hide: function () {
+      pageEl.style.overflowY = '';
+      pageEl.style.webkitOverflowScrolling = '';
       if (loadingEl && loadingEl.parentNode) {
         loadingEl.parentNode.removeChild(loadingEl);
         loadingEl = null;
