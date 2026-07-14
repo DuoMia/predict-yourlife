@@ -174,11 +174,10 @@
       state.btnhide = true;
       state.btnhide2 = false;
       state.btnhide3 = true;
-      state.imghide3 = false;
       state.resopen = true;
 
       if (userInfo.status === 1) {
-        // 当日已抽签：显示签面图，隐藏抽签图，禁用抽签
+        // 当日已抽签：显示签面图，隐藏抽签图+杯子+结果，禁用抽签
         state.buttonhide = true;
         state.color = 'grey';
         state.texthide = false;
@@ -193,6 +192,7 @@
         state.title = '';
       } else {
         // 未抽签或跨天重置
+        state.imghide3 = false;
         state.buttonhide = false;
         state.color = 'rgb(124, 11, 11)';
         state.texthide = true;
