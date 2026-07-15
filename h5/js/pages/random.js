@@ -146,6 +146,26 @@
     timers = [];
   }
 
+  function layoutBottom() {
+    var area = pageEl.querySelector('.random-input-area');
+    var btn = pageEl.querySelector('.random-start-btn');
+    if (!area || !btn) return;
+    var pageHeight = pageEl.offsetHeight;
+    var htmlFs = parseFloat(document.documentElement.style.fontSize) || parseFloat(getComputedStyle(document.documentElement).fontSize);
+    var gap = 0.25 * htmlFs;
+    var btnH = 1.2 * htmlFs;
+    var minBottom = 0.3 * htmlFs;
+    var areaRect = area.getBoundingClientRect();
+    var pageRect = pageEl.getBoundingClientRect();
+    var areaBottom = areaRect.bottom - pageRect.top;
+    var btnTop = areaBottom + gap;
+    if (btnTop + btnH + minBottom > pageHeight) {
+      btnTop = pageHeight - btnH - minBottom;
+    }
+    btn.style.top = (btnTop / htmlFs) + 'rem';
+    btn.style.bottom = 'auto';
+  }
+
   function addinput() {
     var list = state.inputlist.slice();
     list.push('');
@@ -165,6 +185,7 @@
         var lastInput = inputs[inputs.length - 1];
         lastInput.focus();
       }
+      layoutBottom();
     });
   }
 
@@ -177,6 +198,9 @@
     }
     setState(updates);
     renderInputList();
+    requestAnimationFrame(function () {
+      layoutBottom();
+    });
   }
 
   function checknums(e, index) {
@@ -376,6 +400,7 @@
       bindEvents();
       render();
       renderInputList();
+      setTimeout(layoutBottom, 50);
     },
 
     show: function (params) {
@@ -390,6 +415,7 @@
         baguaEl.offsetHeight;
       }
       render();
+      setTimeout(layoutBottom, 50);
     },
 
     hide: function () {
