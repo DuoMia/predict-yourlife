@@ -196,3 +196,20 @@ input{font-family:'HYXingZBJJ',sans-serif;outline:none;border:none;-webkit-appea
 .lunar-day{font-size:0.18rem;line-height:0.24rem;margin-top:0.02rem;color:#999}
 @media screen and (min-width:750px){html{font-size:100px}}
 @media screen and (max-width:320px){html{font-size:calc(100vw / 7.5)}#page-calculator .calc-col{height:1.2rem;font-size:0.4rem}#page-calculator .calculator-display span{font-size:0.8rem}}
+
+#app-toast{position:fixed;top:40%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.7);color:#fff;padding:0.2rem 0.4rem;border-radius:0.1rem;font-size:0.32rem;z-index:9999;opacity:0;transition:opacity 0.3s;pointer-events:none;max-width:80vw;text-align:center;line-height:1.5}
+#app-toast.show{opacity:1}
+.app-home-btn{position:fixed;bottom:0.2rem;right:0.2rem;width:1rem;height:0.7rem;display:flex;align-items:center;justify-content:center;font-size:0.28rem;color:#8b2020;background:rgba(250,248,238,0.95);border:1px solid rgba(139,32,32,0.4);border-radius:0.35rem;z-index:1000;cursor:pointer;-webkit-tap-highlight-color:transparent;box-shadow:0 2px 8px rgba(0,0,0,0.15)}
+
+#page-datetime .explain-mask{position:fixed;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,0.5);z-index:99}
+#page-datetime .explain-modal{position:fixed;z-index:100;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;padding:0.4rem 0.3rem;box-sizing:border-box;max-width:95vw}
+#page-datetime .explain-modal-img{width:90vw;max-width:6.8rem;height:auto;max-height:calc(100vh - 2.5rem);object-fit:contain;display:block}
+#page-datetime .explain-modal-btn{margin-top:0.3rem;width:2.84rem;height:0.9rem;background-color:transparent;cursor:pointer}
+
+#page-random .explain-mask{position:fixed;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,0.5);z-index:99}
+#page-random .explain-modal{position:fixed;z-index:100;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;padding:0.4rem 0.3rem;box-sizing:border-box;max-width:95vw}
+#page-random .explain-modal-img{width:90vw;max-width:6.8rem;height:auto;max-height:calc(100vh - 2.5rem);object-fit:contain;display:block}
+#page-random .explain-modal-btn{margin-top:0.3rem;width:2.84rem;height:0.9rem;background-color:transparent;cursor:pointer}
+
+#page-random .random-input-area{width:5.6rem;max-height:2.4rem;border:0 solid rgb(167,29,29);padding:0.1rem;box-sizing:border-box;display:flex;flex-direction:column;left:50%;transform:translateX(-50%);position:absolute;bottom:15%;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
+#page-random .random-input-item{display:flex;height:0.7rem;border:0.04rem solid rgb(136,172,142);align-items:center;margin-bottom:0.2rem;box-sizing:border-box;position:relative;padding-right:1.6rem;flex-shrink:0}

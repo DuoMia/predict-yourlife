@@ -107,7 +107,7 @@
       pageEl.classList.remove('predicting');
     }
 
-    if (baguaEl && state.rotatenum > 0) {
+    if (baguaEl && state.rotatenum > 0 && state.select) {
       baguaEl.style.animation = 'none';
     }
 
@@ -178,11 +178,11 @@
 
   function chooseModal() {
     if (state.timedate === 'no') {
-      alert('请选择日期哦~');
+      App.toast('请选择日期哦~');
       return;
     }
     if (state.hournum === 'no') {
-      alert('请选择时辰哦~');
+      App.toast('请选择时辰哦~');
       return;
     }
     setState({ showModal: true });
@@ -256,6 +256,8 @@
 
     if (baguaEl) {
       baguaEl.style.animation = 'none';
+      baguaEl.style.transition = 'none';
+      baguaEl.style.transform = 'rotate(0deg)';
       baguaEl.offsetHeight;
       var rotateDegree = state.rotatenum;
       var rotateTime = Math.abs(rotateDegree) / 360 * 1000;
@@ -280,6 +282,11 @@
       buttonhide: false,
       color: '124, 11, 11'
     });
+    if (baguaEl) {
+      baguaEl.style.transition = 'none';
+      baguaEl.style.transform = 'rotate(0deg)';
+      baguaEl.offsetHeight;
+    }
   }
 
   function openinfo() {
@@ -394,23 +401,19 @@
     show: function (params) {
       if (baguaEl) {
         baguaEl.style.transition = 'none';
+        baguaEl.style.animation = '';
         if (state.rotatenum > 0 && !state.select) {
           baguaEl.style.transform = 'rotate(' + state.rotatenum + 'deg)';
         } else {
           baguaEl.style.transform = 'rotate(0deg)';
         }
-        baguaEl.style.animation = 'none';
+        baguaEl.offsetHeight;
       }
       render();
     },
 
     hide: function () {
       clearTimers();
-      if (baguaEl) {
-        baguaEl.style.transition = 'none';
-        baguaEl.style.transform = 'rotate(0deg)';
-        baguaEl.style.animation = 'none';
-      }
     }
   };
 

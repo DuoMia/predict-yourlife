@@ -14,14 +14,51 @@
 
   var pages = {};
   var currentPage = null;
+  var toastTimer = null;
 
   function setViewportHeight() {
     var height = window.innerHeight;
     if (window.visualViewport && window.visualViewport.height) {
       height = window.visualViewport.height;
     }
+    if (height < 100) return;
     document.documentElement.style.height = height + 'px';
     document.body.style.height = height + 'px';
+  }
+
+  function showToast(msg) {
+    var toastEl = document.getElementById('app-toast');
+    if (!toastEl) {
+      toastEl = document.createElement('div');
+      toastEl.id = 'app-toast';
+      document.body.appendChild(toastEl);
+    }
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toastEl.classList.remove('show');
+    }, 2000);
+  }
+
+  function createHomeButton() {
+    var btn = document.createElement('div');
+    btn.className = 'app-home-btn';
+    btn.innerHTML = '首页';
+    btn.addEventListener('click', function () {
+      App.navigate('/');
+    });
+    document.body.appendChild(btn);
+  }
+
+  function updateHomeButton() {
+    var btn = document.querySelector('.app-home-btn');
+    if (!btn) return;
+    if (currentPage === 'index') {
+      btn.style.display = 'none';
+    } else {
+      btn.style.display = 'flex';
+    }
   }
 
   function parseHash() {
@@ -88,6 +125,7 @@
 
     currentPage = name;
     window.scrollTo(0, 0);
+    updateHomeButton();
   }
 
   function onHashChange() {
@@ -124,6 +162,8 @@
       return parseHash().params;
     },
 
+    toast: showToast,
+
     init: function () {
       Storage.init();
 
@@ -132,8 +172,13 @@
       if (window.visualViewport) {
         window.visualViewport.addEventListener('resize', setViewportHeight, false);
       }
+      window.addEventListener('load', function () {
+        setTimeout(setViewportHeight, 100);
+      });
+      setTimeout(setViewportHeight, 300);
 
-      // Safari 重新打开页面时可能保留之前的 hash，导致直接进入子页面
+      createHomeButton();
+
       var navEntry = performance.getEntriesByType && performance.getEntriesByType('navigation');
       var navType = navEntry && navEntry[0] ? navEntry[0].type : (performance.navigation ? (performance.navigation.type === 0 ? 'navigate' : 'reload') : 'navigate');
       if (navType === 'navigate' && window.location.hash && window.location.hash !== '#/') {
