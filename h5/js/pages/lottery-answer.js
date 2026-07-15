@@ -3,7 +3,6 @@
   var signImage = null;
   var scrollEl = null;
   var loadingEl = null;
-  var backBtn = null;
   var loadTimer = null;
 
   function showImage() {
@@ -26,16 +25,6 @@
       if (!pageEl) return;
       scrollEl = pageEl.querySelector('.answer-scroll');
       signImage = pageEl.querySelector('[data-role="sign-image"]');
-
-      if (!backBtn) {
-        backBtn = document.createElement('div');
-        backBtn.className = 'answer-back-btn';
-        backBtn.innerHTML = '返回';
-        backBtn.addEventListener('click', function () {
-          history.back();
-        });
-        pageEl.appendChild(backBtn);
-      }
     },
     show: function (params) {
       if (!pageEl || !signImage) {
