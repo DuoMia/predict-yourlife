@@ -135,9 +135,9 @@ input{font-family:'HYXingZBJJ',sans-serif;outline:none;border:none;-webkit-appea
 #page-random .pointer-right{height:0.8rem;width:0.9rem;position:absolute;left:31%;top:0;z-index:1}
 #page-random .random-switch{position:absolute;margin:auto;left:0;bottom:88%;z-index:1;font-family:'HYXingZBJJ';background-color:transparent;color:black;text-align:center;font-size:0.5rem;font-weight:bold}
 #page-random .random-explain{position:absolute;margin:auto;right:0;bottom:88%;font-family:'HYXingZBJJ';background-color:transparent;color:black;text-align:center;font-size:0.5rem;font-weight:bold}
-#page-random .random-title{position:absolute;top:53%;left:50%;transform:translateX(-50%);width:90vw;text-align:center;font-size:0.38rem;font-family:'HYXingZBJJ';padding:0 0.3rem;box-sizing:border-box;line-height:1.4}
+#page-random .random-title{position:absolute;top:54%;left:50%;transform:translateX(-50%);width:90vw;text-align:center;font-size:0.38rem;font-family:'HYXingZBJJ';padding:0 0.3rem;box-sizing:border-box;line-height:1.4}
 #page-random.predicting .random-switch,#page-random.predicting .random-explain,#page-random.predicting .random-input-area,#page-random.predicting .random-start-btn{pointer-events:none;opacity:0.5}
-#page-random .random-input-area{width:5.6rem;padding:0.1rem 0.1rem 0;box-sizing:border-box;display:flex;flex-direction:column;left:50%;transform:translateX(-50%);position:absolute;top:calc(53% + 1.05rem);bottom:1.9rem;max-height:2.5rem;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
+#page-random .random-input-area{width:5.6rem;padding:0.1rem 0.1rem 0;box-sizing:border-box;display:flex;flex-direction:column;left:50%;transform:translateX(-50%);position:absolute;top:calc(54% + 1.05rem);bottom:1.9rem;max-height:2.5rem;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
 #page-random .random-input-item{display:flex;height:0.7rem;border:0.04rem solid rgb(136,172,142);align-items:center;margin-bottom:0.15rem;box-sizing:border-box;position:relative;padding-right:1.6rem;flex-shrink:0}
 #page-random .random-input-item input{flex:1;height:0.58rem;display:block;box-sizing:border-box;border:none;outline:none;padding:0 0.1rem;font-size:0.28rem;min-width:0}
 #page-random .random-add-btn{background-color:transparent;position:absolute;right:0.7rem;top:50%;transform:translateY(-50%);padding:0;border:none;width:0.6rem;height:0.6rem;display:flex;align-items:center;justify-content:center}
@@ -198,7 +198,7 @@ input{font-family:'HYXingZBJJ',sans-serif;outline:none;border:none;-webkit-appea
 
 #app-toast{position:fixed;top:40%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.7);color:#fff;padding:0.2rem 0.4rem;border-radius:0.1rem;font-size:0.32rem;z-index:9999;opacity:0;transition:opacity 0.3s;pointer-events:none;max-width:80vw;text-align:center;line-height:1.5}
 #app-toast.show{opacity:1}
-.app-home-btn{position:fixed;top:0.15rem;left:0.2rem;font-size:0.4rem;font-family:'HYXingZBJJ';color:#8b2020;background:transparent;border:none;z-index:1000;cursor:pointer;-webkit-tap-highlight-color:transparent;padding:0.05rem 0.15rem;white-space:nowrap;opacity:0.8}
+.app-home-btn{position:fixed;bottom:0.2rem;right:0.2rem;font-size:0.36rem;font-family:'HYXingZBJJ';color:#8b2020;background:transparent;border:none;z-index:1000;cursor:pointer;-webkit-tap-highlight-color:transparent;padding:0.1rem 0.2rem;white-space:nowrap;opacity:0.8}
 
 #page-datetime .explain-mask{position:fixed;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,0.5);z-index:99}
 #page-datetime .explain-modal{position:fixed;z-index:100;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;padding:0.4rem 0.3rem;box-sizing:border-box;max-width:95vw}

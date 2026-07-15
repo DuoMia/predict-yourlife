@@ -15,13 +15,18 @@
   var pages = {};
   var currentPage = null;
   var toastTimer = null;
+  var savedHeight = 0;
 
-  function setViewportHeight() {
+  function setViewportHeight(force) {
     var height = window.innerHeight;
     if (window.visualViewport && window.visualViewport.height) {
       height = window.visualViewport.height;
     }
     if (height < 100) return;
+    if (savedHeight > 0 && !force) {
+      if (height < savedHeight - 100) return;
+    }
+    savedHeight = height;
     document.documentElement.style.height = height + 'px';
     document.body.style.height = height + 'px';
   }
@@ -57,7 +62,7 @@
     if (currentPage === 'index') {
       btn.style.display = 'none';
     } else {
-      btn.style.display = 'flex';
+      btn.style.display = 'block';
     }
   }
 
@@ -167,15 +172,19 @@
     init: function () {
       Storage.init();
 
-      setViewportHeight();
-      window.addEventListener('resize', setViewportHeight, false);
+      setViewportHeight(true);
+      window.addEventListener('resize', function () { setViewportHeight(false); }, false);
+      window.addEventListener('orientationchange', function () {
+        savedHeight = 0;
+        setTimeout(function () { setViewportHeight(true); }, 300);
+      }, false);
       if (window.visualViewport) {
-        window.visualViewport.addEventListener('resize', setViewportHeight, false);
+        window.visualViewport.addEventListener('resize', function () { setViewportHeight(false); }, false);
       }
       window.addEventListener('load', function () {
-        setTimeout(setViewportHeight, 100);
+        setTimeout(function () { setViewportHeight(true); }, 100);
       });
-      setTimeout(setViewportHeight, 300);
+      setTimeout(function () { setViewportHeight(true); }, 300);
 
       createHomeButton();
 
