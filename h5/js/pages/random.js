@@ -155,6 +155,17 @@
     }
     setState(updates);
     renderInputList();
+    requestAnimationFrame(function () {
+      var area = pageEl.querySelector('.random-input-area');
+      if (area) {
+        area.scrollTop = area.scrollHeight;
+      }
+      var inputs = pageEl.querySelectorAll('.random-input-item input');
+      if (inputs.length > 0) {
+        var lastInput = inputs[inputs.length - 1];
+        lastInput.focus();
+      }
+    });
   }
 
   function deletedq(index) {
