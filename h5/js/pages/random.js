@@ -78,8 +78,14 @@
       pageEl.classList.remove('predicting');
     }
 
-    if (baguaEl && state.rotatenum > 0 && state.select) {
-      baguaEl.style.animation = 'none';
+    if (baguaEl && state.rotatenum > 0) {
+      if (state.select) {
+        baguaEl.style.animation = 'none';
+      } else {
+        baguaEl.style.animation = 'none';
+        baguaEl.style.transition = 'none';
+        baguaEl.style.transform = 'rotate(' + state.rotatenum + 'deg)';
+      }
     }
 
     var pointerEl = pageEl.querySelector('.bagua-pointer');
@@ -146,26 +152,6 @@
     timers = [];
   }
 
-  function layoutBottom() {
-    var area = pageEl.querySelector('.random-input-area');
-    var btn = pageEl.querySelector('.random-start-btn');
-    if (!area || !btn) return;
-    var pageHeight = pageEl.offsetHeight;
-    var htmlFs = parseFloat(document.documentElement.style.fontSize) || parseFloat(getComputedStyle(document.documentElement).fontSize);
-    var gap = 0.25 * htmlFs;
-    var btnH = 1.2 * htmlFs;
-    var minBottom = 0.3 * htmlFs;
-    var areaRect = area.getBoundingClientRect();
-    var pageRect = pageEl.getBoundingClientRect();
-    var areaBottom = areaRect.bottom - pageRect.top;
-    var btnTop = areaBottom + gap;
-    if (btnTop + btnH + minBottom > pageHeight) {
-      btnTop = pageHeight - btnH - minBottom;
-    }
-    btn.style.top = (btnTop / htmlFs) + 'rem';
-    btn.style.bottom = 'auto';
-  }
-
   function addinput() {
     var list = state.inputlist.slice();
     list.push('');
@@ -185,7 +171,6 @@
         var lastInput = inputs[inputs.length - 1];
         lastInput.focus();
       }
-      layoutBottom();
     });
   }
 
@@ -198,9 +183,6 @@
     }
     setState(updates);
     renderInputList();
-    requestAnimationFrame(function () {
-      layoutBottom();
-    });
   }
 
   function checknums(e, index) {
@@ -302,11 +284,6 @@
       updates.buttonhide2 = false;
     }
     setState(updates);
-    if (baguaEl) {
-      baguaEl.style.transition = 'none';
-      baguaEl.style.transform = 'rotate(0deg)';
-      baguaEl.offsetHeight;
-    }
   }
 
   function openinfo() {
@@ -400,7 +377,6 @@
       bindEvents();
       render();
       renderInputList();
-      setTimeout(layoutBottom, 50);
     },
 
     show: function (params) {
@@ -415,7 +391,6 @@
         baguaEl.offsetHeight;
       }
       render();
-      setTimeout(layoutBottom, 50);
     },
 
     hide: function () {

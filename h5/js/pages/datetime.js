@@ -107,8 +107,14 @@
       pageEl.classList.remove('predicting');
     }
 
-    if (baguaEl && state.rotatenum > 0 && state.select) {
-      baguaEl.style.animation = 'none';
+    if (baguaEl && state.rotatenum > 0) {
+      if (state.select) {
+        baguaEl.style.animation = 'none';
+      } else {
+        baguaEl.style.animation = 'none';
+        baguaEl.style.transition = 'none';
+        baguaEl.style.transform = 'rotate(' + state.rotatenum + 'deg)';
+      }
     }
 
     var pointerEl = pageEl.querySelector('.bagua-pointer');
@@ -282,11 +288,6 @@
       buttonhide: false,
       color: '124, 11, 11'
     });
-    if (baguaEl) {
-      baguaEl.style.transition = 'none';
-      baguaEl.style.transform = 'rotate(0deg)';
-      baguaEl.offsetHeight;
-    }
   }
 
   function openinfo() {
