@@ -316,12 +316,55 @@
     },
 
     restart: function () {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+      if (loadingTimer) {
+        clearInterval(loadingTimer);
+        loadingTimer = null;
+      }
+
       Storage.updateUserInfo({
         status: 0,
         datetime: new Date().toString()
       });
 
-      App.navigate('/lottery');
+      state.isShow = true;
+      state.btnhide = false;
+      state.btnhide2 = true;
+      state.btnhide3 = true;
+      state.indexhidden = false;
+      state.imghide = true;
+      state.imghide2 = false;
+      state.imghide3 = false;
+      state.image1 = '';
+      state.image2 = '';
+      state.image3 = '';
+      state.count = 0;
+      state.buttonhide = false;
+      state.color = 'rgb(124, 11, 11)';
+      state.texthide = true;
+      state.texthide2 = true;
+      state.resopen = true;
+      state.title = '';
+      state.sign = '';
+      state.imgload = true;
+      state.imgnoload = false;
+
+      load();
+
+      var gifImg = pageEl.querySelector('.lottery-drawing-img');
+      if (gifImg) {
+        gifImg.addEventListener('load', function () {
+          module.imgload();
+        });
+        if (gifImg.complete && gifImg.naturalWidth > 0) {
+          module.imgload();
+        }
+      }
+
+      updateAll();
     },
 
     imgload: function () {
