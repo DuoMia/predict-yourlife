@@ -97,9 +97,18 @@
            d1.getDate() === d2.getDate();
   }
 
+  function resetDots() {
+    var dots = pageEl.querySelectorAll('.lottery-load-dots .dot');
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].classList.remove('sct');
+    }
+  }
+
   function load() {
+    stopLoading();
     var dots = pageEl.querySelectorAll('.lottery-load-dots .dot');
     if (!dots.length) return;
+    resetDots();
     var current = 0;
     dots[0].classList.add('sct');
     loadingTimer = setInterval(function () {
@@ -119,6 +128,17 @@
     }
   }
 
+  function checkGifAndStartLoading() {
+    var gifImg = pageEl.querySelector('.lottery-drawing-img');
+    if (gifImg && gifImg.complete && gifImg.naturalWidth > 0) {
+      module.imgload();
+      return;
+    }
+    state.imgload = true;
+    state.imgnoload = false;
+    load();
+  }
+
   var module = {
     init: function () {
       if (_inited) return;
@@ -131,9 +151,14 @@
       state.indexhidden = false;
       state.imghide3 = false;
 
-      updateAll();
+      var gifImg = pageEl.querySelector('.lottery-drawing-img');
+      if (gifImg) {
+        gifImg.addEventListener('load', function () {
+          module.imgload();
+        });
+      }
 
-      load();
+      checkGifAndStartLoading();
 
       pageEl.addEventListener('click', function (e) {
         var target = e.target;
@@ -146,16 +171,6 @@
           target = target.parentElement;
         }
       });
-
-      var gifImg = pageEl.querySelector('.lottery-drawing-img');
-      if (gifImg) {
-        gifImg.addEventListener('load', function () {
-          module.imgload();
-        });
-        if (gifImg.complete && gifImg.naturalWidth > 0) {
-          module.imgload();
-        }
-      }
     },
 
     show: function () {
@@ -208,7 +223,11 @@
         }
       }
 
-      updateAll();
+      if (state.imgnoload) {
+        updateAll();
+      } else {
+        checkGifAndStartLoading();
+      }
     },
 
     hide: function () {
@@ -216,17 +235,13 @@
         clearInterval(timer);
         timer = null;
       }
-      if (loadingTimer) {
-        clearInterval(loadingTimer);
-        loadingTimer = null;
-      }
+      stopLoading();
       pageEl.scrollTop = 0;
     },
 
     draw: function () {
       if (state.buttonhide) return;
 
-      // 对齐原版 draw()：隐藏所有内容，显示抽签动画
       state.isShow = false;
       state.imghide2 = true;
       state.btnhide3 = true;
@@ -246,7 +261,6 @@
         clearInterval(timer);
       }
 
-      // 2秒后对齐原版 timechange()：隐藏动画，显示签面图+签号，显示掷杯按钮
       timer = setInterval(function () {
         state.isShow = true;
         if (timer) {
@@ -320,10 +334,7 @@
         clearInterval(timer);
         timer = null;
       }
-      if (loadingTimer) {
-        clearInterval(loadingTimer);
-        loadingTimer = null;
-      }
+      stopLoading();
 
       Storage.updateUserInfo({
         status: 0,
@@ -349,22 +360,8 @@
       state.resopen = true;
       state.title = '';
       state.sign = '';
-      state.imgload = true;
-      state.imgnoload = false;
 
-      load();
-
-      var gifImg = pageEl.querySelector('.lottery-drawing-img');
-      if (gifImg) {
-        gifImg.addEventListener('load', function () {
-          module.imgload();
-        });
-        if (gifImg.complete && gifImg.naturalWidth > 0) {
-          module.imgload();
-        }
-      }
-
-      updateAll();
+      checkGifAndStartLoading();
     },
 
     imgload: function () {

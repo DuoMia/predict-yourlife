@@ -20,9 +20,18 @@
     }
   }
 
+  function resetDots() {
+    var dots = el.querySelectorAll('.tool-load-dots .dot');
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].classList.remove('sct');
+    }
+  }
+
   function load() {
+    stopLoading();
     var dots = el.querySelectorAll('.tool-load-dots .dot');
     if (!dots.length) return;
+    resetDots();
     var current = 0;
     dots[0].classList.add('sct');
     loadingTimer = setInterval(function () {
@@ -49,6 +58,18 @@
     updateVisibility();
   }
 
+  function checkAndStartLoading() {
+    var bgImg = el.querySelector('.main-bg');
+    if (bgImg && bgImg.complete && bgImg.naturalWidth > 0) {
+      imgload();
+      return;
+    }
+    state.imgload = true;
+    state.imgnoload = false;
+    updateVisibility();
+    load();
+  }
+
   var page = {
     init: function () {
       if (_inited) return;
@@ -57,18 +78,13 @@
       el = document.getElementById('page-tool');
 
       state.indexhidden = false;
-      updateVisibility();
-
-      load();
 
       var bgImg = el.querySelector('.main-bg');
       bgImg.addEventListener('load', function () {
         imgload();
       });
 
-      if (bgImg.complete && bgImg.naturalWidth > 0) {
-        imgload();
-      }
+      checkAndStartLoading();
 
       el.querySelector('[data-action="goto1"]').addEventListener('click', function () {
         App.navigate('/datetime');
@@ -78,13 +94,17 @@
       });
     },
 
-    show: function () {},
+    show: function () {
+      state.indexhidden = false;
+      if (state.imgnoload) {
+        updateVisibility();
+        return;
+      }
+      checkAndStartLoading();
+    },
 
     hide: function () {
-      if (loadingTimer) {
-        clearInterval(loadingTimer);
-        loadingTimer = null;
-      }
+      stopLoading();
     }
   };
 

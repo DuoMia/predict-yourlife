@@ -1,6 +1,7 @@
 (function () {
   var _inited = false;
   var loadingTimer = null;
+  var fallbackTimer = null;
 
   var state = {
     current: 0,
@@ -20,9 +21,18 @@
     }
   }
 
+  function resetDots() {
+    var dots = el.querySelectorAll('.index-load-dots .dot');
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].classList.remove('sct');
+    }
+  }
+
   function load() {
+    stopLoading();
     var dots = el.querySelectorAll('.index-load-dots .dot');
     if (!dots.length) return;
+    resetDots();
     var current = 0;
     dots[0].classList.add('sct');
     loadingTimer = setInterval(function () {
@@ -45,6 +55,10 @@
       clearInterval(loadingTimer);
       loadingTimer = null;
     }
+    if (fallbackTimer) {
+      clearTimeout(fallbackTimer);
+      fallbackTimer = null;
+    }
   }
 
   function imgload() {
@@ -53,6 +67,21 @@
     hideLoadingScreen();
     stopLoading();
     updateVisibility();
+  }
+
+  function checkAndStartLoading() {
+    var bgImg = el.querySelector('.main-bg');
+    if (bgImg && bgImg.complete && bgImg.naturalWidth > 0) {
+      imgload();
+      return;
+    }
+    state.imgload = true;
+    state.imgnoload = false;
+    updateVisibility();
+    load();
+    if (bgImg && !bgImg.complete) {
+      fallbackTimer = setTimeout(imgload, 3000);
+    }
   }
 
   var page = {
@@ -65,20 +94,13 @@
       Storage.getUserInfo();
 
       state.indexhidden = false;
-      updateVisibility();
-
-      load();
 
       var bgImg = el.querySelector('.main-bg');
       bgImg.addEventListener('load', function () {
         imgload();
       });
 
-      if (bgImg.complete && bgImg.naturalWidth > 0) {
-        imgload();
-      } else {
-        setTimeout(imgload, 3000);
-      }
+      checkAndStartLoading();
 
       el.querySelector('[data-action="gototool"]').addEventListener('click', function () {
         App.navigate('/tool');
@@ -91,13 +113,17 @@
       });
     },
 
-    show: function () {},
+    show: function () {
+      state.indexhidden = false;
+      if (state.imgnoload) {
+        updateVisibility();
+        return;
+      }
+      checkAndStartLoading();
+    },
 
     hide: function () {
-      if (loadingTimer) {
-        clearInterval(loadingTimer);
-        loadingTimer = null;
-      }
+      stopLoading();
     }
   };
 
