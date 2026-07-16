@@ -101,22 +101,22 @@
     var dots = pageEl.querySelectorAll('.lottery-load-dots .dot');
     if (!dots.length) return;
     var current = 0;
-    var n = 1;
     dots[0].classList.add('sct');
     loadingTimer = setInterval(function () {
-      if (n >= 10) {
-        clearInterval(loadingTimer);
-        loadingTimer = null;
-        return;
-      }
       for (var j = 0; j < dots.length; j++) {
         dots[j].classList.remove('sct');
       }
       current++;
       if (current > 3) current = 0;
       dots[current].classList.add('sct');
-      n++;
     }, 400);
+  }
+
+  function stopLoading() {
+    if (loadingTimer) {
+      clearInterval(loadingTimer);
+      loadingTimer = null;
+    }
   }
 
   var module = {
@@ -390,6 +390,7 @@
       state.imgload = false;
       state.imgnoload = true;
 
+      stopLoading();
       updateAll();
     }
   };
