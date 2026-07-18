@@ -133,10 +133,11 @@ input{font-family:'HYXingZBJJ',sans-serif;outline:none;border:none;-webkit-appea
 #page-random .pointer-right{height:0.8rem;width:0.9rem;position:absolute;left:31%;top:0;z-index:1}
 #page-random .random-switch{position:absolute;margin:auto;left:0;bottom:88%;z-index:1;font-family:'HYXingZBJJ';background-color:transparent;color:black;text-align:center;font-size:0.5rem;font-weight:bold}
 #page-random .random-explain{position:absolute;margin:auto;right:0;bottom:88%;font-family:'HYXingZBJJ';background-color:transparent;color:black;text-align:center;font-size:0.5rem;font-weight:bold}
-#page-random .random-title{position:absolute;left:0;right:0;margin:auto;width:90vw;text-align:center;font-size:0.38rem;font-family:'HYXingZBJJ';padding:0 0.3rem;box-sizing:border-box;line-height:1.4;bottom:calc(7% + 4.7rem)}
+#page-random .random-title{position:absolute;left:0;right:0;margin:auto;width:90vw;text-align:center;font-size:0.38rem;font-family:'HYXingZBJJ';padding:0 0.3rem;box-sizing:border-box;line-height:1.4;bottom:calc(7% + 3.7rem)}
 #page-random.predicting .random-switch,#page-random.predicting .random-explain,#page-random.predicting .random-input-area,#page-random.predicting .random-start-btn{pointer-events:none;opacity:0.5}
-#page-random .random-input-area{width:5.6rem;padding:0;box-sizing:border-box;display:flex;flex-direction:column;left:0;right:0;margin:auto;position:absolute;bottom:calc(7% + 1.5rem);height:3.0rem;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
+#page-random .random-input-area{width:5.6rem;padding:0;box-sizing:border-box;display:flex;flex-direction:column;left:0;right:0;margin:auto;position:absolute;bottom:calc(7% + 1.55rem);height:1.85rem;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
 #page-random .random-input-item{display:flex;height:0.85rem;border:0.04rem solid rgb(136,172,142);align-items:center;margin-bottom:0.15rem;box-sizing:border-box;position:relative;padding-right:1.8rem;flex-shrink:0}
+#page-random .random-input-item:last-child{margin-bottom:0}
 #page-random .random-input-item input{flex:1;height:0.7rem;display:block;box-sizing:border-box;border:none;outline:none;padding:0 0.15rem;font-size:0.36rem;min-width:0}
 #page-random .random-add-btn{background-color:transparent;position:absolute;right:0.8rem;top:50%;transform:translateY(-50%);padding:0;border:none;width:0.65rem;height:0.65rem;display:flex;align-items:center;justify-content:center}
 #page-random .random-add-btn img{height:0.55rem;width:0.55rem;display:block}
