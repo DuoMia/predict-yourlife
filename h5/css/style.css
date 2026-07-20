@@ -136,13 +136,14 @@ input{font-family:'HYXingZBJJ',sans-serif;outline:none;border:none;-webkit-appea
 #page-random .random-title{position:absolute;left:0;right:0;margin:auto;width:90vw;text-align:center;font-size:0.38rem;font-family:'HYXingZBJJ';padding:0 0.3rem;box-sizing:border-box;line-height:1.4;bottom:calc(7% + 3.7rem)}
 #page-random.predicting .random-switch,#page-random.predicting .random-explain,#page-random.predicting .random-input-area,#page-random.predicting .random-start-btn{pointer-events:none;opacity:0.5}
 #page-random .random-input-area{width:5.6rem;padding:0;box-sizing:border-box;display:flex;flex-direction:column;left:0;right:0;margin:auto;position:absolute;bottom:calc(7% + 1.55rem);height:1.85rem;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
-#page-random .random-input-item{display:flex;height:0.85rem;border:0.04rem solid rgb(136,172,142);align-items:center;margin-bottom:0.15rem;box-sizing:border-box;position:relative;padding-right:1.8rem;flex-shrink:0}
+#page-random .random-input-item{display:flex;height:0.85rem;border:0.04rem solid rgb(136,172,142);align-items:center;margin-bottom:0.15rem;box-sizing:border-box;position:relative;background:#fff;overflow:hidden;flex-shrink:0;border-radius:0.08rem;padding-right:1.45rem}
 #page-random .random-input-item:last-child{margin-bottom:0}
-#page-random .random-input-item input{flex:1;height:0.7rem;display:block;box-sizing:border-box;border:none;outline:none;padding:0 0.15rem;font-size:0.36rem;min-width:0}
-#page-random .random-add-btn{background-color:transparent;position:absolute;right:0.8rem;top:50%;transform:translateY(-50%);padding:0;border:none;width:0.65rem;height:0.65rem;display:flex;align-items:center;justify-content:center}
-#page-random .random-add-btn img{height:0.55rem;width:0.55rem;display:block}
-#page-random .random-delete-btn{background-color:transparent;position:absolute;right:0.1rem;top:50%;transform:translateY(-50%);padding:0;border:none;width:0.65rem;height:0.65rem;display:flex;align-items:center;justify-content:center}
-#page-random .random-delete-btn img{height:0.55rem;width:0.55rem;display:block}
+#page-random .random-input-item input{flex:1;height:0.7rem;display:block;box-sizing:border-box;border:none;outline:none;padding:0 0.15rem;font-size:0.42rem;line-height:0.7rem;min-width:0;background:transparent;text-align:center}
+#page-random .random-btn-group{position:absolute;right:0;top:0;bottom:0;display:flex;align-items:center;border-left:0.03rem solid rgb(136,172,142);background:rgba(136,172,142,0.12)}
+#page-random .random-add-btn{background-color:transparent;padding:0;border:none;width:0.7rem;height:100%;display:flex;align-items:center;justify-content:center;border-right:0.02rem solid rgba(136,172,142,0.4)}
+#page-random .random-add-btn img{height:0.5rem;width:0.5rem;display:block}
+#page-random .random-delete-btn{background-color:transparent;padding:0;border:none;width:0.7rem;height:100%;display:flex;align-items:center;justify-content:center}
+#page-random .random-delete-btn img{height:0.5rem;width:0.5rem;display:block}
 #page-random .random-start-btn{margin:auto;position:absolute;left:0;right:0;border-radius:0.6rem;bottom:7%;line-height:0.8rem;width:4.5rem;height:1.2rem;font-family:'HYXingZBJJ';background-color:transparent;font-size:0.8rem;font-weight:bold;text-align:center;border:0.06rem solid rgba(124,11,11,0.8);color:rgb(124,11,11)}
 #page-random .explain-mask{position:fixed;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,0.5);z-index:99}
 #page-random .explain-modal{position:fixed;z-index:100;top:8%;left:50%;transform:translateX(-50%)}
