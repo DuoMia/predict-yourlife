@@ -189,6 +189,14 @@
     }
     setState(updates);
     renderInputList();
+    requestAnimationFrame(function () {
+      var area = pageEl.querySelector('.random-input-area');
+      if (!area) return;
+      var maxScroll = area.scrollHeight - area.clientHeight;
+      if (area.scrollTop > maxScroll) {
+        area.scrollTo({ top: maxScroll > 0 ? maxScroll : 0, behavior: 'smooth' });
+      }
+    });
   }
 
   function checknums(e, index) {
