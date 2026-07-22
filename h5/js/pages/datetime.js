@@ -415,6 +415,20 @@
 
     hide: function () {
       clearTimers();
+      if (state.buttonhide) {
+        resetState();
+        if (baguaEl) {
+          baguaEl.style.transition = 'none';
+          baguaEl.style.animation = '';
+          baguaEl.style.transform = 'rotate(0deg)';
+          baguaEl.offsetHeight;
+        }
+        if (calendarInstance) {
+          var now = new Date();
+          calendarInstance.display(now.getFullYear(), now.getMonth() + 1);
+        }
+        render();
+      }
     }
   };
 

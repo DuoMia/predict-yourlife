@@ -16,6 +16,7 @@
   var currentPage = null;
   var toastTimer = null;
   var savedHeight = 0;
+  var homeObserver = null;
 
   function setViewportHeight(force) {
     var height = window.innerHeight;
@@ -51,6 +52,11 @@
     btn.className = 'app-home-btn';
     btn.innerHTML = '首页';
     btn.addEventListener('click', function () {
+      var activePage = document.querySelector('.page.active');
+      if (activePage && activePage.classList.contains('predicting')) {
+        App.toast('预测进行中，请稍候...');
+        return;
+      }
       App.navigate('/');
     });
     document.body.appendChild(btn);
@@ -63,6 +69,12 @@
       btn.style.display = 'none';
     } else {
       btn.style.display = 'block';
+      var activePage = document.querySelector('.page.active');
+      if (activePage && activePage.classList.contains('predicting')) {
+        btn.classList.add('disabled');
+      } else {
+        btn.classList.remove('disabled');
+      }
     }
   }
 
@@ -95,6 +107,11 @@
   }
 
   function switchPage(name, params) {
+    if (homeObserver) {
+      homeObserver.disconnect();
+      homeObserver = null;
+    }
+
     if (currentPage && pages[currentPage]) {
       var oldPage = pages[currentPage];
       if (typeof oldPage.hide === 'function') {
@@ -123,6 +140,11 @@
     }
 
     el.classList.add('active');
+
+    homeObserver = new MutationObserver(function () {
+      updateHomeButton();
+    });
+    homeObserver.observe(el, { attributes: true, attributeFilter: ['class'] });
 
     if (typeof page.show === 'function') {
       page.show(params);

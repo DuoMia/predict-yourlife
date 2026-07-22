@@ -428,6 +428,18 @@
     hide: function () {
       clearTimers();
       _deleting = false;
+      if (state.buttonhide) {
+        resetState();
+        state.buttonhide2 = true;
+        if (baguaEl) {
+          baguaEl.style.transition = 'none';
+          baguaEl.style.animation = '';
+          baguaEl.style.transform = 'rotate(0deg)';
+          baguaEl.offsetHeight;
+        }
+        renderInputList();
+        render();
+      }
     }
   };
 
