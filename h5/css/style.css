@@ -138,6 +138,7 @@ input{font-family:'HYXingZBJJ',sans-serif;outline:none;border:none;-webkit-appea
 #page-random .random-input-area{width:5.6rem;padding:0;box-sizing:border-box;display:flex;flex-direction:column;left:0;right:0;margin:auto;position:absolute;bottom:calc(7% + 1.55rem);height:1.85rem;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
 #page-random .random-input-item{display:flex;height:0.85rem;border:0.04rem solid rgb(136,172,142);align-items:center;margin-bottom:0.15rem;box-sizing:border-box;position:relative;background:#fff;overflow:hidden;flex-shrink:0;border-radius:0.08rem;padding-right:1.45rem}
 #page-random .random-input-item:last-child{margin-bottom:0}
+#page-random .random-input-item.removing{transition:height 0.25s ease,opacity 0.25s ease,margin-bottom 0.25s ease,border-width 0.25s ease,padding 0.25s ease;height:0;opacity:0;margin-bottom:0;border-width:0;padding-top:0;padding-bottom:0}
 #page-random .random-input-item input{flex:1;height:0.7rem;display:block;box-sizing:border-box;border:none;outline:none;padding:0 0.15rem;font-size:0.42rem;line-height:0.7rem;min-width:0;background:transparent;text-align:center}
 #page-random .random-btn-group{position:absolute;right:0;top:0;bottom:0;display:flex;align-items:center;border-left:0.03rem solid rgb(136,172,142);background:rgba(136,172,142,0.12)}
 #page-random .random-add-btn{background-color:transparent;padding:0;border:none;width:0.7rem;height:100%;display:flex;align-items:center;justify-content:center;border-right:0.02rem solid rgba(136,172,142,0.4)}

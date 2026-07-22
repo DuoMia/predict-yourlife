@@ -3,6 +3,7 @@
   var baguaEl = null;
   var timers = [];
   var _inited = false;
+  var _deleting = false;
 
   var state = {
     resp: '',
@@ -181,22 +182,39 @@
   }
 
   function deletedq(index) {
-    var list = state.inputlist.slice();
-    list.splice(index, 1);
-    var updates = { inputlist: list };
-    if (list.length === 1) {
-      updates.buttonhide2 = true;
-    }
-    setState(updates);
-    renderInputList();
-    requestAnimationFrame(function () {
-      var area = pageEl.querySelector('.random-input-area');
-      if (!area) return;
-      var maxScroll = area.scrollHeight - area.clientHeight;
-      if (area.scrollTop > maxScroll) {
-        area.scrollTo({ top: maxScroll > 0 ? maxScroll : 0, behavior: 'smooth' });
+    if (_deleting) return;
+    var items = pageEl.querySelectorAll('.random-input-item');
+    var targetItem = items[index];
+    if (!targetItem) return;
+
+    _deleting = true;
+    targetItem.classList.add('removing');
+
+    setTimeout(function () {
+      var list = state.inputlist.slice();
+      list.splice(index, 1);
+      var updates = { inputlist: list };
+      if (list.length === 1) {
+        updates.buttonhide2 = true;
       }
-    });
+      setState(updates);
+      renderInputList();
+      _deleting = false;
+
+      requestAnimationFrame(function () {
+        var area = pageEl.querySelector('.random-input-area');
+        if (!area) return;
+        var maxScroll = area.scrollHeight - area.clientHeight;
+        if (area.scrollTop > maxScroll) {
+          area.scrollTo({ top: maxScroll > 0 ? maxScroll : 0, behavior: 'smooth' });
+        }
+        var remainingInputs = pageEl.querySelectorAll('.random-input-item input');
+        var focusIdx = index < remainingInputs.length ? index : remainingInputs.length - 1;
+        if (focusIdx >= 0 && remainingInputs[focusIdx]) {
+          remainingInputs[focusIdx].focus();
+        }
+      });
+    }, 250);
   }
 
   function checknums(e, index) {
@@ -409,6 +427,7 @@
 
     hide: function () {
       clearTimers();
+      _deleting = false;
     }
   };
 
