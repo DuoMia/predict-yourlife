@@ -360,6 +360,16 @@
       })(actionEls[i]);
     }
 
+    var resultModal = pageEl.querySelector('.result-modal');
+    if (resultModal) {
+      resultModal.addEventListener('click', function (e) {
+        if (e.target === resultModal) {
+          e.preventDefault();
+          onmodal();
+        }
+      });
+    }
+
     var optionEls = pageEl.querySelectorAll('.type-option[data-action="selectOption"]');
     for (var j = 0; j < optionEls.length; j++) {
       (function (el) {

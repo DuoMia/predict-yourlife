@@ -1,6 +1,7 @@
 (function () {
   var _inited = false;
   var loadingTimer = null;
+  var fallbackTimer = null;
 
   var state = {
     current: 0,
@@ -49,6 +50,10 @@
       clearInterval(loadingTimer);
       loadingTimer = null;
     }
+    if (fallbackTimer) {
+      clearTimeout(fallbackTimer);
+      fallbackTimer = null;
+    }
   }
 
   function imgload() {
@@ -68,6 +73,9 @@
     state.imgnoload = false;
     updateVisibility();
     load();
+    if (bgImg && !bgImg.complete) {
+      fallbackTimer = setTimeout(imgload, 3000);
+    }
   }
 
   var page = {

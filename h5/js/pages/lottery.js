@@ -40,6 +40,7 @@
 
   var timer = null;
   var loadingTimer = null;
+  var fallbackTimer = null;
   var pageEl = null;
   var _inited = false;
 
@@ -87,6 +88,43 @@
     updateSignText();
     updateResultText();
     updateDrawButton();
+
+    if (pageEl) {
+      var isPredicting = state.resopen === false;
+      if (isPredicting) {
+        pageEl.classList.add('predicting');
+      } else {
+        pageEl.classList.remove('predicting');
+      }
+    }
+  }
+
+  function resetLotteryState() {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+    stopLoading();
+
+    state.isShow = true;
+    state.btnhide = true;
+    state.btnhide2 = false;
+    state.btnhide3 = true;
+    state.indexhidden = false;
+    state.imghide = true;
+    state.imghide2 = false;
+    state.imghide3 = false;
+    state.image1 = '';
+    state.image2 = '';
+    state.image3 = '';
+    state.count = 0;
+    state.title = '';
+    state.sign = '';
+    state.texthide = true;
+    state.texthide2 = true;
+    state.resopen = true;
+    state.imgload = true;
+    state.imgnoload = false;
   }
 
   function isSameDay(dateStr, date2) {
@@ -126,6 +164,10 @@
       clearInterval(loadingTimer);
       loadingTimer = null;
     }
+    if (fallbackTimer) {
+      clearTimeout(fallbackTimer);
+      fallbackTimer = null;
+    }
   }
 
   function checkGifAndStartLoading() {
@@ -137,6 +179,9 @@
     state.imgload = true;
     state.imgnoload = false;
     load();
+    if (gifImg && !gifImg.complete) {
+      fallbackTimer = setTimeout(module.imgload, 3000);
+    }
   }
 
   var module = {
@@ -231,11 +276,16 @@
     },
 
     hide: function () {
-      if (timer) {
-        clearInterval(timer);
-        timer = null;
+      if (pageEl && pageEl.classList.contains('predicting')) {
+        resetLotteryState();
+        updateAll();
+      } else {
+        if (timer) {
+          clearInterval(timer);
+          timer = null;
+        }
+        stopLoading();
       }
-      stopLoading();
       pageEl.scrollTop = 0;
     },
 
@@ -330,37 +380,12 @@
     },
 
     restart: function () {
-      if (timer) {
-        clearInterval(timer);
-        timer = null;
-      }
-      stopLoading();
-
       Storage.updateUserInfo({
         status: 0,
         datetime: new Date().toString()
       });
 
-      state.isShow = true;
-      state.btnhide = false;
-      state.btnhide2 = true;
-      state.btnhide3 = true;
-      state.indexhidden = false;
-      state.imghide = true;
-      state.imghide2 = false;
-      state.imghide3 = false;
-      state.image1 = '';
-      state.image2 = '';
-      state.image3 = '';
-      state.count = 0;
-      state.buttonhide = false;
-      state.color = 'rgb(124, 11, 11)';
-      state.texthide = true;
-      state.texthide2 = true;
-      state.resopen = true;
-      state.title = '';
-      state.sign = '';
-
+      resetLotteryState();
       checkGifAndStartLoading();
     },
 

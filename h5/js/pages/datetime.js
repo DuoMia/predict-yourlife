@@ -342,6 +342,16 @@
         });
       })(actionEls[i]);
     }
+
+    var resultModal = pageEl.querySelector('.result-modal');
+    if (resultModal) {
+      resultModal.addEventListener('click', function (e) {
+        if (e.target === resultModal) {
+          e.preventDefault();
+          resonmodal();
+        }
+      });
+    }
   }
 
   function resetState() {
