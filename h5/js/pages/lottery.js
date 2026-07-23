@@ -90,7 +90,7 @@
     updateDrawButton();
 
     if (pageEl) {
-      var isPredicting = state.resopen === false;
+      var isPredicting = state.isShow === false;
       if (isPredicting) {
         pageEl.classList.add('predicting');
       } else {
