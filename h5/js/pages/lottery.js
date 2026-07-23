@@ -5,10 +5,10 @@
   }
 
   var images = [
-    'images/圣杯.png', 'images/圣杯.png', 'images/圣杯.png',
-    'images/圣杯.png', 'images/圣杯.png', 'images/圣杯.png',
-    'images/笑杯.png',
-    'images/圣杯.png'
+    'images/圣杯.webp', 'images/圣杯.webp', 'images/圣杯.webp',
+    'images/圣杯.webp', 'images/圣杯.webp', 'images/圣杯.webp',
+    'images/笑杯.webp',
+    'images/圣杯.webp'
   ];
 
   var state = {

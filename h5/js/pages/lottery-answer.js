@@ -55,7 +55,7 @@
 
       signImage.onload = showImage;
       signImage.onerror = showImage;
-      signImage.src = 'images/签文/签' + sign + '.jpg?t=' + Date.now();
+      signImage.src = 'images/签文/签' + sign + '.webp?t=' + Date.now();
 
       if (signImage.complete && signImage.naturalWidth > 0) {
         showImage();

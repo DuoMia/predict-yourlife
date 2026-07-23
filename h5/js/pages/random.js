@@ -122,7 +122,7 @@
 
       var addBtn = document.createElement('button');
       addBtn.className = 'random-add-btn';
-      addBtn.innerHTML = '<img src="images/add.png">';
+      addBtn.innerHTML = '<img src="images/add.webp">';
       addBtn.addEventListener('click', function (e) {
         e.preventDefault();
         addinput();
@@ -131,7 +131,7 @@
       var delBtn = document.createElement('button');
       delBtn.className = 'random-delete-btn';
       delBtn.setAttribute('data-index', i);
-      delBtn.innerHTML = '<img src="images/delete.png">';
+      delBtn.innerHTML = '<img src="images/delete.webp">';
       if (state.buttonhide2) {
         delBtn.style.display = 'none';
       }

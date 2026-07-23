@@ -37,3 +37,7 @@ npm-debug.log*
 汉仪行者笔记简.TTF
 *.TTF
 !h5/fonts/*.woff2
+
+# 图片原图备份（仅本地保留）
+h5/images/backup/
+h5/images/签文_backup/
