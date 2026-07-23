@@ -179,9 +179,7 @@
     state.imgload = true;
     state.imgnoload = false;
     load();
-    if (gifImg && !gifImg.complete) {
-      fallbackTimer = setTimeout(module.imgload, 3000);
-    }
+    fallbackTimer = setTimeout(module.imgload, 3000);
   }
 
   var module = {
@@ -199,6 +197,9 @@
       var gifImg = pageEl.querySelector('.lottery-drawing-img');
       if (gifImg) {
         gifImg.addEventListener('load', function () {
+          module.imgload();
+        });
+        gifImg.addEventListener('error', function () {
           module.imgload();
         });
       }
@@ -390,6 +391,8 @@
     },
 
     imgload: function () {
+      if (!state.imgload) return;
+
       var userInfo = Storage.getUserInfo();
       var now = new Date();
 

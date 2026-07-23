@@ -95,7 +95,7 @@ input{font-family:'HYXingZBJJ',sans-serif;outline:none;border:none;-webkit-appea
 #page-datetime .datetime-time-btn{display:flex;justify-content:center;align-items:center;font-size:0.32rem;color:#333;background-color:#fff;border:1px solid #ccc;border-radius:1rem;width:6.2rem;height:1.15rem;bottom:20%;left:0;right:0;margin:auto;position:absolute;cursor:pointer}
 #page-datetime .datetime-start-btn{margin:auto;position:absolute;left:0;right:0;border-radius:0.6rem;bottom:7%;line-height:0.8rem;width:4.5rem;height:1.2rem;font-family:'HYXingZBJJ';background-color:transparent;font-size:0.8rem;font-weight:bold;text-align:center;border:0.06rem solid rgba(124,11,11,0.8);color:rgb(124,11,11)}
 #page-datetime.predicting .datetime-switch,#page-datetime.predicting .datetime-explain,#page-datetime.predicting .datetime-date-btn,#page-datetime.predicting .datetime-time-btn{pointer-events:none;opacity:0.5}
-#page-lottery.predicting .lottery-btn,#page-lottery.predicting .lottery-img2,#page-lottery.predicting .sign-text,#page-lottery.predicting .lottery-last-result,#page-lottery.predicting .lottery-restart-btn{pointer-events:none;opacity:0.5}
+#page-lottery.predicting .lottery-img2,#page-lottery.predicting .sign-text,#page-lottery.predicting .lottery-last-result{pointer-events:none;opacity:0.5}
 .explain-mask{position:fixed;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,0.5);z-index:99}
 .explain-modal{position:fixed;z-index:100;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;padding:0.4rem 0.3rem;box-sizing:border-box;max-width:95vw}
 .explain-modal-img{width:90vw;max-width:6.8rem;height:auto;max-height:calc(100vh - 2.5rem);object-fit:contain;display:block}
