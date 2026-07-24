@@ -32,7 +32,7 @@
       }
       if (!pageEl || !signImage) return;
 
-      var sign = params.sign;
+      var sign = params && params.sign;
       if (!sign) return;
 
       if (scrollEl) {
@@ -53,9 +53,11 @@
       signImage.style.width = '100%';
       signImage.style.height = 'auto';
 
+      var imgSrc = 'images/签文/签' + sign + '.webp?t=' + Date.now();
+
       signImage.onload = showImage;
       signImage.onerror = showImage;
-      signImage.src = 'images/签文/签' + sign + '.webp?t=' + Date.now();
+      signImage.src = imgSrc;
 
       if (signImage.complete && signImage.naturalWidth > 0) {
         showImage();
@@ -79,7 +81,7 @@
         signImage.style.display = 'none';
         signImage.onload = null;
         signImage.onerror = null;
-        signImage.src = '';
+        signImage.removeAttribute('src');
       }
     }
   };
