@@ -179,7 +179,7 @@
     state.imgload = true;
     state.imgnoload = false;
     load();
-    fallbackTimer = setTimeout(module.imgload, 3000);
+    fallbackTimer = setTimeout(module.imgload, 8000);
     updateAll();
   }
 
@@ -293,6 +293,12 @@
 
     draw: function () {
       if (state.buttonhide) return;
+
+      var gifImg = pageEl.querySelector('.lottery-drawing-img');
+      if (state.imgload || !gifImg || !gifImg.complete || gifImg.naturalWidth === 0) {
+        App.toast('动画资源加载中，请稍候...');
+        return;
+      }
 
       state.isShow = false;
       state.imghide2 = true;

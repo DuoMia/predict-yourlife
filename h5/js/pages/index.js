@@ -45,11 +45,6 @@
     }, 400);
   }
 
-  function hideLoadingScreen() {
-    var loadingScreen = document.getElementById('loading-screen');
-    if (loadingScreen) loadingScreen.style.display = 'none';
-  }
-
   function stopLoading() {
     if (loadingTimer) {
       clearInterval(loadingTimer);
@@ -64,7 +59,6 @@
   function imgload() {
     state.imgload = false;
     state.imgnoload = true;
-    hideLoadingScreen();
     stopLoading();
     updateVisibility();
   }

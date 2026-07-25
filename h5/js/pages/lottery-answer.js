@@ -4,6 +4,8 @@
   var scrollEl = null;
   var loadingEl = null;
   var loadTimer = null;
+  var currentSign = null;
+  var retriedSigns = {};
 
   function showImage() {
     if (loadTimer) {
@@ -17,6 +19,33 @@
     if (signImage) {
       signImage.style.display = 'block';
     }
+  }
+
+  function showLoading() {
+    if (loadingEl && loadingEl.parentNode) {
+      loadingEl.parentNode.removeChild(loadingEl);
+    }
+    loadingEl = document.createElement('div');
+    loadingEl.className = 'answer-loading';
+    loadingEl.innerHTML = '<div class="loading-spinner"></div>';
+    if (pageEl) {
+      pageEl.appendChild(loadingEl);
+    }
+  }
+
+  function onImageError() {
+    var sign = currentSign;
+    if (sign && !retriedSigns[sign]) {
+      retriedSigns[sign] = true;
+      var imgSrc = 'images/签文/签' + sign + '.webp';
+      setTimeout(function () {
+        if (signImage) {
+          signImage.src = imgSrc;
+        }
+      }, 500);
+      return;
+    }
+    showImage();
   }
 
   var module = {
@@ -39,31 +68,41 @@
         scrollEl.scrollTop = 0;
       }
 
-      if (loadingEl && loadingEl.parentNode) {
-        loadingEl.parentNode.removeChild(loadingEl);
+      var imgSrc = 'images/签文/签' + sign + '.webp';
+      var isSameSign = (currentSign === sign);
+
+      currentSign = sign;
+
+      if (isSameSign && signImage.complete && signImage.naturalWidth > 0) {
+        signImage.style.display = 'block';
+        if (loadingEl && loadingEl.parentNode) {
+          loadingEl.parentNode.removeChild(loadingEl);
+          loadingEl = null;
+        }
+        return;
       }
-      loadingEl = document.createElement('div');
-      loadingEl.className = 'answer-loading';
-      loadingEl.innerHTML = '<div class="loading-spinner"></div>';
-      pageEl.appendChild(loadingEl);
 
       signImage.onload = null;
       signImage.onerror = null;
-      signImage.style.display = 'none';
-      signImage.style.width = '100%';
-      signImage.style.height = 'auto';
 
-      var imgSrc = 'images/签文/签' + sign + '.webp';
+      signImage.style.display = 'none';
+
+      showLoading();
 
       signImage.onload = showImage;
-      signImage.onerror = showImage;
-      signImage.src = imgSrc;
+      signImage.onerror = onImageError;
 
-      if (signImage.complete && signImage.naturalWidth > 0) {
-        showImage();
+      if (!isSameSign) {
+        signImage.src = imgSrc;
       } else {
-        loadTimer = setTimeout(showImage, 10000);
+        if (signImage.complete && signImage.naturalWidth > 0) {
+          showImage();
+        } else {
+          signImage.src = imgSrc;
+        }
       }
+
+      loadTimer = setTimeout(showImage, 15000);
     },
     hide: function () {
       if (loadTimer) {
@@ -78,10 +117,8 @@
         loadingEl = null;
       }
       if (signImage) {
-        signImage.style.display = 'none';
         signImage.onload = null;
         signImage.onerror = null;
-        signImage.removeAttribute('src');
       }
     }
   };

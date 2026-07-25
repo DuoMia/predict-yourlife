@@ -17,6 +17,21 @@
   var toastTimer = null;
   var savedHeight = 0;
   var homeObserver = null;
+  var globalLoadingHidden = false;
+
+  var criticalImages = [
+    'images/首页图片.webp',
+    'images/background.webp',
+    'images/preimg.jpg'
+  ];
+
+  var preloadImages = [
+    'images/抽签动图.webp',
+    'images/圣杯.webp',
+    'images/笑杯.webp',
+    'images/chouqiantu.webp',
+    'images/qianmian.webp'
+  ];
 
   function setViewportHeight(force) {
     var height = window.innerHeight;
@@ -45,6 +60,49 @@
     toastTimer = setTimeout(function () {
       toastEl.classList.remove('show');
     }, 2000);
+  }
+
+  function hideGlobalLoading() {
+    if (globalLoadingHidden) return;
+    globalLoadingHidden = true;
+    var el = document.getElementById('loading-screen');
+    if (el) {
+      el.style.opacity = '0';
+      el.style.transition = 'opacity 0.3s';
+      setTimeout(function () {
+        el.style.display = 'none';
+      }, 300);
+    }
+  }
+
+  function preloadImage(src, callback) {
+    var img = new Image();
+    img.onload = function () { callback(null); };
+    img.onerror = function () { callback(new Error('load fail: ' + src)); };
+    img.src = src;
+  }
+
+  function preloadImageList(list, callback) {
+    var remaining = list.length;
+    if (remaining === 0) { callback(); return; }
+    function done() {
+      remaining--;
+      if (remaining <= 0) callback();
+    }
+    for (var i = 0; i < list.length; i++) {
+      preloadImage(list[i], done);
+    }
+  }
+
+  function startGlobalPreload() {
+    var fallbackTimer = setTimeout(hideGlobalLoading, 8000);
+
+    preloadImageList(criticalImages, function () {
+      clearTimeout(fallbackTimer);
+      hideGlobalLoading();
+    });
+
+    preloadImageList(preloadImages, function () {});
   }
 
   function createHomeButton() {
@@ -95,13 +153,6 @@
     return { path: path, params: params };
   }
 
-  function hideLoading() {
-    var el = document.getElementById('loading-screen');
-    if (el) {
-      el.style.display = 'none';
-    }
-  }
-
   function getPageEl(name) {
     return document.getElementById('page-' + name);
   }
@@ -139,16 +190,16 @@
       page.init(params);
     }
 
+    if (typeof page.show === 'function') {
+      page.show(params);
+    }
+
     el.classList.add('active');
 
     homeObserver = new MutationObserver(function () {
       updateHomeButton();
     });
     homeObserver.observe(el, { attributes: true, attributeFilter: ['class'] });
-
-    if (typeof page.show === 'function') {
-      page.show(params);
-    }
 
     currentPage = name;
     window.scrollTo(0, 0);
@@ -191,6 +242,10 @@
 
     toast: showToast,
 
+    notifyPageReady: function () {
+      hideGlobalLoading();
+    },
+
     init: function () {
       Storage.init();
 
@@ -212,7 +267,8 @@
 
       window.addEventListener('hashchange', onHashChange, false);
       onHashChange();
-      hideLoading();
+
+      startGlobalPreload();
     }
   };
 
