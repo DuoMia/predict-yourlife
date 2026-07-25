@@ -53,7 +53,7 @@
       signImage.style.width = '100%';
       signImage.style.height = 'auto';
 
-      var imgSrc = 'images/签文/签' + sign + '.webp?t=' + Date.now();
+      var imgSrc = 'images/签文/签' + sign + '.webp';
 
       signImage.onload = showImage;
       signImage.onerror = showImage;

@@ -1,8 +1,5 @@
-/*.html
-  Cache-Control: public, max-age=0, must-revalidate
-
-/
-  Cache-Control: public, max-age=0, must-revalidate
+/*
+  Cache-Control: public, max-age=300
 
 /css/*
   Cache-Control: public, max-age=31536000, immutable
@@ -13,5 +10,8 @@
 /images/*
   Cache-Control: public, max-age=31536000, immutable
 
-/*
-  Cache-Control: public, max-age=300
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate

@@ -180,6 +180,7 @@
     state.imgnoload = false;
     load();
     fallbackTimer = setTimeout(module.imgload, 3000);
+    updateAll();
   }
 
   var module = {
