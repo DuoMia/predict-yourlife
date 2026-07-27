@@ -6,22 +6,50 @@
   var loadTimer = null;
   var currentSign = null;
   var retriedSigns = {};
+  var hidden = false;
 
-  function showImage() {
+  function hideLoading() {
+    if (hidden) return;
+    hidden = true;
     if (loadTimer) {
       clearTimeout(loadTimer);
       loadTimer = null;
     }
-    if (loadingEl && loadingEl.parentNode) {
-      loadingEl.parentNode.removeChild(loadingEl);
-      loadingEl = null;
-    }
     if (signImage) {
       signImage.style.display = 'block';
     }
+    if (loadingEl && loadingEl.parentNode) {
+      loadingEl.style.opacity = '0';
+      loadingEl.style.transition = 'opacity 0.2s';
+      setTimeout(function () {
+        if (loadingEl && loadingEl.parentNode) {
+          loadingEl.parentNode.removeChild(loadingEl);
+        }
+        loadingEl = null;
+      }, 250);
+    }
+  }
+
+  function showImage() {
+    if (!signImage) return;
+    if (signImage.decode) {
+      signImage.decode().then(hideLoading).catch(hideLoading);
+    } else {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(hideLoading);
+      });
+    }
+  }
+
+  function forceShowImage() {
+    if (signImage) {
+      signImage.style.display = 'block';
+    }
+    hideLoading();
   }
 
   function showLoading() {
+    hidden = false;
     if (loadingEl && loadingEl.parentNode) {
       loadingEl.parentNode.removeChild(loadingEl);
     }
@@ -37,7 +65,7 @@
     var sign = currentSign;
     if (sign && !retriedSigns[sign]) {
       retriedSigns[sign] = true;
-      var imgSrc = 'images/签文/签' + sign + '.webp?v=20260727a';
+      var imgSrc = 'images/签文/签' + sign + '.webp?v=20260727b';
       setTimeout(function () {
         if (signImage) {
           signImage.src = imgSrc;
@@ -45,7 +73,7 @@
       }, 500);
       return;
     }
-    showImage();
+    forceShowImage();
   }
 
   var module = {
@@ -68,7 +96,7 @@
         scrollEl.scrollTop = 0;
       }
 
-      var imgSrc = 'images/签文/签' + sign + '.webp?v=20260727a';
+      var imgSrc = 'images/签文/签' + sign + '.webp?v=20260727b';
       var isSameSign = (currentSign === sign);
 
       currentSign = sign;
@@ -79,6 +107,7 @@
           loadingEl.parentNode.removeChild(loadingEl);
           loadingEl = null;
         }
+        hidden = true;
         return;
       }
 
@@ -102,7 +131,7 @@
         }
       }
 
-      loadTimer = setTimeout(showImage, 15000);
+      loadTimer = setTimeout(forceShowImage, 15000);
     },
     hide: function () {
       if (loadTimer) {
@@ -116,6 +145,7 @@
         loadingEl.parentNode.removeChild(loadingEl);
         loadingEl = null;
       }
+      hidden = false;
       if (signImage) {
         signImage.onload = null;
         signImage.onerror = null;
