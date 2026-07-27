@@ -8,6 +8,7 @@
   var currentSign = null;
   var retriedSigns = {};
   var hidden = false;
+  var errorShown = false;
 
   function removeLoadingEl() {
     if (loadingEl && loadingEl.parentNode) {
@@ -16,7 +17,7 @@
     loadingEl = null;
   }
 
-  function hideLoading() {
+  function doHideLoading() {
     if (hidden) return;
     hidden = true;
     if (loadTimer) {
@@ -27,43 +28,90 @@
       clearTimeout(hideTimer);
       hideTimer = null;
     }
+    errorShown = false;
     if (signImage) {
       signImage.style.display = 'block';
     }
     if (loadingEl && loadingEl.parentNode) {
       loadingEl.style.opacity = '0';
-      loadingEl.style.transition = 'opacity 0.2s';
-      setTimeout(removeLoadingEl, 250);
+      loadingEl.style.transition = 'opacity 0.25s';
+      setTimeout(removeLoadingEl, 280);
     }
   }
 
-  function scheduleHideLoading() {
-    if (hideTimer) clearTimeout(hideTimer);
-    hideTimer = setTimeout(function () {
-      requestAnimationFrame(function () {
-        requestAnimationFrame(hideLoading);
-      });
-    }, 200);
-  }
-
-  function showImage() {
-    if (!signImage) return;
+  function hideLoadingWhenReady() {
+    if (!signImage) {
+      doHideLoading();
+      return;
+    }
     signImage.style.display = 'block';
-    scheduleHideLoading();
+    if (signImage.decode) {
+      var decoded = false;
+      var fallback = setTimeout(function () {
+        if (!decoded) {
+          decoded = true;
+          doHideLoading();
+        }
+      }, 1500);
+      try {
+        signImage.decode().then(function () {
+          if (!decoded) {
+            decoded = true;
+            clearTimeout(fallback);
+            doHideLoading();
+          }
+        }).catch(function () {
+          if (!decoded) {
+            decoded = true;
+            clearTimeout(fallback);
+            doHideLoading();
+          }
+        });
+      } catch (e) {
+        clearTimeout(fallback);
+        setTimeout(doHideLoading, 300);
+      }
+    } else {
+      setTimeout(function () {
+        requestAnimationFrame(function () {
+          requestAnimationFrame(doHideLoading);
+        });
+      }, 300);
+    }
   }
 
-  function forceShowImage() {
-    if (signImage) {
-      signImage.style.display = 'block';
+  function showErrorTip() {
+    if (errorShown) return;
+    errorShown = true;
+    if (!loadingEl) return;
+    loadingEl.innerHTML = '<div style="text-align:center;color:#999;font-size:14px;line-height:2">图片加载较慢<br>请稍候或检查网络...</div>';
+  }
+
+  function onImageLoad() {
+    hideLoadingWhenReady();
+  }
+
+  function onImageError() {
+    var sign = currentSign;
+    if (sign && !retriedSigns[sign]) {
+      retriedSigns[sign] = true;
+      var imgSrc = 'images/签文/签' + sign + '.webp?v=20260727e';
+      setTimeout(function () {
+        if (signImage && currentSign === sign) {
+          signImage.src = imgSrc;
+        }
+      }, 800);
+      return;
     }
-    scheduleHideLoading();
+    if (loadingEl) {
+      loadingEl.innerHTML = '<div style="text-align:center;color:#c00;font-size:14px;line-height:2">图片加载失败<br><span style="color:#09bb07;cursor:pointer" onclick="location.reload()">点击刷新重试</span></div>';
+    }
   }
 
   function showLoading() {
     hidden = false;
-    if (loadingEl && loadingEl.parentNode) {
-      loadingEl.parentNode.removeChild(loadingEl);
-    }
+    errorShown = false;
+    removeLoadingEl();
     loadingEl = document.createElement('div');
     loadingEl.className = 'answer-loading';
     loadingEl.innerHTML = '<div class="loading-spinner"></div>';
@@ -72,21 +120,6 @@
     if (pageEl) {
       pageEl.appendChild(loadingEl);
     }
-  }
-
-  function onImageError() {
-    var sign = currentSign;
-    if (sign && !retriedSigns[sign]) {
-      retriedSigns[sign] = true;
-      var imgSrc = 'images/签文/签' + sign + '.webp?v=20260727d';
-      setTimeout(function () {
-        if (signImage) {
-          signImage.src = imgSrc;
-        }
-      }, 500);
-      return;
-    }
-    forceShowImage();
   }
 
   var module = {
@@ -109,7 +142,7 @@
         scrollEl.scrollTop = 0;
       }
 
-      var imgSrc = 'images/签文/签' + sign + '.webp?v=20260727d';
+      var imgSrc = 'images/签文/签' + sign + '.webp?v=20260727e';
       var isSameSign = (currentSign === sign);
 
       currentSign = sign;
@@ -124,24 +157,27 @@
       signImage.onload = null;
       signImage.onerror = null;
 
+      if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+      if (loadTimer) { clearTimeout(loadTimer); loadTimer = null; }
+
       signImage.style.display = 'none';
 
       showLoading();
 
-      signImage.onload = showImage;
+      signImage.onload = onImageLoad;
       signImage.onerror = onImageError;
+
+      loadTimer = setTimeout(showErrorTip, 15000);
 
       if (!isSameSign) {
         signImage.src = imgSrc;
       } else {
         if (signImage.complete && signImage.naturalWidth > 0) {
-          showImage();
+          hideLoadingWhenReady();
         } else {
           signImage.src = imgSrc;
         }
       }
-
-      loadTimer = setTimeout(forceShowImage, 20000);
     },
     hide: function () {
       if (loadTimer) {
@@ -157,6 +193,7 @@
       }
       removeLoadingEl();
       hidden = false;
+      errorShown = false;
       if (signImage) {
         signImage.onload = null;
         signImage.onerror = null;
