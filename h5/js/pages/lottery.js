@@ -49,7 +49,6 @@
     if (preloadImg) {
       preloadImg.onload = null;
       preloadImg.onerror = null;
-      preloadImg.src = '';
       preloadImg = null;
     }
   }
