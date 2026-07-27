@@ -4,9 +4,17 @@
   var scrollEl = null;
   var loadingEl = null;
   var loadTimer = null;
+  var hideTimer = null;
   var currentSign = null;
   var retriedSigns = {};
   var hidden = false;
+
+  function removeLoadingEl() {
+    if (loadingEl && loadingEl.parentNode) {
+      loadingEl.parentNode.removeChild(loadingEl);
+    }
+    loadingEl = null;
+  }
 
   function hideLoading() {
     if (hidden) return;
@@ -15,37 +23,40 @@
       clearTimeout(loadTimer);
       loadTimer = null;
     }
+    if (hideTimer) {
+      clearTimeout(hideTimer);
+      hideTimer = null;
+    }
     if (signImage) {
       signImage.style.display = 'block';
     }
     if (loadingEl && loadingEl.parentNode) {
       loadingEl.style.opacity = '0';
       loadingEl.style.transition = 'opacity 0.2s';
-      setTimeout(function () {
-        if (loadingEl && loadingEl.parentNode) {
-          loadingEl.parentNode.removeChild(loadingEl);
-        }
-        loadingEl = null;
-      }, 250);
+      setTimeout(removeLoadingEl, 250);
     }
+  }
+
+  function scheduleHideLoading() {
+    if (hideTimer) clearTimeout(hideTimer);
+    hideTimer = setTimeout(function () {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(hideLoading);
+      });
+    }, 200);
   }
 
   function showImage() {
     if (!signImage) return;
-    if (signImage.decode) {
-      signImage.decode().then(hideLoading).catch(hideLoading);
-    } else {
-      requestAnimationFrame(function () {
-        requestAnimationFrame(hideLoading);
-      });
-    }
+    signImage.style.display = 'block';
+    scheduleHideLoading();
   }
 
   function forceShowImage() {
     if (signImage) {
       signImage.style.display = 'block';
     }
-    hideLoading();
+    scheduleHideLoading();
   }
 
   function showLoading() {
@@ -56,6 +67,8 @@
     loadingEl = document.createElement('div');
     loadingEl.className = 'answer-loading';
     loadingEl.innerHTML = '<div class="loading-spinner"></div>';
+    loadingEl.style.opacity = '1';
+    loadingEl.style.transition = '';
     if (pageEl) {
       pageEl.appendChild(loadingEl);
     }
@@ -65,7 +78,7 @@
     var sign = currentSign;
     if (sign && !retriedSigns[sign]) {
       retriedSigns[sign] = true;
-      var imgSrc = 'images/签文/签' + sign + '.webp?v=20260727b';
+      var imgSrc = 'images/签文/签' + sign + '.webp?v=20260727c';
       setTimeout(function () {
         if (signImage) {
           signImage.src = imgSrc;
@@ -96,17 +109,14 @@
         scrollEl.scrollTop = 0;
       }
 
-      var imgSrc = 'images/签文/签' + sign + '.webp?v=20260727b';
+      var imgSrc = 'images/签文/签' + sign + '.webp?v=20260727c';
       var isSameSign = (currentSign === sign);
 
       currentSign = sign;
 
       if (isSameSign && signImage.complete && signImage.naturalWidth > 0) {
         signImage.style.display = 'block';
-        if (loadingEl && loadingEl.parentNode) {
-          loadingEl.parentNode.removeChild(loadingEl);
-          loadingEl = null;
-        }
+        removeLoadingEl();
         hidden = true;
         return;
       }
@@ -131,20 +141,21 @@
         }
       }
 
-      loadTimer = setTimeout(forceShowImage, 15000);
+      loadTimer = setTimeout(forceShowImage, 20000);
     },
     hide: function () {
       if (loadTimer) {
         clearTimeout(loadTimer);
         loadTimer = null;
       }
+      if (hideTimer) {
+        clearTimeout(hideTimer);
+        hideTimer = null;
+      }
       if (scrollEl) {
         scrollEl.scrollTop = 0;
       }
-      if (loadingEl && loadingEl.parentNode) {
-        loadingEl.parentNode.removeChild(loadingEl);
-        loadingEl = null;
-      }
+      removeLoadingEl();
       hidden = false;
       if (signImage) {
         signImage.onload = null;
