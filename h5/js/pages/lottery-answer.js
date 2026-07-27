@@ -95,7 +95,7 @@
     var sign = currentSign;
     if (sign && !retriedSigns[sign]) {
       retriedSigns[sign] = true;
-      var imgSrc = 'images/签文/签' + sign + '.webp?v=20260727e';
+      var imgSrc = 'images/signs/sign' + sign + '.webp?v=20260727f';
       setTimeout(function () {
         if (signImage && currentSign === sign) {
           signImage.src = imgSrc;
@@ -142,7 +142,7 @@
         scrollEl.scrollTop = 0;
       }
 
-      var imgSrc = 'images/签文/签' + sign + '.webp?v=20260727e';
+      var imgSrc = 'images/signs/sign' + sign + '.webp?v=20260727f';
       var isSameSign = (currentSign === sign);
 
       currentSign = sign;
