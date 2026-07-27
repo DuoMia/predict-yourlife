@@ -41,8 +41,18 @@
   var timer = null;
   var loadingTimer = null;
   var fallbackTimer = null;
+  var preloadImg = null;
   var pageEl = null;
   var _inited = false;
+
+  function preloadSignImage(signNum) {
+    if (preloadImg) {
+      preloadImg.onload = null;
+      preloadImg.onerror = null;
+    }
+    preloadImg = new Image();
+    preloadImg.src = 'images/signs/sign' + signNum + '.webp?v=20260727f';
+  }
 
   function updateVisibility() {
     var showEls = pageEl.querySelectorAll('[data-show]');
@@ -327,6 +337,7 @@
         }
         var idx = Math.floor(Math.random() * signList.length);
         state.sign = String(signList[idx]);
+        preloadSignImage(signList[idx]);
         state.imghide = false;
         state.btnhide2 = true;
         state.btnhide = false;
