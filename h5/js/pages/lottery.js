@@ -45,11 +45,17 @@
   var pageEl = null;
   var _inited = false;
 
-  function preloadSignImage(signNum) {
+  function cancelPreload() {
     if (preloadImg) {
       preloadImg.onload = null;
       preloadImg.onerror = null;
+      preloadImg.src = '';
+      preloadImg = null;
     }
+  }
+
+  function preloadSignImage(signNum) {
+    cancelPreload();
     preloadImg = new Image();
     preloadImg.src = 'images/signs/sign' + signNum + '.webp?v=20260727f';
   }
@@ -115,6 +121,7 @@
       timer = null;
     }
     stopLoading();
+    cancelPreload();
 
     state.isShow = true;
     state.btnhide = true;
