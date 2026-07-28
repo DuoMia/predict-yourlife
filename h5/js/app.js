@@ -119,12 +119,20 @@
     trafficEl.textContent = '流量 ' + formatBytes(totalBytes);
   }
 
+  function getEntrySize(entry) {
+    if (!entry) return 0;
+    if (entry.transferSize && entry.transferSize > 0) return entry.transferSize;
+    if (entry.encodedBodySize && entry.encodedBodySize > 0) return entry.encodedBodySize;
+    if (entry.decodedBodySize && entry.decodedBodySize > 0) return entry.decodedBodySize;
+    return 0;
+  }
+
   function addResourceEntry(entry) {
     if (!entry || !entry.name) return;
     if (countedResources[entry.name]) return;
-    countedResources[entry.name] = true;
-    var size = entry.transferSize || 0;
+    var size = getEntrySize(entry);
     if (size > 0) {
+      countedResources[entry.name] = true;
       totalBytes += size;
       updateTrafficDisplay();
     }
@@ -137,9 +145,9 @@
     }
     var navEntry = performance.getEntriesByType('navigation')[0];
     if (navEntry && !countedResources[navEntry.name]) {
-      countedResources[navEntry.name] = true;
-      var navSize = navEntry.transferSize || 0;
+      var navSize = getEntrySize(navEntry);
       if (navSize > 0) {
+        countedResources[navEntry.name] = true;
         totalBytes += navSize;
         updateTrafficDisplay();
       }
