@@ -18,6 +18,9 @@
   var savedHeight = 0;
   var homeObserver = null;
   var globalLoadingHidden = false;
+  var totalBytes = 0;
+  var countedResources = {};
+  var trafficEl = null;
 
   var criticalImages = [
     'images/首页图片.webp',
@@ -103,6 +106,67 @@
     });
 
     preloadImageList(preloadImages, function () {});
+  }
+
+  function formatBytes(bytes) {
+    if (bytes < 1024) return bytes + 'B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + 'KB';
+    return (bytes / (1024 * 1024)).toFixed(2) + 'MB';
+  }
+
+  function updateTrafficDisplay() {
+    if (!trafficEl) return;
+    trafficEl.textContent = '流量 ' + formatBytes(totalBytes);
+  }
+
+  function addResourceEntry(entry) {
+    if (!entry || !entry.name) return;
+    if (countedResources[entry.name]) return;
+    countedResources[entry.name] = true;
+    var size = entry.transferSize || 0;
+    if (size > 0) {
+      totalBytes += size;
+      updateTrafficDisplay();
+    }
+  }
+
+  function scanExistingResources() {
+    var entries = performance.getEntriesByType('resource');
+    for (var i = 0; i < entries.length; i++) {
+      addResourceEntry(entries[i]);
+    }
+    var navEntry = performance.getEntriesByType('navigation')[0];
+    if (navEntry && !countedResources[navEntry.name]) {
+      countedResources[navEntry.name] = true;
+      var navSize = navEntry.transferSize || 0;
+      if (navSize > 0) {
+        totalBytes += navSize;
+        updateTrafficDisplay();
+      }
+    }
+  }
+
+  function createTrafficMonitor() {
+    trafficEl = document.createElement('div');
+    trafficEl.className = 'app-traffic-monitor';
+    trafficEl.textContent = '流量 0B';
+    document.body.appendChild(trafficEl);
+
+    scanExistingResources();
+
+    if (typeof PerformanceObserver !== 'undefined') {
+      try {
+        var observer = new PerformanceObserver(function (list) {
+          var entries = list.getEntries();
+          for (var i = 0; i < entries.length; i++) {
+            addResourceEntry(entries[i]);
+          }
+        });
+        observer.observe({ entryTypes: ['resource'] });
+      } catch (e) {}
+    }
+
+    setInterval(scanExistingResources, 1000);
   }
 
   function createHomeButton() {
@@ -264,6 +328,7 @@
       setTimeout(function () { setViewportHeight(true); }, 300);
 
       createHomeButton();
+      createTrafficMonitor();
 
       window.addEventListener('hashchange', onHashChange, false);
       onHashChange();
